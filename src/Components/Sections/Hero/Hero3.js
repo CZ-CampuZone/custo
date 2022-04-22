@@ -3,7 +3,6 @@ import AuthContext from "../../../Context/Context";
 import styles from "./Hero3.module.css";
 import Loader from "../../../loader/Loader";
 import clsx from "clsx";
-
 const Hero3 = (props) => {
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
@@ -92,7 +91,7 @@ const Hero3 = (props) => {
           ) : (
             <>
               <h2 className={`${styles.inputHeading}`}>{localData.header }</h2>
-              <p className={`${styles.inputHeading}`}>{localData.para}</p>
+              <p className={`${styles.inputpara}`}>{localData.para}</p>
             </>
           )}
             <button
