@@ -106,7 +106,7 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const Gallery1 = (props) => {
+ export const Gallery1 = (props) => {
   const classes = useStyles();
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
@@ -392,4 +392,3 @@ const Gallery1 = (props) => {
     </>
   );
 };
- export default Gallery2;

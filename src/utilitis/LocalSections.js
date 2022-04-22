@@ -1,4 +1,4 @@
-import { Card1 } from "../Components/Sections/Card/Card3";
+import { Card1 } from "../Components/Sections/Card/Card1";
 import { Hero1 } from "../Components/Sections/Hero/Hero1";
 import { Navbar1 } from "../Components/Sections/Navbar/Navbar1";
 import { Slider1 } from "../Components/Sections/Testimonals/Slider1";
