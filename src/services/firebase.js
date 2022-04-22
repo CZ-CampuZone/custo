@@ -10,13 +10,13 @@ import Context from "../Context/Context";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCDSN5B3JCDCYcacfmL29ox4SUxc1HpgKg",
-  authDomain: "custom-9aad1.firebaseapp.com",
-  projectId: "custom-9aad1",
-  storageBucket: "custom-9aad1.appspot.com",
-  messagingSenderId: "288280541056",
-  appId: "1:288280541056:web:cfb54a4b509fe818caf365",
-  measurementId: "G-1YQQM6JN22",
+  apiKey: "AIzaSyCXXVS2lUu6hXW0AXaeJelACy7CD8jZPRU",
+  authDomain: "layatex-bc78f.firebaseapp.com",
+  projectId: "layatex-bc78f",
+  storageBucket: "layatex-bc78f.appspot.com",
+  messagingSenderId: "772693300879",
+  appId: "1:772693300879:web:f260180f270e2bbcb502fa",
+  measurementId: "G-JGXMHD742R"
 };
 
 const firebase = initializeApp(firebaseConfig);
