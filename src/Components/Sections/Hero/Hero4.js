@@ -3,6 +3,9 @@ import AuthContext from "../../../Context/Context";
 import styles from "./Hero4.module.css";
 import Loader from "../../../loader/Loader";
 import clsx from "clsx";
+
+import banner from "../../../Assests/diviImages/banner1.jpg";
+
 const Hero4 = (props) => {
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
@@ -99,7 +102,7 @@ const Hero4 = (props) => {
           </div>
           <div className={`col-md-5 ${styles.bot} ${styles.rt_pad}`}>
             <div className={` ${styles.image}`}>
-              <img className="img-fluid" src="/Images/day_care_img_11.jpg" />
+              <img className="img-fluid" src={banner}/>
             </div>
           </div>
         </div>

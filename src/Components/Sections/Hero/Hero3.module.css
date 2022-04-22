@@ -20,6 +20,7 @@
 .visitus {
   text-align: center;
   padding-bottom: 10px;
+  padding: 10px 50px;
 }
 
 .boxen_visitus_h2,
@@ -29,7 +30,7 @@
   text-align: center;
   width: 100%;
   background: transparent;
-  font-size: 40px;
+  font-size: 50px;
   outline: 0;
   line-height: 1.2em;
 }
@@ -38,6 +39,7 @@
 } */
 .boxen_visitus_p,
 .inputPara {
+
   font-family: "Muli", sans-serif;
   border: none;
   width: 100%;
@@ -46,6 +48,7 @@
   color: white;
   outline: 0;
   font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .boxen_visitus_btn {
@@ -64,7 +67,7 @@
   }
 
   .visitus {
-    padding: 30px;
+    padding: 40px;
   }
 
   .boxen_visitus_h2 {
