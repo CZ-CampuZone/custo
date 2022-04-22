@@ -21,7 +21,7 @@ export const LocalSections = [
   {
     group: "Navbar",
     variants: [
-      // { c: Navbar1, id: "Navbar1" },
+      { c: Navbar1, id: "Navbar1" },
       { c: Navbar2, id: "Navbar2" },
     ],
   },
@@ -29,9 +29,9 @@ export const LocalSections = [
     group: "Hero",
     variants: [
       { c: Hero1, id: "Hero1" },
-      // { c: Hero2, id: "Hero2" },
-      // { c: Hero3, id: "Hero3" },
-      // { c: Hero4, id: "Hero4" },
+      { c: Hero2, id: "Hero2" },
+      { c: Hero3, id: "Hero3" },
+      { c: Hero4, id: "Hero4" },
       { c: Hero5, id: "Hero5" },
     ],
   },
@@ -67,7 +67,7 @@ export const LocalSections = [
   {
     group: "Footer",
     variants: [
-      // { c: Footer1, id: "Footer1" },
+      { c: Footer1, id: "Footer1" },
       { c: Footer2, id: "Footer2" },
     ],
   },

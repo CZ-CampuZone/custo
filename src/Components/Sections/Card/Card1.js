@@ -3,9 +3,12 @@ import styles from "./Card1.module.css";
 import AuthContext from "../../../Context/Context";
 import Loader from "../../../loader/Loader";
 import clsx from "clsx";
+import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 
 const Card1 = (props) => {
   // const classes = useStyles();
+
+
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
   const cardData = [
@@ -25,12 +28,13 @@ const Card1 = (props) => {
       id: "2",
     },
   ];
-
   const [localData, setLocalData] = useState(
     ctx.websiteData[props.id] === undefined
       ? cardData
       : ctx.websiteData[props.id]
   );
+
+
   const onChangeHandler = (e, details, index) => {
     setLocalData((prevState) => {
       let updatedData = null;
@@ -49,6 +53,82 @@ const Card1 = (props) => {
       return [...prevState];
     });
   };
+  const addCard = () => {
+    let updatedData = {
+      title: "Programs",
+      para: "It is a long established fact that a reader will be distracted",
+      id: localData.length,
+    };
+    setLocalData((prevState) => {
+      return [...prevState, updatedData];
+    });
+  };
+  const removeCard = (value) => {
+    setLocalData((prevState) => {
+      prevState = prevState.filter((item) => item.id !== value);
+      return [...prevState];
+    });
+  };
+
+
+  let editable = (
+
+    <div className={clsx("row", styles.cards)}>
+      {localData.map((details, index) => (
+        <div className={`col-md-3  ${styles.card} `} key={index}>
+          <div className={`${styles.cardin}`}>
+            <div className={`${styles.round}`}>
+              <i
+                className="fa fa-pencil-square-o icon"
+                aria-hidden="true"
+              ></i>
+            </div>
+            <div
+              onClick={() => removeCard(details.id)}
+              style={{
+                position: "absolute",
+                top: "0",
+                left: "0",
+                zIndex: 20,
+                cursor: "pointer",
+              }}
+            >
+              <DeleteIcon
+                style={{
+                  width: "2rem",
+                  height: "2rem",
+                  fill: "#dc3545",
+                  padding: "5px",
+                }}
+              />
+            </div>
+            <input
+              type="text"
+              onChange={(e) => onChangeHandler(e, details, index)}
+              className={`${styles.inputHeading}`}
+              id="title"
+              value={details.title}
+            />
+            <textarea
+              onChange={(e) => onChangeHandler(e, details, index)}
+              className={`${styles.inputPara}`}
+              id="para"
+              value={details.para}
+            />
+
+
+
+          </div>
+        </div>
+      ))}
+      <div className={styles.addCard} onClick={addCard}>
+        <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
+      </div>
+    </div>
+
+
+  );
+
   const onSaveHandler = () => {
     setloading(true);
     ctx.updateData(localData, props.id);
@@ -82,42 +162,27 @@ const Card1 = (props) => {
           <Loader />
         </>
       )}
-      <div className={clsx("row", styles.cards)}>
-        {localData.map((details, index) => (
-          <div className={`col-md-3  ${styles.card} `} key={index}>
-            <div className={`${styles.cardin}`}>
-              <div className={`${styles.round}`}>
-                <i
-                  className="fa fa-pencil-square-o icon"
-                  aria-hidden="true"
-                ></i>
-              </div>
-              {ctx.isEditable ? (
-                <>
-                  <input
-                    type="text"
-                    onChange={(e) => onChangeHandler(e, details, index)}
-                    className={`${styles.inputHeading}`}
-                    id="title"
-                    value={details.title}
-                  />
-                  <textarea
-                    onChange={(e) => onChangeHandler(e, details, index)}
-                    className={`${styles.inputPara}`}
-                    id="para"
-                    value={details.para}
-                  />
-                </>
-              ) : (
-                <>
+      {ctx.isEditable ? (
+       
+        editable
+       ) : (<>
+          <div className={clsx("row", styles.cards)}>
+            {localData.map((details, index) => (
+              <div className={`col-md-3  ${styles.card} `} key={index}>
+                <div className={`${styles.cardin}`}>
+                  <div className={`${styles.round}`}>
+                    <i
+                      className="fa fa-pencil-square-o icon"
+                      aria-hidden="true"
+                    ></i>
+                  </div>
                   <h2>{details.title}</h2>
                   <p className="">{details.para}</p>
-                </>
-              )}
-            </div>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>)}
     </>
   );
 };

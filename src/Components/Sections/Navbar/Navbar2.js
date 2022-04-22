@@ -139,7 +139,7 @@ export const Navbar2 = (props) => {
     let newName = firstName + " " + lastName;
     return newName;
   };
-  var PathArray = ctx.layoutFlow.map(function (mopt) {
+  var PathArray = ctx.layoutFlow?.map(function (mopt) {
     var info = {
       value: mopt.uniqId,
       label: rename(mopt.uniqId),

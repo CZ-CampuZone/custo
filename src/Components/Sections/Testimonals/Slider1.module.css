@@ -15,7 +15,17 @@
   color: white;
   font-size: 2rem;
 }
-
+.addCard {
+  font-size: 25px;
+  border-radius: 1rem;
+  background: #fff;
+  cursor: pointer;
+  color: black;
+  position: relative;
+  width: 33.33%;
+  padding: 1rem;
+  box-shadow: 2px 2px 2px 3px #ccc;
+}
 .inputPara {
   width: 100%;
   padding: 1rem;

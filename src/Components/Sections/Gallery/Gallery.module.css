@@ -5,7 +5,18 @@
   padding: 10px;
   font-weight: 500;
 }
-
+.addCard {
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 50px;
+  
+  height: auto;
+  text-align: center;
+  box-shadow: 2px 2px 2px 3px #ccc;
+}
 .gallery {
   min-height: 100%;
   display: grid;

@@ -4,6 +4,7 @@ import styles from "./Gallery.module.css";
 import Loader from "../../../loader/Loader";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import Gallery from "../../../Assests/diviImages/gallery.jpg";
+import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 
 const Gallery1 = (props) => {
   const ctx = useContext(AuthContext);
@@ -95,7 +96,7 @@ const Gallery1 = (props) => {
   const addCard = () => {
     let updatedData = {
       name: "Image Name",
-      img: "",
+      img: Gallery,
       id: card.length,
     };
     setCard((prevState) => {
@@ -123,6 +124,25 @@ const Gallery1 = (props) => {
         {card.map((details, index) => (
           <div key={index}>
             <div className={`position-relative w-100 ${styles.uploadImage}`}>
+              <div
+                onClick={() => removeCard(details.id)}
+                style={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  zIndex: 20,
+                  cursor: "pointer",
+                }}
+              >
+                <DeleteIcon
+                  style={{
+                    width: "2rem",
+                    height: "2rem",
+                    fill: "#dc3545",
+                    padding: "5px",
+                  }}
+                />
+              </div>
               <input
                 type="file"
                 onChange={(e) => onImageChange(e, index)}
@@ -154,6 +174,10 @@ const Gallery1 = (props) => {
             />
           </div>
         ))}
+
+        <div className={styles.addCard} onClick={addCard}>
+          <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
+        </div>
       </div>
     </section>
   );

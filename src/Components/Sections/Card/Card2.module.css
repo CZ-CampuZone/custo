@@ -23,7 +23,7 @@
   display: inline-block;
   height: auto;
   position: relative;
-  width: 100%;
+  width: 25%;
   text-align: center;
 }
 
@@ -39,12 +39,14 @@
 .curriculamheading {
   width: 100%;
   text-align: center;
+  background: transparent;
+  border: none;
+  outline: 0;
 }
 
 .curriculamheading h2 {
   font-size: 3.5rem;
 }
-
 .inputHeading {
   padding-top: 15px;
   width: 100%;
@@ -56,7 +58,6 @@
   outline: 0;
   text-align: center;
 }
-
 .inputPara {
   display: block;
   width: 100%;
@@ -66,16 +67,15 @@
   outline: 0;
   text-align: center;
 }
-
 .cardin {
   width: 90%;
   margin: auto;
 }
-.curriculam > .curriculamcol:first-child .round {
+.curriculam  .curriculamcol .round {
   background-color: #5d58ef;
 }
 
-.curriculam > .curriculamcol:nth-child(2) .round {
+/* .curriculam > .curriculamcol:nth-child(2) .round {
   background-color: #ff7f59;
 }
 
@@ -85,8 +85,20 @@
 
 .curriculam > .curriculamcol:nth-child(4) .round {
   background-color: #ff236c;
+} */
+.addCard {
+  background: #fff;
+  padding: 20px;
+  height: auto;
+  width: 25%;
+  text-align: center;
+  font-size: 25px;
+  border-radius: 1rem;
+  background: #fff;
+  cursor: pointer;
+  padding: 1rem;
+  box-shadow: 2px 2px 2px 3px #ccc;
 }
-
 @media screen and (min-width: 600px) {
   .cards {
     width: 100%;
@@ -119,11 +131,7 @@
   .card2 {
     margin-bottom: 150px;
   }
-  .curriculam {
-    display: flex;
-  }
-
-  .curriculam-col {
+ .curriculam-col {
     width: 25%;
   }
 }

@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import styles from "./Card2.module.css";
 import AuthContext from "../../../Context/Context";
 import Loader from "../../../loader/Loader";
+import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import clsx from "clsx";
 
 const Card2 = (props) => {
@@ -82,16 +83,39 @@ const Card2 = (props) => {
         <input
           placeholder="Header"
           id="header"
+          style={{ background: "transparent", outline: "0", border: "none", width: "100%", textAlign: "center" }}
           onChange={onChange}
           value={localData.header}
         />
       </div>
-      <div className={clsx("container", styles.curriculam)}>
+      <div className={clsx("container position-relative", styles.curriculam)}>
         {card.map((details, index) => (
+
           <div className={styles.curriculamcol} key={index}>
+
             <div className={styles.cardin}>
               <div className={clsx(styles.round, styles.ron3)}>
                 <i className="fa fa-pencil-square icon" aria-hidden="true"></i>
+              </div>
+
+              <div
+                onClick={() => removeCard(details.id)}
+                style={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  zIndex: 20,
+                  cursor: "pointer",
+                }}
+              >
+                <DeleteIcon
+                  style={{
+                    width: "2rem",
+                    height: "2rem",
+                    fill: "#dc3545",
+                    padding: "5px",
+                  }}
+                />
               </div>
               <input
                 onChange={(e) => onChangeHandler(e, details, index)}
@@ -109,8 +133,17 @@ const Card2 = (props) => {
               />
             </div>
           </div>
+          
         ))}
+       
+
+        <div className={styles.addCard} onClick={addCard}>
+          <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
+        </div>
+      
+     
       </div>
+
     </section>
   );
   const onSaveHandler = () => {

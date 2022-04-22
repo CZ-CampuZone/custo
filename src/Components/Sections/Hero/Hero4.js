@@ -2,28 +2,32 @@ import React, { useContext, useState } from "react";
 import AuthContext from "../../../Context/Context";
 import styles from "./Hero4.module.css";
 import Loader from "../../../loader/Loader";
-const Hero4 = () => {
+import clsx from "clsx";
+const Hero4 = (props) => {
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
+  // const data = {
+  //   container: {
+  //     style: `container  ${styles.preschool}`,
+  //     value: "",
+  //   },
+  //   heading: {
+  //     style: `${styles.head}`,
+  //     value: "Our Pre-School. Our Family. Our Community",
+  //   },
+  //   paragraph: {
+  //     style: `${styles.preschool_text_p}`,
+  //     value:
+  //       "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various version",
+  //   },
+  // };
   const data = {
-    container: {
-      style: `container  ${styles.preschool}`,
-      value: "",
-    },
-    heading: {
-      style: `${styles.head}`,
-      value: "Our Pre-School. Our Family. Our Community",
-    },
-    paragraph: {
-      style: `${styles.preschool_text_p}`,
-      value:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various version",
-    },
+    header:  "Our Pre-School. Our Family. Our Community",
+    para : "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various version",
   };
-  const [localData, setLocalData] = useState({
-    heading4:  ctx.websiteData && ctx.websiteData.heading4,
-    content4: ctx.websiteData && ctx.websiteData.content4,
-  });
+  const [localData, setLocalData] = useState(
+    ctx.websiteData[props.id] === undefined ? data : ctx.websiteData[props.id]
+  );
   const onChangeHandler = (event) => {
     let val = event.target.value;
     setLocalData((prevState) => {
@@ -33,20 +37,30 @@ const Hero4 = () => {
       };
     });
   };
+  const onSaveHandler = () => {
+    setloading(true);
+    ctx.updateData(localData, props.id);
+    setTimeout(() => {
+      setloading(false);
+    }, 2000);
+  };
   return (
     <>
     {ctx.isEditable ? (
         <div className="row py-3 justify-content-end">
-        <div className="saveButton" onClick={()=>{
-            setloading(true);
-            ctx.updateData(localData)
-            setTimeout(() => {      
-            setloading(false);
-          }, 2000)
-             }}>
-            
-            Save
-          </div>
+     <button
+              className="btn px-5"
+              onClick={onSaveHandler}
+              style={{
+                background: "#fff",
+                fontSize:"20px",
+                color: "#dc3545",
+                borderRadius: "20px",
+                boxShadow: "0 3px 6px #00000036",
+              }}
+            >
+              Save<i className="fa fa-save mx-2"></i>{" "}
+            </button>
         </div>
       ) : (
         <></>
@@ -56,29 +70,29 @@ const Hero4 = () => {
       <Loader/>
       </>
     )}
-      <div className={data.container.style}>
+      <div className={clsx("container",styles.preschool,)}>
         <div className="row m-0">
           <div className={`col-md-7 ${styles.boxen}`}>
             <div className={` ${styles.preschool_text}`}>
             {ctx.isEditable ? (
             <>
               <input
-                id="heading4"
+                id="header"
                 className={`${styles.inputHeading}`}
                 onChange={onChangeHandler}
-                value={localData.heading4}
+                value={localData.header}
               />
               <textarea
-                id="content4"
+                id="para"
                 className={`${styles.inputPara}`}
                 onChange={onChangeHandler}
-                value={localData.content4}
+                value={localData.para}
               />
             </>
           ) : (
             <>
-              <h2 className={  data.heading.style}>{ctx.websiteData && ctx.websiteData.heading4}</h2>
-              <p className={  data.paragraph.style}>{ctx.websiteData && ctx.websiteData.content4}</p>
+              <h2 className={ `${styles.inputHeading}`}>{localData.header}</h2>
+              <p className={ `${styles.inputPara}`}>{localData.para}</p>
             </>
           )}
             </div>

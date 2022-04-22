@@ -5,6 +5,7 @@ import Loader from "../../../loader/Loader";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import clsx from "clsx";
+import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 
 const Slider1 = (props) => {
   const [loading, setloading] = useState(false);
@@ -71,7 +72,21 @@ const Slider1 = (props) => {
       return [...prevState];
     });
   };
-
+  const addCard = () => {
+    let updatedData = {
+      para: "It is a long established fact that a reader will be distracted by the readable",
+      id: card.length,
+    };
+    setCard((prevState) => {
+      return [...prevState, updatedData];
+    });
+  };
+  const removeCard = (value) => {
+    setCard((prevState) => {
+      prevState = prevState.filter((item) => item.id !== value);
+      return [...prevState];
+    });
+  };
   const onSaveHandler = () => {
     setloading(true);
     let data = {
@@ -129,11 +144,34 @@ const Slider1 = (props) => {
                 onChange={onChange}
                 value={localData.header}
               />
+              <div className="d-flex justify-content-center mb-5">
+              <div className={styles.addCard} onClick={addCard}>
+                <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
+              </div>
+              </div>
               {card.map((details, index) => (
                 <div
-                  className="row justify-content-center align-items-center mb-2"
+                  className="row position-relative justify-content-center align-items-center mb-2"
                   key={index}
+                > <div
+                  onClick={() => removeCard(details.id)}
+                  style={{
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    zIndex: 20,
+                    cursor: "pointer",
+                  }}
                 >
+                    <DeleteIcon
+                      style={{
+                        width: "2rem",
+                        height: "2rem",
+                        fill: "#dc3545",
+                        padding: "5px",
+                      }}
+                    />
+                  </div>
                   <h5 className="pr-4">{"Slider " + `${index + 1}`}</h5>
                   <textarea
                     key={index}
