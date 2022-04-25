@@ -40,18 +40,21 @@ h6 {
   min-height: 100vh;
   box-shadow: 5px 0 5px -5px #333;
 }
+.set {
+  font-weight: 900;
 
+  font-family: "Raleway", sans-serif;
+}
 .list-item a {
   font-size: 14px;
   color: var(--primary);
-  padding: 0.5rem;
+  padding: 1rem 0.5rem;
   display: flex;
   width: 100%;
   align-items: center;
   text-decoration: none;
   letter-spacing: 1px;
 }
-
 .list-item a svg {
   /* fill: var(--primary); */
   width: 1rem;
@@ -61,12 +64,7 @@ h6 {
 
 .list-item a:hover {
   color: #fff;
-  background: linear-gradient(
-    90deg,
-    rgba(238, 8, 8, 1) 0%,
-    rgba(237, 237, 237, 1) 100%,
-    rgba(0, 212, 255, 1) 100%
-  );
+  background: #f7c2c8;
   border: none;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -104,13 +102,27 @@ h6 {
 .intro-box {
   color: #000;
   font-size: 12px;
+  border-radius: 5px;
+ text-decoration: underline;
+
   padding: 1rem 1.5rem;
+
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   text-decoration: none !important;
 }
 
+
+
+
 .intro-box .icon {
-  width: 6%;
+  width: 9%;
+  height: 8%;
+  padding: 5px;
+  border-radius: 20px;
+  fill: white;
+  box-shadow: 1px 1px 10px rgb(220, 53, 69/50%) ;
+  
+  background-color: #dc3545;
   margin-right: 10px;
 }
 
@@ -119,7 +131,7 @@ h6 {
 }
 
 .intro-box:hover svg {
-  fill: var(--primary);
+  fill:white ;
 }
 
 .profile_img {
@@ -524,7 +536,4 @@ h6 {
   background: #fff;
 }
 /*navbar-dashborad  */
-.set {
-  font-weight: 900;
-  font-family: "Raleway", sans-serif;
-}
+

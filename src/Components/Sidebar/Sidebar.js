@@ -55,8 +55,8 @@ const Sidebar = () => {
         style={{ top: 0, left: 0 }}
       >
         <div className="scroll-view">
-          <div className="nav_title">
-            <h5 className="text-center text-capitalize m-0 px-1 py-2">
+          <div className="nav_title position-relative">
+            <h5 className="text-center text-capitalize m-0 px-1 py-2 nav-header">
               {ctx.user.websitename}
             </h5>
           </div>
