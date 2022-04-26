@@ -31,6 +31,7 @@ const Landing = (props) => {
       </div>
 
       <div className="row mt-4">
+      
         <div className="col-md-5 p-1 pr-2">
           <Link
             to={`/${ctx.userId}/styleguide`}
@@ -50,7 +51,9 @@ const Landing = (props) => {
           </Link>
         </div>
         <div className="col-md-7 p-1">
+          
           <img className="img-fluid" src="/Images/landing.jpg" alt="landing" />
+          
         </div>
       </div>
     </div>

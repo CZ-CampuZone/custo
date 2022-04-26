@@ -55,12 +55,16 @@ const Sidebar = () => {
         style={{ top: 0, left: 0 }}
       >
         <div className="scroll-view">
-          <div className="nav_title position-relative">
+          <div className="nav_title position-relative ">
             <h5 className="text-center text-capitalize m-0 px-1 py-2 nav-header">
               {ctx.user.websitename}
             </h5>
           </div>
-          <ul className="nav side-menu pt-2">
+          <div className="text-center">
+            <h5 class=" bg-white p-3 rounded headtext font-weight-bold m-1">Dashboard </h5>
+            </div>
+          <ul className="nav side-menu bg-white pt-2 px-2">
+            
             {navMenuList.map((menuItem) => {
               return (
                 <li className="list-item d-block w-100" key={menuItem.name}>

@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Caveat:wght@500&family=Dongle:wght@300;400&family=Inter:wght@300;600&family=Overpass:wght@100;300&family=Pacifico&family=Permanent+Marker&family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Caveat:wght@500&family=Dongle:wght@300;400&family=Inter:wght@300;600&family=Overpass:wght@100;300&family=Permanent+Marker&family=Roboto&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Josefin+Slab:ital,wght@1,500&display=swap');
 html,
 body {
   width: 100%;
@@ -48,13 +48,26 @@ h6 {
 
   font-family: "Raleway", sans-serif;
 }
-
+.scroll-view{
+  background-color: #ffebeb;
+}
+.side-menu{
+ 
+  margin: 5px;
+  border-radius: 5px; 
+}
+.headtext{
+  font-family: "Raleway", sans-serif;
+}
 .list-item a {
   font-size: 14px;
   color: var(--primary);
   padding: 1rem 0.5rem;
   display: flex;
+  border-radius: 5px;
   width: 100%;
+ 
+  margin: 5px 0px;
   align-items: center;
   text-decoration: none;
   letter-spacing: 1px;
@@ -72,11 +85,17 @@ h6 {
 
 .list-item a:hover {
   color: #fff;
-  background: #f7c2c8;
+
   border: none;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+  background: linear-gradient(79deg,
+  rgb(255, 128, 128) 0%,
+  rgba(247, 247, 247, 1) 100%,
+  rgba(242, 235, 234, 1) 100%);
+  
+
 }
 
 .list-item a:hover svg,
@@ -88,11 +107,13 @@ h6 {
   color: white;
   font-weight: 100;
   border: none;
-  background: rgb(255, 58, 58);
+
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background: linear-gradient(79deg,
       rgba(255, 58, 58, 1) 0%,
       rgba(247, 247, 247, 1) 100%,
       rgba(242, 235, 234, 1) 100%);
+      
 }
 
 .landing_logo {
