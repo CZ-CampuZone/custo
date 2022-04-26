@@ -65,7 +65,7 @@ const Sidebar = () => {
               return (
                 <li className="list-item d-block w-100" key={menuItem.name}>
                   <NavLink to={menuItem.path}>
-                    {menuItem.icon && <menuItem.icon />}
+               {menuItem.icon && <menuItem.icon />}
                   <div className="set">{menuItem.name}</div>  
                   </NavLink>
                 </li>
