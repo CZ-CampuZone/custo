@@ -40,7 +40,7 @@ h6 {
 
 .scroll-view {
   min-height: 100vh;
-  box-shadow: 5px 0 5px -5px #333;
+  /* box-shadow: 5px 0 5px -5px #333; */
 }
 
 .set {
@@ -108,7 +108,7 @@ h6 {
   font-weight: 100;
   border: none;
 
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
   background: linear-gradient(79deg,
       rgba(255, 58, 58, 1) 0%,
       rgba(247, 247, 247, 1) 100%,

@@ -104,18 +104,7 @@ const Preview = () => {
       >
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <div className="row px-4  pt-2 pb-4 justify-content-between">
-            <button
-              className="btn px-5"
-              onClick={onSaveHandler}
-              style={{
-                background: "#fff",
-                color: "#dc3545",
-                borderRadius: "20px",
-                boxShadow: "0 3px 6px #00000036",
-              }}
-            >
-              Save<i className="fa fa-save mx-2"></i>{" "}
-            </button>
+          
 
             <NavLink to="/" target="_blank">
               <button
@@ -130,6 +119,18 @@ const Preview = () => {
                 Fullpage View<i className="fa fa-eye mx-2"></i>
               </button>
             </NavLink>
+            <button
+              className="btn px-5"
+              onClick={onSaveHandler}
+              style={{
+                background: "#fff",
+                color: "#dc3545",
+                borderRadius: "20px",
+                boxShadow: "0 3px 6px #00000036",
+              }}
+            >
+              Save<i className="fa fa-save mx-2"></i>{" "}
+            </button>
           </div>
           <Droppable droppableId="mounted">
             {(provided) => (

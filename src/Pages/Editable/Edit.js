@@ -1,10 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
 import EditableList from "../../Components/Edit/EditableList";
 import AuthContext from "../../Context/Context";
+import { createStyles, makeStyles } from "@mui/styles";
 import WebFont from "webfontloader";
+import clsx from "clsx";
 import { ReactComponent as EditIcon } from "../../Assests/pencil.svg";
-
+const useStyles = makeStyles(() =>
+  createStyles({
+  editBox:{
+    background:"",
+    "&:focus":{
+      background: "linear-gradient(79deg, rgba(255, 58, 58, 1) 0%, rgba(247, 247, 247, 1) 100%,rgba(242, 235, 234, 1) 100%)",
+      color:"white",
+      outline:"0"
+    },
+  }
+})
+);
 const Edit = () => {
+  const classes = useStyles();
   useEffect(() => {
     WebFont.load({
       google: {
@@ -68,8 +82,8 @@ const Edit = () => {
         <div className="all-section-list col-2 p-0">
           {ctx.layoutFlow &&
             ctx.layoutFlow.map((item, index) => (
-              <div
-                className="row align-items-center  bg-light border-white justify-content-center p-2"
+              <button
+                className={clsx(classes.editBox ,"row align-items-center edit-box border-white justify-content-center p-2")}
                 key={index}
                 onClick={() => onMount(index)}
                 style={{
@@ -85,7 +99,7 @@ const Edit = () => {
                   {rename(item.uniqId, index)}
                 </span>
                 <EditIcon style={{ width: "7%" }} />
-              </div>
+              </button>
             ))}
         </div>
         {/* <EditableList /> */}
