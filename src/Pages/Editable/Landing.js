@@ -55,7 +55,7 @@ const Landing = (props) => {
               className="intro-box Land-boxtext font-weight-bold row align-items-center "
             >
               
-              <StyleIcon className="icon" />
+              <LayoutIcon className="icon" />
               Build Pages
               <span className="ml-2">→</span>
             </Link>
