@@ -127,6 +127,11 @@ const Login = (props) => {
         </div>
         </div>
       </div> */}
+      {loading && (
+        <>
+          <Loader />
+        </>
+      )}
       <div className="overlay height">
         <div>
           <nav class="navbar navbar-light headercol">
@@ -167,9 +172,14 @@ const Login = (props) => {
                         <input
                           type="text"
                           class="form-control"
-                          name="username"
+                          name="email"
                           placeholder="Username"
                           required="required"
+                          value={userCred.email}
+                          id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                
+                onChange={onChangeHandler}
                         />
                       </div>
                       <div class="form-group">
@@ -179,10 +189,19 @@ const Login = (props) => {
                           name="password"
                           placeholder="Password"
                           required="required"
+                          value={userCred.password}
+                id="exampleInputPassword1"
+                
+                onChange={onChangeHandler}
                         />
                       </div>
+                      {error && (
+              <small className=" text-right d-block ">
+                {error}
+              </small>
+            )}
                       <div class="form-group">
-                        <button
+                        <button onClick={handleLogin} 
                           type="submit"
                           class="btn btn-primary btn-lg btn-block login-btn"
                         >
