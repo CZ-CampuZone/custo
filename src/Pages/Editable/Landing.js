@@ -29,31 +29,58 @@ const Landing = (props) => {
           premium features like Brand Kit, Background Remover, and more.
         </p>
       </div>
-
+   
+     
+     
+     
       <div className="row mt-4">
-      
+
         <div className="col-md-5 p-1 pr-2">
-          <Link
+          
+        <div class="card-intro-box p-2 mb-4 py-3">
+            <Link
+              to={`/${ctx.userId}/styleguide`}
+              className="intro-box Land-boxtext font-weight-bold row align-items-center "
+            >
+              
+              <StyleIcon className="icon" />
+              View Style Guide
+              <span className="ml-2">→</span>
+            </Link>
+          </div>
+
+          <div class="card-intro-box  p-2 mt-4 py-3">
+            <Link
+              to={`/${ctx.userId}/layout`}
+              className="intro-box Land-boxtext font-weight-bold row align-items-center "
+            >
+              
+              <StyleIcon className="icon" />
+              Build Pages
+              <span className="ml-2">→</span>
+            </Link>
+          </div>
+          {/* <Link
             to={`/${ctx.userId}/styleguide`}
             className="intro-box row align-items-center mb-3"
           >
             <StyleIcon className="icon" />
             View Style Guide
             <span className="ml-2">→</span>
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             to={`/${ctx.userId}/layout`}
             className="intro-box row align-items-center"
           >
             <LayoutIcon className="icon" />
             Build Pages
             <span className="ml-2 ">→</span>
-          </Link>
+          </Link> */}
         </div>
         <div className="col-md-7 p-1">
-          
+
           <img className="img-fluid" src="/Images/landing.jpg" alt="landing" />
-          
+
         </div>
       </div>
     </div>

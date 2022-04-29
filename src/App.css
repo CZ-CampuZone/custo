@@ -49,14 +49,15 @@ h6 {
   font-family: "Raleway", sans-serif;
 }
 .scroll-view{
-  background-color: #ffebeb;
+
 }
 .side-menu{
- 
+  background-color: #fff6f6;
   margin: 5px;
   border-radius: 5px; 
 }
 .headtext{
+  background-color: #fff6f6;
   font-family: "Raleway", sans-serif;
 }
 .list-item a {
@@ -125,23 +126,43 @@ h6 {
 .landing_logo g {
   fill: #ff0000;
 }
+.card-intro-box {
+  background-color: #FFF;
 
-.intro-box {
-  color: #000;
-  font-size: 12px;
-  border-radius: 5px;
-  text-decoration: underline;
-
-  padding: 1rem 1.5rem;
-
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  text-decoration: none !important;
+  border-radius: 8px;
+ 
+  position: relative;
+  max-width: 400px;
+}
+.card-intro-box::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  width: 101%;
+  height: 110%;
+  background-image: linear-gradient(to right bottom, #ff9393, #ffffff);
+  z-index: -1;
+  border-radius: 15px;
+  transform: rotate(-5deg);
+  box-shadow: 0 0 45px 5px rgba(0, 0, 0, .2);
+}
+.Land-boxtext{
+  background-color: #fff6f6;
+  color: rgb(90, 87, 87);
+  font-family: "Raleway", sans-serif;
 }
 
 
+@media screen and (max-width: 500px) {
+  .card-intro-box::before {
+    top: -10px;
+    left: -2px;
+  }
+ 
+}
 
-
-.intro-box .icon {
+.card-intro-box .intro-box .icon {
   width: 9%;
   height: 8%;
   padding: 5px;
@@ -153,13 +174,14 @@ h6 {
   margin-right: 10px;
 }
 
-.intro-box:hover {
+.card-intro-box .intro-box:hover {
   color: var(--primary);
 }
 
-.intro-box:hover svg {
+.card-intro-box .intro-box:hover svg {
   fill: white;
 }
+
 
 .profile_img {
   font-size: 14px;
@@ -583,4 +605,93 @@ h6 {
   background: #fff;
 }
 
-/*navbar-dashborad  */
+/*edit-box*/
+
+
+.Editlist .box {
+  margin: 10px 0px;
+  position: relative;
+  width: 300px;
+  height: 45px;
+  background: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.025);
+}
+/* 
+.Editlist .box:nth-child(1) {
+  transform: translateX(-70px);
+  transition: 0.5s ease-in-out;
+}
+
+.Editlist .box:nth-child(3) {
+  transform: translateX(70px);
+  transition: 0.5s ease-in-out;
+} */
+
+.Editlist:hover .box:nth-child(1),.Editlist:focus .box:nth-child(1) {
+  transform: translateX(0px);
+}
+
+.Editlist:hover .box:nth-child(3) {
+  transform: translateX(0px);
+}
+.Editlist:focus .box{
+  
+}
+.Editlist .box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0px;
+  height: 100%;
+  background: linear-gradient(79deg,
+      rgba(255, 58, 58, 1) 0%,
+      rgba(247, 247, 247, 1) 100%,
+      rgba(242, 235, 234, 1) 100%);
+  border-radius: 5px;
+  transition: 0.5s ease-in-out;
+}
+
+.Editlist .box:hover::before {
+  width: 100%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.Editlist .box .content {
+  position: relative;
+ padding-left: 10px;
+}
+
+.Editlist .box .content .text h6 {
+  color: #6a6363;
+}
+.Editlist .box:hover .content .text h6,
+.Editlist .box:hover .content .text .edit-icon {
+  color: white;
+  fill: white;
+}
+.Editlist .box:focus .content .text h6,
+.Editlist .box:focus .content .text .edit-icon {
+  color: white;
+  fill: white;
+}
+.edit-icon{
+  fill: #6a6363;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
