@@ -132,9 +132,9 @@ const Login = (props) => {
           <Loader />
         </>
       )}
-      <div className="overlay height">
+      <div className=" Login-Edit overlay height">
         <div>
-          <nav class="navbar navbar-light headercol">
+          <nav class="navbar d-flex navbar-light headercol ">
             <a class="navbar-brand" href="#">
               <img
                 src="/docs/4.0/assets/brand/bootstrap-solid.svg"
@@ -144,10 +144,7 @@ const Login = (props) => {
               />
             </a>
             
-            <div class="text-center">
-            <button type="button" class="btn btn-light" href="#myModal" data-toggle="modal">Login</button>
-              
-            </div>
+           <h2 className="text-white" style={{width:"55%"}}>Campuzone</h2>
 
             <div id="myModal" class="modal fade">
               <div class="modal-dialog modal-login">
@@ -229,8 +226,8 @@ const Login = (props) => {
               Create the perfect palette or get inspired by thousands of
               beautiful color schemes.
             </p>
-            <button type="button" class="btn btntclr mt-3">
-              Explore trending templates
+            <button type="button"  href="#myModal" class="btn btntclr mt-3" data-toggle="modal">
+              Login to your Dashboard
             </button>
           </div>
           <div className="col-md-6 p-4 marg2">

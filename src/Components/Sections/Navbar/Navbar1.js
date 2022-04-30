@@ -209,9 +209,9 @@ export const Navbar1 = (props) => {
             className="btn px-5"
             onClick={onSaveHandler}
             style={{
-              background: "#fff",
+              background: "#9e3a8ccc",
               fontSize: "20px",
-              color: "#dc3545",
+              color: "#fff",
               borderRadius: "20px",
               boxShadow: "0 3px 6px #00000036",
             }}

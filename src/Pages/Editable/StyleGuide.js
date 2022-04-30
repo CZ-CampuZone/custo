@@ -68,49 +68,6 @@ const StyleGuide = () => {
     </div>
 
 
-    <div class="container my-5">
-    <div class="text-center mb-5">
-      <span class="text-secondary">STEP</span>
-      <h1 class="text-capitalize font-weight-bold">how it <span className="text-danger" >Works?</span></h1>
-    </div>
-
-    <div class="col-12 col-md-8 mx-auto">
-      
-      <div class="d-flex my-4 align-items-start">
-        <div class="mr-3 text-center mt-2">
-          <div class="p-4 rounded-circle text-white font-weight-bold d-flex align-items-center justify-content-center" style={{height: "40px", width:"40px", backgroundColor: "#dc3545"}}>1</div>
-          <span class="text-secondary">STEP</span>
-        </div>
-        <div class="rounded bg-light p-4">
-          <h5 class="mb-3" style={{fontWeight:600}}>Your Headline Here!</h5>
-          <p class="text-secondary font-weight-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aperiam temporibus sequi reprehenderit, maxime at cupiditate officia ipsam ipsum.</p>
-        </div>
-      </div>
-
-      <div class="d-flex my-4 align-items-start">
-        <div class="mr-3 text-center mt-2">
-          <div class="p-4 rounded-circle text-white font-weight-bold d-flex align-items-center justify-content-center" style={{height: "40px", width:"40px", backgroundColor: "#dc3545"}}>2</div>
-          <span class="text-secondary">STEP</span>
-        </div>
-        <div class="rounded bg-light p-4">
-          <h5 class="mb-3" style={{fontWeight:600}}>Your Headline Here!</h5>
-          <p class="text-secondary font-weight-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aperiam temporibus sequi reprehenderit, maxime at cupiditate officia ipsam ipsum.</p>
-        </div>
-      </div>
-
-      <div class="d-flex my-4 align-items-start">
-        <div class="mr-3 text-center mt-2">
-          <div class="p-4 rounded-circle text-white font-weight-bold d-flex align-items-center justify-content-center" style={{height: "40px", width:"40px", backgroundColor: "#dc3545"}}>3</div>
-          <span class="text-secondary">STEP</span>
-        </div>
-        <div class="rounded bg-light p-4">
-          <h5 class="mb-3" style={{fontWeight:600}}>Your Headline Here!</h5>
-          <p class="text-secondary font-weight-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aperiam temporibus sequi reprehenderit, maxime at cupiditate officia ipsam ipsum.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
   </>;
 };
 

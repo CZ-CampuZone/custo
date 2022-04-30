@@ -1,4 +1,5 @@
 import { Card1 } from "../Components/Sections/Card/Card1";
+import { Hero2 } from "../Components/Sections/Hero/Hero2";
 import { Hero1 } from "../Components/Sections/Hero/Hero1";
 import { Navbar1 } from "../Components/Sections/Navbar/Navbar1";
 import { Slider1 } from "../Components/Sections/Testimonals/Slider1";
@@ -13,7 +14,7 @@ export const LocalSections = [
   },
   {
     group: "Hero",
-    variants: [{ c: Hero1, id: "Hero1" }],
+    variants: [{ c: Hero1, id: "Hero1" },{ c: Hero2, id: "Hero2" }],
   },
   {
     group: "Card",

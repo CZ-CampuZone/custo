@@ -13,8 +13,8 @@ import AuthContext from "../../Context/Context";
 const AllSections = (props) => {
   const ctx = useContext(AuthContext);
   return (
-    <div className="all-section-list bg-light col-2 p-0">
-      <h6 className="px-2 py-3 text-center text-uppercase">All Sections</h6>
+    <div className="all-section-list  col-2 p-0">
+      <h6 className="px-2 py-3 text-center text-uppercase" style={{color:"#9e3a8ccc"}}>All Sections</h6>
       {/* allowMultipleExpanded */}
       {/* command for multiple expand - doesn't auto close */}
       <Accordion allowZeroExpanded>

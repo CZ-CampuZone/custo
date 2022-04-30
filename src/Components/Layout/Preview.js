@@ -110,8 +110,8 @@ const Preview = () => {
               <button
                 className="btn shadow px-3  "
                 style={{
-                  background: "#fff",
-                  color: "#dc3545",
+                  background: "#9e3a8ccc",
+                  color: "#fff",
                   borderRadius: "20px",
                   boxShadow: "0 3px 6px #00000036",
                 }}
@@ -123,8 +123,8 @@ const Preview = () => {
               className="btn px-5"
               onClick={onSaveHandler}
               style={{
-                background: "#fff",
-                color: "#dc3545",
+                background: "#9e3a8ccc",
+                color: "#fff",
                 borderRadius: "20px",
                 boxShadow: "0 3px 6px #00000036",
               }}

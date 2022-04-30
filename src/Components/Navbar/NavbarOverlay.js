@@ -96,7 +96,7 @@ export const NavbarOverlay = (props) => {
         <div className={classes.wrapper}>
           <NavLink to={`/${ctx.userId}/settings`} className={classes.listItem}>
             <Typography>Settings</Typography>
-            <SettingsIcon />
+            <SettingsIcon  />
           </NavLink>
           <div className={classes.listItem} onClick={ctx.logout}>
             <Typography>Logout</Typography>
