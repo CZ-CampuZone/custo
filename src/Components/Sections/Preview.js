@@ -22,7 +22,7 @@ const Preview = (props) => {
         Campuzone provides you with various options
       </h3>
       {LocalSections.map((single, index) => (
-        <div key={index * 11}>
+        <div style={{boxShadow:"rgba(0, 0, 0, 0.1) 0px 10px 50px"}} className="p-2 rounded  my-2" key={index * 11}>
           <h6 className="text-primary text-capitalize px-2 py-3">
             {single.group}
           </h6>

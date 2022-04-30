@@ -180,9 +180,50 @@ h6 {
 
 .card-intro-box .intro-box:hover svg {
   fill: white;
+  animation: pulse 1.5s infinite;
 }
 
 
+@-webkit-keyframes pulse {
+  0% {
+    transform: scale(0.9);
+ }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 20px rgba(255, 96, 85, 0);
+ }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(255, 96, 85, 0);
+ }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+ }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 20px rgba(255, 96, 85, 0);
+ }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(255, 96, 85, 0);
+ }
+}
+
+
+.profile_img_top{
+  font-size: 45px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  color: var(--secondary);
+  background: var(--primary);
+  letter-spacing: 2px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
 .profile_img {
   font-size: 14px;
   width: 38px;
@@ -636,29 +677,14 @@ h6 {
 .Editlist:hover .box:nth-child(3) {
   transform: translateX(0px);
 }
-.Editlist:focus .box{
-  
-}
-.Editlist .box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0px;
-  height: 100%;
+.Editlist .box:hover,.Editlist .box:focus{
   background: linear-gradient(79deg,
-      rgba(255, 58, 58, 1) 0%,
-      rgba(247, 247, 247, 1) 100%,
-      rgba(242, 235, 234, 1) 100%);
-  border-radius: 5px;
-  transition: 0.5s ease-in-out;
+  rgba(255, 58, 58, 1) 0%,
+  rgba(247, 247, 247, 1) 100%,
+  rgba(242, 235, 234, 1) 100%);
+  color: white;
 }
 
-.Editlist .box:hover::before {
-  width: 100%;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
 
 .Editlist .box .content {
   position: relative;
@@ -685,23 +711,19 @@ h6 {
 /* style Guide */
 
 
-.cards {
-
-
+.style-guide .cards {
   gap:10px;
   margin-top:1rem;
-
 }
 
-.card {
- 
+.style-guide .card {
 /*   border:1px solid #000; */
   padding:1.3rem;
   border-radius:10px;
   user-select:none;
   transition:.2s ease-in-out;
 }
-.card img{
+.style-guide .card img{
   width:50px;
   height:50px;
   object-fit:contain;
@@ -713,25 +735,160 @@ h6 {
 /* .card .icon{
   object-fit:contain;
 } */
-.card .title{
+.style-guide .card .title{
   font-size:20px;
   margin-bottom:10px;
   font-weight:500;
 }
-.card .desc {
+.style-guide .card .desc {
   font-size:14px;
 }
-.card:hover{
+.style-guide .card:hover{
   box-shadow:2px 4px 6px rgba(0,0,0,.2);
  
   cursor:pointer;
 }
-.card:hover img{
+.style-guide .card:hover img{
   background:#fff;
 }
 
 
 
+
+/* Settings */
+
+.user-card-full {
+  overflow: hidden
+}
+
+.card {
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  border: none;
+  margin-bottom: 30px
+}
+
+.m-r-0 {
+  margin-right: 0px
+}
+
+.m-l-0 {
+  margin-left: 0px
+}
+
+.settings .user-card-full .user-profile {
+  border-radius: 5px 0 0 5px
+}
+
+.bg-c-lite-green {
+  /* background: #fff6f6; */
+  background: #ffe1e1;
+  /* background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
+  background: linear-gradient(to right, #ee5a6f, #f29263) */
+}
+
+.settings .user-profile {
+  padding: 20px 0
+}
+
+.settings .card-block {
+background-color: white;
+ margin: 10px;
+
+  padding: 1.25rem;
+  border-radius: 20px;
+}
+
+.m-b-25 {
+  margin-bottom: 25px
+}
+
+.img-radius {
+  border-radius: 5px
+}
+
+h6 {
+  font-size: 14px
+}
+
+.settings .card .card-block p {
+  line-height: 25px
+}
+
+@media only screen and (min-width: 1400px) {
+  p {
+      font-size: 14px
+  }
+}
+
+.settings .card-block {
+  padding: 1.25rem
+
+}
+
+.b-b-default {
+  border-bottom: 1px solid #e0e0e0
+}
+
+.m-b-20 {
+  margin-bottom: 20px
+}
+
+.p-b-5 {
+  padding-bottom: 5px !important
+}
+
+.settings .card .card-block p {
+  line-height: 25px
+}
+
+.m-b-10 {
+  margin-bottom: 10px
+}
+
+.text-muted {
+  color: #919aa3 !important
+}
+
+.b-b-default {
+  border-bottom: 1px solid #e0e0e0
+}
+
+.f-w-600 {
+  font-weight: 600
+}
+
+.m-b-20 {
+  margin-bottom: 20px
+}
+
+.m-t-40 {
+  margin-top: 20px
+}
+
+.p-b-5 {
+  padding-bottom: 5px !important
+}
+
+.m-b-10 {
+  margin-bottom: 10px
+}
+
+.m-t-40 {
+  margin-top: 20px
+}
+
+.settings .user-card-full .social-link li {
+  display: inline-block
+}
+
+.settings .user-card-full .social-link li a {
+  font-size: 20px;
+  margin: 0 10px 0 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out
+}
 
 
 
