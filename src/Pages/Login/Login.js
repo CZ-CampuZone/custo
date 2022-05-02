@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import AuthContext from "../../Context/Context";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../services/firebase";
 import Loader from "../../loader/Loader";
 
@@ -15,6 +15,7 @@ const Login = (props) => {
     password: "",
   });
   const [user, setUser] = useState("");
+  const [forgotPassword, setForgotpassword] = useState(false);
   const navigate = useNavigate();
   const titleCase = (str) => {
     return str
@@ -25,6 +26,29 @@ const Login = (props) => {
   onAuthStateChanged(auth, (currentuser) => {
     setUser(currentuser);
   });
+  function resetHanler(e) {
+    e.preventDefault();
+    setloading(true);
+    if (userCred.email === "") {
+      setError("Enter Email");
+      setloading(false);
+    }
+    else {
+      sendPasswordResetEmail(auth, userCred.email)
+        .then(() => {
+          alert("verificaton email was sent")
+        })
+        .catch((error) => {
+          console.log("error", error);
+          setloading(false);
+          const errorCode = error.code;
+          const message = errorCode.substring(5);
+          setError(titleCase(message));
+        });
+
+    }
+  }
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setModalstate(false);
@@ -41,10 +65,10 @@ const Login = (props) => {
           setloading(false);
           console.log("success");
           ctx.setUserId(res.user.uid);
-        
+
           setTimeout(() => {
             user && navigate(`/${res.user.uid}/home`);
-              
+
           }, 1000);
         })
         .catch((error) => {
@@ -69,74 +93,13 @@ const Login = (props) => {
   };
   return (
     <>
-      {/* {loading && (
-        <>
-          <Loader />
-        </>
-      )}
-      <div className="headercol"> 
-      <div className="Lg-form overlay  w-100 d-flex align-items-center justify-content-center">
-        <div>
-          
-        </div>
-        <div className=" cz-form col-lg-4 col-sm-5 p-5  bg-white ">
-          <img
-            src="https://www.campuzone.com/logo2.png"
-            className="rounded mx-auto d-block align-items-center w-25"
-            alt="..."
-          />
-          <form>
-            <div className="form-group">
-              <label htmlFor="exampleInputEmail1 text-center ">
-                Email address
-              </label>
-              <input
-                type="email"
-                name="email"
-                required
-                value={userCred.email}
-                className="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
-                onChange={onChangeHandler}
-              />
-            </div>
-            <div className="form-group mb-3">
-              <label htmlFor="exampleInputPassword1 text-center ">
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                required
-                className="form-control"
-                value={userCred.password}
-                id="exampleInputPassword1"
-                placeholder="Password"
-                onChange={onChangeHandler}
-              />
-            </div>
-            {error && (
-              <small className="text-danger text-right d-block pt-2">
-                {error}
-              </small>
-            )}
-            <div className="btnContainer ">
-              <button onClick={handleLogin} className="btn  mt-2 px-3">
-                Log in
-              </button>
-            </div>
-          </form>
-        </div>
-        </div>
-      </div> */}
+     
       {loading && (
         <>
           <Loader />
         </>
       )}
-      <div className=" Login-Edit overlay" style={{height:"100vh"}}>
+      <div className=" Login-Edit overlay" style={{ height: "100vh" }}>
         <div>
           <nav class="navbar d-flex navbar-light headercol ">
             <a class="navbar-brand" href="#">
@@ -148,78 +111,78 @@ const Login = (props) => {
               />
             </a>
 
-            <h2 className="text-white" style={{ width: "55%" }}>Campuzone</h2>
+            <h2 className="text-white Login-name" style={{ width: "55%" }}>Fickle</h2>
 
             {modalstate ? (
-            <div class=" shadow position-absolute" style={{ zIndex: "999999999", left: "0", right: "0",top:"0",bottom:"0" }} >
-              <div class="modal-dialog modal-login">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">Hello Buddy!</h4>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-hidden="true"
-                      onClick={() => { setModalstate(false) }}
-                    >
-                      &times;
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form
-                      action="/examples/actions/confirmation.php"
-                      method="post"
-                    >
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          class="form-control"
-                          name="email"
-                          placeholder="Username"
-                          required="required"
-                          value={userCred.email}
-                          id="exampleInputEmail1"
-                          aria-describedby="emailHelp"
+              <div class=" shadow position-absolute" style={{ zIndex: "999999999", left: "0", right: "0", top: "0", bottom: "0" }} >
+                <div class="modal-dialog modal-login">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Hello Buddy!</h4>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-hidden="true"
+                        onClick={() => { setModalstate(false) }}
+                      >
+                        &times;
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form
+                        action="/examples/actions/confirmation.php"
+                        method="post"
+                      >
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="email"
+                            placeholder=" Enter Email"
+                            required="required"
+                            value={userCred.email}
+                            id="exampleInputEmail1"
+                            aria-describedby="emailHelp"
 
-                          onChange={onChangeHandler}
-                        />
-                      </div>
-                      <div class="form-group">
-                        <input
-                          type="password"
-                          class="form-control"
-                          name="password"
-                          placeholder="Password"
-                          required="required"
-                          value={userCred.password}
-                          id="exampleInputPassword1"
+                            onChange={onChangeHandler}
+                          />
+                        </div>
+                     {forgotPassword === false && <div class="form-group">
+                          <input
+                            type="password"
+                            class="form-control"
+                            name="password"
+                            placeholder="Enter Password"
+                            required="required"
+                            value={userCred.password}
+                            id="exampleInputPassword1"
 
-                          onChange={onChangeHandler}
-                        />
-                      </div>
-                      {error && (
-                        <small className=" text-right d-block ">
-                          {error}
-                        </small>
-                      )}
-                      <div class="form-group">
-                        <button onClick={handleLogin}
-                          type="submit"
-                          class="btn btn-primary btn-lg btn-block login-btn"
-                        >
-                          Login
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <a href="#">Forgot Password?</a>
+                            onChange={onChangeHandler}
+                          />
+                        </div>}
+                        {error && (
+                          <small className=" text-right d-block ">
+                            {error}
+                          </small>
+                        )}
+                        <div class="form-group">
+                          <button onClick={forgotPassword?resetHanler:handleLogin}
+                            type="submit"
+                            class="btn btn-primary btn-lg btn-block login-btn"
+                          >
+                           {forgotPassword?"Sent":"Login"}
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer"onClick={()=>{forgotPassword?setForgotpassword(false):setForgotpassword(true)}}>
+                    <p >   {forgotPassword?"Back to login":"Forgot Password"}</p> 
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            ):(<></>)}
+            ) : (<></>)}
           </nav>
         </div>
         <div></div>
@@ -227,14 +190,14 @@ const Login = (props) => {
           <div className="col-md-1"></div>
           <div className="col-md-5 marg">
             <h2 className="content">
-              Your Business At Your Fingertips
+              Your<br/> Business<br/>  At<br/>  Your<br/>  Fingertips
             </h2>
-            <p className="align-top pcolor mt-3">
+            {/* <p className="align-top pcolor mt-3">
               Create the perfect palette or get inspired by thousands of
               beautiful color schemes.
-            </p>
-            <button   onClick={() => { setModalstate(true) }} type="button" href="#myModal" class="btn btntclr mt-3" data-toggle="modal">
-              Login to your Dashboard
+            </p> */}
+            <button onClick={() => { setModalstate(true) }} type="button" href="#myModal" class="btn px-4 btntclr mt-3" data-toggle="modal">
+              Login
             </button>
           </div>
           <div className="col-md-6 p-4 marg2">

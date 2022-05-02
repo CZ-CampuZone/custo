@@ -24,9 +24,7 @@ const Landing = (props) => {
         </h1>
         <h2 className="text-center mb-3"></h2>
         <p>
-          In a visual world, Canva Pro makes it easy for teams to achieve their
-          collective goals and create professional designs together, with
-          premium features like Brand Kit, Background Remover, and more.
+        In an ever-changing world, Fickle makes it easy for the user to remain competitive and successful by updating their desired content in their web site with few clicks. Let's Fickle in style.
         </p>
       </div>
    

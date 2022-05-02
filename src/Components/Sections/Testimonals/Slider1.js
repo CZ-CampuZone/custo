@@ -142,6 +142,7 @@ export const Slider1 = (props) => {
       : ctx.websiteData[props.id]
   );
   const [card, setCard] = useState(localData.data);
+  const [updatestatus, setUpdatestatus] = useState(false);
   const onChange = (event) => {
     let val = event.target.value;
     setLocalData((prevState) => {
@@ -234,6 +235,7 @@ export const Slider1 = (props) => {
   };
   let editable = (
     <div>
+        {updatestatus === true && <Update />}
       <div className={classes.addCard} onClick={addCard}>
         <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
       </div>
@@ -324,7 +326,13 @@ export const Slider1 = (props) => {
     ctx.updateData(data, props.id);
     setTimeout(() => {
       setloading(false);
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 3000)
+    )
   };
 
   return (

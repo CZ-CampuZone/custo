@@ -103,6 +103,7 @@ export const Hero2 = (props) => {
     const [localData, setLocalData] = useState(
         ctx.websiteData[props.id] === undefined ? data : ctx.websiteData[props.id]
     );
+    const [updatestatus, setUpdatestatus] = useState(false);
     const options = {
         loop: true,
         margin: 0,
@@ -189,6 +190,7 @@ export const Hero2 = (props) => {
     };
     let editable = (
         <>
+          {updatestatus === true && <Update />}
             <div className="position-relative">
                 {localData?.map((details, index) => (
                     <>
@@ -269,7 +271,13 @@ export const Hero2 = (props) => {
         ctx.updateData(localData, props.id);
         setTimeout(() => {
             setloading(false);
-        }, 2000);
+            setUpdatestatus(true)
+          }, 2000).then(
+            setTimeout(() => {
+      
+              setUpdatestatus(false)
+            }, 3000)
+          )
     };
     return (
         <>

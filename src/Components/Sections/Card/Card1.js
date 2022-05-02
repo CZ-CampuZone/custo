@@ -8,10 +8,10 @@ import Cat2 from "../../../Assests/images/cat2.jpg";
 import Cat3 from "../../../Assests/images/cat3.jpg";
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { Update } from "../../../loader/Update";
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      
       backgroundColor: "#fff",
       display: "flex",
       padding: "1rem",
@@ -113,6 +113,7 @@ export const Card1 = (props) => {
   console.log(props.id);
   const classes = useStyles();
   const [loading, setloading] = useState(false);
+  const [updatestatus, setUpdatestatus] = useState(false);
   const ctx = useContext(AuthContext);
   const cardData = [
     {
@@ -210,6 +211,8 @@ export const Card1 = (props) => {
   };
   let editable = (
     <div className={classes.root}>
+      {updatestatus === true && <Update />}
+
       {localData?.map((details, index) => (
         <div className={classes.card} key={index}>
           <div
@@ -271,21 +274,27 @@ export const Card1 = (props) => {
     ctx.updateData(localData, props.id);
     setTimeout(() => {
       setloading(false);
-      alert("changes are succesfully updated")
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 3000)
+    )
   };
 
   return (
     <>
+
       {ctx.isEditable ? (
         <div className="row py-3 justify-content-end">
           <div className="row py-3 justify-content-end">
-           <button
+            <button
               className="btn px-5"
               onClick={onSaveHandler}
               style={{
                 background: "#9e3a8ccc",
-                fontSize:"20px",
+                fontSize: "20px",
                 color: "#fff",
                 borderRadius: "20px",
                 boxShadow: "0 3px 6px #00000036",
@@ -293,7 +302,7 @@ export const Card1 = (props) => {
             >
               Save<i className="fa fa-save mx-2"></i>{" "}
             </button>
-        </div>
+          </div>
         </div>
       ) : (
         <></>

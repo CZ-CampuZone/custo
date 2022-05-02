@@ -164,6 +164,7 @@ export const Gallery1 = (props) => {
       ? cardData
       : ctx.websiteData[props.id]
   );
+  const [updatestatus, setUpdatestatus] = useState(false);
   const [card, setCard] = useState(localData.data);
   const onChange = (event) => {
     let val = event.target.value;
@@ -243,6 +244,7 @@ export const Gallery1 = (props) => {
   };
   let editable = (
     <>
+      {updatestatus === true && <Update />}
       <input
         className={classes.introHeader}
         placeholder="Header"
@@ -326,8 +328,13 @@ export const Gallery1 = (props) => {
     ctx.updateData(data, props.id);
     setTimeout(() => {
       setloading(false);
-      alert("changes are succesfully updated")
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 3000)
+    )
   };
   return (
     <>

@@ -9,6 +9,7 @@ import "./Form1.css";
 import Cat2 from "../../../Assests/images/cat2.jpg";
 import Cat1 from "../../../Assests/images/cat1.jpg";
 import { fontSize, margin, textAlign } from "@mui/system";
+import { Update } from "../../../loader/Update";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -50,6 +51,7 @@ const useStyles = makeStyles(() =>
 
 export const Form1 = (props) => {
   const [loading, setloading] = useState(false);
+  const [updatestatus, setUpdatestatus] = useState(false);
   const ctx = useContext(AuthContext);
   const data = [
     {
@@ -102,6 +104,7 @@ export const Form1 = (props) => {
   const classes = useStyles();
   let editable = (
     <div class="contact-address-area">
+       {updatestatus === true && <Update />}
       {localData?.map((details, index) => (
         <div key={index} class="container">
           <div class="sec-title-style1 text-center max-width">
@@ -213,8 +216,13 @@ export const Form1 = (props) => {
     ctx.updateData(localData, props.id);
     setTimeout(() => {
       setloading(false);
-      alert("changes are succesfully updated")
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 3000)
+    )
   };
 
   return (

@@ -35,7 +35,7 @@ const DraggableList = (props) => {
   return (
     <>
       <div className="all-section-list  col-2 p-0">
-        <h6 className="px-2 py-3 text-center text-uppercase" style={{color:"#9e3a8ccc"}}>All Sections</h6>
+        {/* <h6 className="px-2 py-3 text-center text-uppercase" style={{color:"#9e3a8ccc"}}>All Sections</h6> */}
         {/* allowMultipleExpanded */}
         {/* command for multiple expand - doesn't auto close */}
         <Accordion allowZeroExpanded>

@@ -132,6 +132,7 @@ export const Navbar1 = (props) => {
       ? headerData
       : ctx.websiteData[props.id]
   );
+  const [updatestatus, setUpdatestatus] = useState(false);
   const [menuItem, setMenuItem] = useState(localData.menuItem);
   const rename = (name, i) => {
     let firstName = name.substring(0, name.length - 2);
@@ -198,8 +199,13 @@ export const Navbar1 = (props) => {
     ctx.updateData(data, props.id);
     setTimeout(() => {
       setloading(false);
-      alert("changes are succesfully updated")
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 3000)
+    )
   };
   console.log(menuItem);
   return (
@@ -227,6 +233,7 @@ export const Navbar1 = (props) => {
 
       {ctx.isEditable ? (
         <>
+          {updatestatus === true && <Update />}
           <div className={classes.rootNav}>
             <div className={classes.logoContainer}>
               <input

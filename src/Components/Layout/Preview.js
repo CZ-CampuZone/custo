@@ -13,6 +13,7 @@ import { ReactComponent as DeleteIcon } from "../../Assests/delete.svg";
 const Preview = () => {
   const ctx = useContext(AuthContext);
   const [mountedData, setMountedData] = useState([]);
+  const [updatestatus, setUpdatestatus] = useState(false);
   const [loading, setloading] = useState(false);
   useEffect(() => {
     setMountedData(ctx.layoutFlow ? ctx.layoutFlow : []);
@@ -62,8 +63,13 @@ const Preview = () => {
     updateDoc(doc(db, "layout", ctx.userId), { layout: tempArr });
     setTimeout(() => {
       setloading(false);
-      alert("changes are succesfully updated")
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 3000)
+    )
   };
   useEffect(() => {
     WebFont.load({
@@ -81,7 +87,7 @@ const Preview = () => {
         <h2 className="text-center">Drag and Drop Here</h2>
         <div className="d-flex justify-content-center">
           <lottie-player
-            src="https://assets1.lottiefiles.com/packages/lf20_4hlbkvut.json"
+            src="https://assets6.lottiefiles.com/packages/lf20_pgeevipp.json"
             background="transparent"
             speed="1"
             style={{ width: "500px", height: "500px", transform: "scale(1.8)", fontfamily:"raleway" }}
@@ -94,6 +100,7 @@ const Preview = () => {
   };
   return (
     <>
+      {updatestatus === true && <Update />}
       {loading && (
         <>
           <Loader />

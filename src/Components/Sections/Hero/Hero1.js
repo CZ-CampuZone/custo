@@ -125,6 +125,7 @@ export const Hero1 = (props) => {
   console.log(props.id);
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
+  const [updatestatus, setUpdatestatus] = useState(false);
   const data = [
     {
       img: BannerImage1,
@@ -226,6 +227,7 @@ export const Hero1 = (props) => {
   const classes = useStyles();
   let editable = (
     <>
+      {updatestatus === true && <Update />}
       {localData?.map((details, index) => (
         <div
           key={index}
@@ -295,8 +297,13 @@ export const Hero1 = (props) => {
     ctx.updateData(localData, props.id);
     setTimeout(() => {
       setloading(false);
-      alert("changes are succesfully updated")
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 3000)
+    )
     
   };
 

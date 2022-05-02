@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import AuthContext from "../../Context/Context";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const StyleGuide = () => {
   const ctx = useContext(AuthContext);
@@ -44,14 +45,16 @@ const StyleGuide = () => {
       <h2 className="text-center " style={{color: "var(--primary)"}}> Guidelines</h2>
 
       <div class="content">
-        <h5 className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, at! Nulla</h5>
+        {/* <h5 className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, at! Nulla</h5> */}
         <div class="cards">
+          
           {data.reverse().map((data) => {
             return (
               <>
                 <div v-for="data in datas" class="card my-2">
                   <div className="d-flex">
                     <img class="icon " src={data.img} alt="" />
+                   
                     <p class="title mt-2 mx-2 ">{data.title}</p>
                   </div>
                   <p style={{fontSize:"18px"}}>{data.desc}</p>

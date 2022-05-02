@@ -243,7 +243,7 @@ h6 {
 .all-section-list {
   height: 91vh;
   overflow-y: auto;
-  background: #fff;
+  
 }
 
 .all-section-list::-webkit-scrollbar {
@@ -684,7 +684,13 @@ h6 {
   color: rgb(255, 255, 255);
   
 }
+.Login-Edit .Login-name{
+  font-weight: 900;
+  font-size: 40px;
 
+  font-family: "Raleway", sans-serif;
+
+}
 .Login-Edit .btntclr{
   background: linear-gradient(to right top, #6f498cc9, #9e3a8ccc, #cb1777c5, #ed0053c5, #fb051acc);
   color: white;

@@ -56,6 +56,7 @@ const useStyles = makeStyles(() =>
 
 export const Footer1 = (props) => {
   const [loading, setloading] = useState(false);
+  const [updatestatus, setUpdatestatus] = useState(false);
   const ctx = useContext(AuthContext);
   const data = [
     {
@@ -122,6 +123,7 @@ export const Footer1 = (props) => {
   const classes = useStyles();
   let editable = (
     <>
+      {updatestatus === true && <Update />}
       <div className={classes.row}>
         {localData?.map((details, index) => (
           <div key={index} className={classes.col}>
@@ -186,7 +188,13 @@ export const Footer1 = (props) => {
     ctx.updateData(localData, props.id);
     setTimeout(() => {
       setloading(false);
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 3000)
+    )
   };
 
   return (

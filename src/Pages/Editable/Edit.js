@@ -83,16 +83,16 @@ const Edit = () => {
   const Nosections = () => {
     return (
       <div
-        className="p-2 mx-3 w-50 m-auto"
+        className="p-2 mx-3 col-md-10 mt-5  m-auto"
         style={{ boxShadow: "0px 3px 6px #00000036", borderRadius: "5rem", fontFamily: "raleway" }}
       >
-        <h2 className="text-center">Add Sections to edit</h2>
+        <h5 className="text-center font-weight-bold">Add Sections to edit</h5>
         <div className="d-flex justify-content-center">
           <lottie-player
-            src="https://assets1.lottiefiles.com/packages/lf20_4hlbkvut.json"
+            src="https://assets6.lottiefiles.com/packages/lf20_pgeevipp.json"
             background="transparent"
             speed="1"
-            style={{ width: "500px", height: "500px", transform: "scale(1.0 )" }}
+            style={{ width: "500px", height: "300px", transform: "scale(1.9 )"}}
             loop
             autoplay
           ></lottie-player>
@@ -109,35 +109,13 @@ const Edit = () => {
           <div class="Editlist">
             {ctx.layoutFlow &&
               ctx.layoutFlow.map((item, index) => (
-                // <button
-                //   className={clsx(classes.editBox ,"row align-items-center edit-box border-white justify-content-center p-2")}
-                //   key={index}
-                //   onClick={() => onMount(index)}
-                //   style={{
-                //     border: "0.35rem solid",
-                //     borderBottom: "0",
-                //     cursor: "pointer",
-                //   }}
-                // >
-                //   <span
-                //     //   className="text-primary"
-                //     style={{ marginRight: "5px", width: "45%" }}
-                //   >
-                //     {rename(item.uniqId, index)}
-                //   </span>
-                //   <EditIcon style={{ width: "7%" }} />
-                // </button>
+              
 
                 <button class={clsx(classes.editBox, "btn")} style={{borderRadius:"0",borderTopLeftRadius:"5px",borderBottomLeftRadius:"5px"}}key={index}
                   onClick={() => onMount(index)} >
 
-
-
                   <EditIcon className="editIcon" style={{ width: "7%" }} />
                   <h6 className="  d-inline mx-2">{rename(item.uniqId, index)}</h6>
-
-
-
                 </button>
 
 
