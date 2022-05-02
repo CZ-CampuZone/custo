@@ -11,6 +11,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
+      
       backgroundColor: "#fff",
       display: "flex",
       padding: "1rem",
@@ -270,6 +271,7 @@ export const Card1 = (props) => {
     ctx.updateData(localData, props.id);
     setTimeout(() => {
       setloading(false);
+      alert("changes are succesfully updated")
     }, 2000);
   };
 
