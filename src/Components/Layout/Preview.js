@@ -9,6 +9,8 @@ import { useDrop } from "react-dnd";
 import clsx from"clsx"
 import WebFont from "webfontloader";
 import { ReactComponent as DeleteIcon } from "../../Assests/delete.svg";
+import { Update } from "../../loader/Update";
+
 
 const Preview = () => {
   const ctx = useContext(AuthContext);

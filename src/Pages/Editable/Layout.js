@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import DraggableList from "../../Components/Layout/DraggableList";
 import Preview from "../../Components/Layout/Preview";
 import AuthContext from "../../Context/Context";
-import { Update } from "../../../loader/Update";
 
 const Layout = () => {
   const ctx = useContext(AuthContext);

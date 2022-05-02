@@ -7,6 +7,8 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import AuthContext from "../../../Context/Context";
 import Loader from "../../../loader/Loader";
+import { Update } from "../../../loader/Update";
+
 import clsx from "clsx";
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -125,7 +127,6 @@ export const Hero1 = (props) => {
   console.log(props.id);
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
-  import { Update } from "../../../loader/Update";
   const [updatestatus, setUpdatestatus] = useState(false);
   const data = [
     {
