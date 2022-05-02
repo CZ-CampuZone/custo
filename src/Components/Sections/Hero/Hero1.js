@@ -125,6 +125,7 @@ export const Hero1 = (props) => {
   console.log(props.id);
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
+  import { Update } from "../../../loader/Update";
   const [updatestatus, setUpdatestatus] = useState(false);
   const data = [
     {
