@@ -106,7 +106,7 @@ const useStyles = makeStyles(() =>
   })
 );
 
- export const Gallery1 = (props) => {
+export const Gallery1 = (props) => {
   const classes = useStyles();
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
@@ -198,37 +198,31 @@ const useStyles = makeStyles(() =>
   };
   const onImageChange = (e, i) => {
     // setError(null);
-
     let selected = e.target.files[0];
-
-    if (!selected) {
-      // setError("Please select file");
-      return;
+    if (card[i].title === "") {
+      alert("Image name cannot be Empty")
     }
-
-    if (!selected.type.includes("image")) {
-      // setError("Please select image file");
-      return;
-    }
-    const storage = getStorage();
-    const uploadPath = `images/${card[i].title}`; // upload path
-    const storageRef = ref(storage, uploadPath); // create refernce to store data
-
-    uploadBytes(storageRef, selected).then((snapshot) => {
-      // console.log(snapshot);
-      getDownloadURL(storageRef).then((url) => {
-        setCard((prevState) => {
-          let updatedData = null;
-          updatedData = {
-            ...prevState[i],
-            img: url,
-          };
-          prevState[i] = updatedData;
-          return [...prevState];
+    else {
+      const storage = getStorage();
+      const uploadPath = `images/${card[i].title + i}`;
+      // upload path
+      const storageRef = ref(storage, uploadPath); // create refernce to store data
+      uploadBytes(storageRef, selected).then((snapshot) => {
+        // console.log(snapshot);
+        getDownloadURL(storageRef).then((url) => {
+          setCard((prevState) => {
+            let updatedData = null;
+            updatedData = {
+              ...prevState[i],
+              img: url,
+            };
+            prevState[i] = updatedData;
+            return [...prevState];
+          });
         });
       });
-    });
-    // setError(null);
+    }
+
   };
   const addCard = () => {
     let updatedData = {
@@ -332,6 +326,7 @@ const useStyles = makeStyles(() =>
     ctx.updateData(data, props.id);
     setTimeout(() => {
       setloading(false);
+      alert("changes are succesfully updated")
     }, 2000);
   };
   return (

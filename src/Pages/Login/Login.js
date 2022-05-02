@@ -7,6 +7,7 @@ import Loader from "../../loader/Loader";
 
 const Login = (props) => {
   const ctx = useContext(AuthContext);
+  const [modalstate, setModalstate] = useState(false);
   const [loading, setloading] = useState(false);
   const [error, setError] = useState(null);
   const [userCred, setUserCred] = useState({
@@ -26,6 +27,7 @@ const Login = (props) => {
   });
   const handleLogin = async (e) => {
     e.preventDefault();
+    setModalstate(false);
     setloading(true);
     if (userCred.email === "") {
       setError("Enter Email");
@@ -39,8 +41,10 @@ const Login = (props) => {
           setloading(false);
           console.log("success");
           ctx.setUserId(res.user.uid);
+        
           setTimeout(() => {
             user && navigate(`/${res.user.uid}/home`);
+              
           }, 1000);
         })
         .catch((error) => {
@@ -132,7 +136,7 @@ const Login = (props) => {
           <Loader />
         </>
       )}
-      <div className=" Login-Edit overlay height">
+      <div className=" Login-Edit overlay" style={{height:"100vh"}}>
         <div>
           <nav class="navbar d-flex navbar-light headercol ">
             <a class="navbar-brand" href="#">
@@ -143,10 +147,11 @@ const Login = (props) => {
                 alt=""
               />
             </a>
-            
-           <h2 className="text-white" style={{width:"55%"}}>Campuzone</h2>
 
-            <div id="myModal" class="modal fade">
+            <h2 className="text-white" style={{ width: "55%" }}>Campuzone</h2>
+
+            {modalstate ? (
+            <div class=" shadow position-absolute" style={{ zIndex: "999999999", left: "0", right: "0",top:"0",bottom:"0" }} >
               <div class="modal-dialog modal-login">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -156,6 +161,7 @@ const Login = (props) => {
                       class="close"
                       data-dismiss="modal"
                       aria-hidden="true"
+                      onClick={() => { setModalstate(false) }}
                     >
                       &times;
                     </button>
@@ -174,9 +180,9 @@ const Login = (props) => {
                           required="required"
                           value={userCred.email}
                           id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                
-                onChange={onChangeHandler}
+                          aria-describedby="emailHelp"
+
+                          onChange={onChangeHandler}
                         />
                       </div>
                       <div class="form-group">
@@ -187,18 +193,18 @@ const Login = (props) => {
                           placeholder="Password"
                           required="required"
                           value={userCred.password}
-                id="exampleInputPassword1"
-                
-                onChange={onChangeHandler}
+                          id="exampleInputPassword1"
+
+                          onChange={onChangeHandler}
                         />
                       </div>
                       {error && (
-              <small className=" text-right d-block ">
-                {error}
-              </small>
-            )}
+                        <small className=" text-right d-block ">
+                          {error}
+                        </small>
+                      )}
                       <div class="form-group">
-                        <button onClick={handleLogin} 
+                        <button onClick={handleLogin}
                           type="submit"
                           class="btn btn-primary btn-lg btn-block login-btn"
                         >
@@ -213,6 +219,7 @@ const Login = (props) => {
                 </div>
               </div>
             </div>
+            ):(<></>)}
           </nav>
         </div>
         <div></div>
@@ -220,13 +227,13 @@ const Login = (props) => {
           <div className="col-md-1"></div>
           <div className="col-md-5 marg">
             <h2 className="content">
-              The super fast color palettes generator!
+              Your Business At Your Fingertips
             </h2>
             <p className="align-top pcolor mt-3">
               Create the perfect palette or get inspired by thousands of
               beautiful color schemes.
             </p>
-            <button type="button"  href="#myModal" class="btn btntclr mt-3" data-toggle="modal">
+            <button   onClick={() => { setModalstate(true) }} type="button" href="#myModal" class="btn btntclr mt-3" data-toggle="modal">
               Login to your Dashboard
             </button>
           </div>

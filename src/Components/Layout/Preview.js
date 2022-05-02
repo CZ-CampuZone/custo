@@ -62,6 +62,7 @@ const Preview = () => {
     updateDoc(doc(db, "layout", ctx.userId), { layout: tempArr });
     setTimeout(() => {
       setloading(false);
+      alert("changes are succesfully updated")
     }, 2000);
   };
   useEffect(() => {

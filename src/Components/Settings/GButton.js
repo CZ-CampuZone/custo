@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     transition: "all 0.2s ease",
     border: "none",
     outline: "none",
+    margin:"10px",
     textTransform: "initial",
     "&:focus, &:active": {
       border: "none",

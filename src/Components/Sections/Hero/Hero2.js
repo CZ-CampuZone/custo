@@ -192,9 +192,9 @@ export const Hero2 = (props) => {
             <div className="position-relative">
                 {localData?.map((details, index) => (
                     <>
- 
+
                         <div key={index} class="d-sm-flex my-2 position-relative align-items-center justify-content-between w-100" style={{ height: "100vh" }}>
-                           
+
                             <input
                                 type="file"
                                 onChange={(e) => onImageChange(e, index)}
@@ -243,7 +243,7 @@ export const Hero2 = (props) => {
                                     value={details.para}
                                     style={{ width: "75%" }}
                                 />
-                                <a href="#" class="btn px-5 mt-3 py-3 text-white mt-3 mt-sm-0" style={{ borderRadius: "30px", backgroundColor: "#9B5DE5" }}>Get Started</a>
+                                                                                                                                                
                             </div>
 
 
@@ -309,7 +309,7 @@ export const Hero2 = (props) => {
                             <div class="col-md-4 mx-auto p-0 mb-4 mb-sm-0 headline">
                                 <h1 class="display-4 my-4 font-weight-bold">{item.header} </h1>
                                 <p class="text-secondary text-uppercase mb-3 ">{item.para}</p>
-                                <a href="#" class="btn px-5 mt-3 py-3 text-white mt-3 mt-sm-0" style={{ borderRadius: "30px", backgroundColor: "#9B5DE5" }}>Get Started</a>
+                                {/* <a href="#" class="btn px-5 mt-3 py-3 text-white mt-3 mt-sm-0" style={{ borderRadius: "30px", backgroundColor: "#9B5DE5" }}>Get Started</a> */}
                             </div>
 
                             <div class="col-md-8 h-100 clipped" style={{ minHeight: "350px", backgroundImage: `url(${item.img})`, backgroundPosition: "center", backgroundSize: "cover" }}>

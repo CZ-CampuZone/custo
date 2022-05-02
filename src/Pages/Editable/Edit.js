@@ -8,12 +8,36 @@ import { ReactComponent as EditIcon } from "../../Assests/pencil.svg";
 const useStyles = makeStyles(() =>
   createStyles({
     editBox: {
-      background: "",
-      "&:focus": {
-        background: "linear-gradient(79deg, rgba(255, 58, 58, 1) 0%, rgba(247, 247, 247, 1) 100%,rgba(242, 235, 234, 1) 100%)",
-        color: "white",
-        outline: "0"
+      color: "#6a6363",
+      margin: "10px 0px",
+      position: "relative",
+      height: "45px",
+      background: "#fff",
+      borderRadius: "10px",
+      cursor: "pointer",
+      boxShadow: "10px 10px 15px rgba(0, 0, 0, 0.025)",
+      "& .editIcon": {
+        display: "inline",
+        margin: "0px 10px",
+        fill: "#6a6363"
       },
+      "&:focus": {
+        background: "#9e3a8ccc",
+        color: "white",
+        outline: "0",
+        boxShadow: "none",
+        "& .editIcon": {
+          fill: "white"
+        },
+      },
+      "&:hover": {
+        background: "#9e3a8ccc",
+        color: "white",
+        "& .editIcon": {
+          fill: "white"
+        },
+      },
+
     }
   })
 );
@@ -27,6 +51,7 @@ const Edit = () => {
     });
   }, []);
   const ctx = useContext(AuthContext);
+  const [active, setActive] = useState();
   const [mountedComponent, setMountedComponent] = useState([]);
   useEffect(() => {
     ctx.updateIsEditable(true);
@@ -103,17 +128,17 @@ const Edit = () => {
                 //   <EditIcon style={{ width: "7%" }} />
                 // </button>
 
-                <div class="box" key={index}
+                <button class={clsx(classes.editBox, "btn")} style={{borderRadius:"0",borderTopLeftRadius:"5px",borderBottomLeftRadius:"5px"}}key={index}
                   onClick={() => onMount(index)} >
-                  <div class="content">
 
-                    <div class="text pt-2">
-                      <EditIcon className="d-inline mx-2 edit-icon" style={{ width: "4%" }} />
-                      <h6 className="  d-inline mx-2">{rename(item.uniqId, index)}</h6>
 
-                    </div>
-                  </div>
-                </div>
+
+                  <EditIcon className="editIcon" style={{ width: "7%" }} />
+                  <h6 className="  d-inline mx-2">{rename(item.uniqId, index)}</h6>
+
+
+
+                </button>
 
 
               ))}

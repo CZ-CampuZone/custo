@@ -198,6 +198,7 @@ export const Navbar1 = (props) => {
     ctx.updateData(data, props.id);
     setTimeout(() => {
       setloading(false);
+      alert("changes are succesfully updated")
     }, 2000);
   };
   console.log(menuItem);

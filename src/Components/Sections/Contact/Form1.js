@@ -213,6 +213,7 @@ export const Form1 = (props) => {
     ctx.updateData(localData, props.id);
     setTimeout(() => {
       setloading(false);
+      alert("changes are succesfully updated")
     }, 2000);
   };
 
