@@ -10,6 +10,7 @@ import Dress2 from "../../../Assests/images/dress2.jpg";
 import Dress3 from "../../../Assests/images/dress3.jpg";
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { Update } from "../../../loader/Update";
 
 const useStyles = makeStyles(() =>
   createStyles({

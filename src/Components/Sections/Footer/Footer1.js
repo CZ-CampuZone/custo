@@ -4,6 +4,7 @@ import { Typography } from "@mui/material";
 import OwlCarousel from "react-owl-carousel";
 import AuthContext from "../../../Context/Context";
 import Loader from "../../../loader/Loader";
+import { Update } from "../../../loader/Update";
 import clsx from "clsx";
 import { fontSize, margin, textAlign } from "@mui/system";
 

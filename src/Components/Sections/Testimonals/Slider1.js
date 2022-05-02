@@ -8,6 +8,7 @@ import clsx from "clsx";
 import WebFont from "webfontloader";
 import { fontSize, margin, textAlign } from "@mui/system";
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
+import { Update } from "../../../loader/Update";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const useStyles = makeStyles(() =>

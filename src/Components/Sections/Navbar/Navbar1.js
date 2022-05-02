@@ -8,6 +8,7 @@ import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import Select from "react-select";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import AuthContext from "../../../Context/Context";
+import { Update } from "../../../loader/Update";
 
 const useStyles = makeStyles(() =>
   createStyles({
