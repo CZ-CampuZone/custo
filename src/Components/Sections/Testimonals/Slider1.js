@@ -101,6 +101,16 @@ const useStyles = makeStyles(() =>
       container: {
         width: "90%",
       },
+      introHeader: {
+        fontSize: "20px",
+      },
+      para: {
+        textAlign: "center",
+        fontSize: "11px",
+      },
+      testName: {
+       fontSize:"18px",
+      },
     },
   })
 );

@@ -102,7 +102,7 @@ const Preview = () => {
   };
   return (
     <>
-      {updatestatus === true && <Update />}
+      {updatestatus === true && <div style={{zoom:"0.7"}}> <Update /></div>}
       {loading && (
         <>
           <Loader />
