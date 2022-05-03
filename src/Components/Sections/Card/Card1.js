@@ -212,8 +212,8 @@ export const Card1 = (props) => {
   };
   let editable = (
     <div className={classes.root}>
-      {/* {updatestatus === true &&} */}
-      <Update />
+      {updatestatus === true && <Update />}
+
       {localData?.map((details, index) => (
         <div className={classes.card} key={index}>
           <div
