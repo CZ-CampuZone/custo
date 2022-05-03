@@ -92,6 +92,7 @@ const useStyles = makeStyles(() =>
       background: "#fff",
       padding: "1rem 2rem",
       top: "1rem",
+      color:"#9e3a8ccc",
       cursor: "pointer",
       right: "1rem",
       boxShadow: "2px 2px 3px 0 #ccc",

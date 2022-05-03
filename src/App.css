@@ -819,12 +819,23 @@ h6 {
 .style-guide .card:hover img{
   background:#fff;
 }
+.style-guide  .styleIcon{
+  
+ 
+  fill: white;
+  background-color: #9e3a8ccc;
+  padding: 5px 0px;
+  width:5%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius:100px;
+            
+
+}
 
 
 
 
 /* Settings */
-
 .user-card-full {
   overflow: hidden
 }

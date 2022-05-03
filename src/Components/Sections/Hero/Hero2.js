@@ -22,6 +22,7 @@ const useStyles = makeStyles(() =>
             padding: "1rem 2rem",
             cursor: "pointer",
             top: "1rem",
+            color:"#9e3a8ccc",
             right: "1rem",
             boxShadow: "2px 2px 3px 0 #ccc",
         },
@@ -259,7 +260,7 @@ export const Hero2 = (props) => {
 
                 ))}
                 <div className={classes.addCard} onClick={addCard}>
-                    Add Card
+                <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
                 </div>
 
             </div>

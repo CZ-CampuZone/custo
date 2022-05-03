@@ -1,6 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import AuthContext from "../../Context/Context";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { ReactComponent as SectionIcon } from "../../Assests/sections.svg";
+import { ReactComponent as LayoutIcon } from "../../Assests/layout.svg";
+import { ReactComponent as EditIcon } from "../../Assests/edit.svg";
 
 const StyleGuide = () => {
   const ctx = useContext(AuthContext);
@@ -19,20 +22,20 @@ const StyleGuide = () => {
   const data = [
     {
       id: 0,
-      img: "https://s2.svgbox.net/illlustrations.svg?ic=burger&color=000000",
+      img: EditIcon,
       title: "Edit",
       desc: "In this menu we could update images and contents available in the components which we placed in the Layout section."
     },
     {
       id: 1,
-      img: "https://s2.svgbox.net/illlustrations.svg?ic=auntum&color=000000",
+      img: LayoutIcon,
       title: "Layouts",
       desc: "In this menu we could drag and drop our desired components to add and arrange it as required. Also, we could delete the component if not needed."
     },
   
     {
       id: 2,
-      img: "https://s2.svgbox.net/illlustrations.svg?ic=coffee&color=000000",
+      img: SectionIcon,
       title: "Sections",
       desc: "In this menu we could have a preview of all the available components that could be added to our web site."
     }
@@ -48,20 +51,43 @@ const StyleGuide = () => {
         {/* <h5 className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, at! Nulla</h5> */}
         <div class="cards">
           
-          {data.reverse().map((data) => {
-            return (
-              <>
+            
+              
                 <div v-for="data in datas" class="card my-2">
                   <div className="d-flex">
-                    <img class="icon " src={data.img} alt="" />
+                
+                  <SectionIcon className="p-2"  style={{width:"4%",fill:"#9e3a8ccc",boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",borderRadius:"100px"}}/>
+                    
                    
-                    <p class="title mt-2 mx-2 ">{data.title}</p>
+                    <p class="title mt-2 mx-2 ">Sections</p>
                   </div>
-                  <p style={{fontSize:"18px"}}>{data.desc}</p>
+                  <p style={{fontSize:"18px"}}>In this menu we could drag and drop our desired components to add and arrange it as required. Also, we could delete the component if not needed.</p>
                 </div>
-              </>
-            )
-          })}
+                <div v-for="data in datas" class="card my-2">
+                  <div className="d-flex">
+                
+            <LayoutIcon className="p-2"  style={{width:"4%",fill:"#9e3a8ccc",boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",borderRadius:"100px"}}/>
+                    
+                   
+                    <p class="title mt-2 mx-2 ">Layouts</p>
+                  </div>
+                  <p style={{fontSize:"18px"}}>In this menu we could have a preview of all the available components that could be added to our web site</p>
+                </div>
+                <div v-for="data in datas" class="card my-2">
+                  <div className="d-flex">
+            
+                <EditIcon className="p-2"  style={{width:"4%",fill:"#9e3a8ccc",boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",borderRadius:"100px"}}/>
+            
+                    
+                    
+                   
+                    <p class="title mt-2 mx-2 ">Edit</p>
+                  </div>
+                  <p style={{fontSize:"18px"}}>In this menu we could update images and contents available in the components which we placed in the Layout section.</p>
+                </div>
+            
+            
+        
 
 
 

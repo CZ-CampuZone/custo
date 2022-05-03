@@ -74,6 +74,7 @@ const useStyles = makeStyles(() =>
       background: "#fff",
       padding: "1rem 2rem",
       top: "1rem",
+      color:"#9e3a8ccc",
       cursor: "pointer",
       right: "1rem",
       boxShadow: "2px 2px 3px 0 #ccc",
@@ -314,7 +315,7 @@ export const Gallery1 = (props) => {
         ))}
       </div>
       <div className={classes.addCard} onClick={addCard}>
-        Add Card
+      <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
       </div>
     </>
   );
