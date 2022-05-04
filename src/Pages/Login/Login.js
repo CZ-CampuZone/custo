@@ -187,8 +187,8 @@ const Login = (props) => {
         </div>
         <div></div>
         <div className="row">
-          <div className="col-md-1"></div>
-          <div className="col-md-5 marg">
+          <div className="col-md-6 marg">
+            <div className="col-md-7 m-auto">
             <h2 className="content">
               Your<br/> Business<br/>  At<br/>  Your<br/>  Fingertips
             </h2>
@@ -199,6 +199,8 @@ const Login = (props) => {
             <button onClick={() => { setModalstate(true) }} type="button" href="#myModal" class="btn px-4 btntclr mt-3" data-toggle="modal">
               Login
             </button>
+            </div>
+          
           </div>
           <div className="col-md-6 p-4 marg2">
             <img src="https://s3-alpha.figma.com/hub/file/314494079/976a59d3-cf17-4dcc-a3d8-6651da344ee4-cover" />
