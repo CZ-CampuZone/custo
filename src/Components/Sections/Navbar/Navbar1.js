@@ -205,7 +205,7 @@ export const Navbar1 = (props) => {
       setTimeout(() => {
 
         setUpdatestatus(false)
-      }, 3000)
+      }, 4000)
     )
   };
   console.log(menuItem);

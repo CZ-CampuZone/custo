@@ -103,8 +103,8 @@ const Edit = () => {
   return (
     <>
       {ctx.layoutFlow?.length === 0 ? <Nosections /> : <></>}
-      <div className="row">
-        <div className="all-section-list col-2 p-0">
+      <div className="row m-0">
+        <div className="all-section-list col-2  m-0 p-0">
 
           <div class="Editlist">
             {ctx.layoutFlow &&

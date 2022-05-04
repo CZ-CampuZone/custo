@@ -745,16 +745,19 @@ h6 {
 .Login-Edit .modal-login .modal-footer {
   background: #ecf0f1;
   border-color: #dee4e7;
+  cursor: pointer;
   text-align: center;
       justify-content: center;
   margin: 0 -20px -20px;
   border-radius: 5px;
   font-size: 13px;
 }
-.Login-Edit .modal-login .modal-footer a {
-  color: #999;
-}		
-
+		
+.Login-Edit .modal-login .modal-footer:hover p{
+transition: 0.5s;
+color: #9e3a8c;
+transform: scale(1.5);
+}
 .Login-Edit .modal-login.modal-dialog {
   margin-top: 80px;
 }
@@ -819,22 +822,31 @@ h6 {
  
   cursor:pointer;
 }
-.style-guide .card:hover img{
+.style-guide .card:hover .styleIcon{
   background:#fff;
+  fill: #9e3a8ccc;
 }
+
 .style-guide  .styleIcon{
-  
- 
   fill: white;
   background-color: #9e3a8ccc;
-  padding: 5px 0px;
-  width:5%;
+ 
+  width:4%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius:100px;
             
 
 }
+/* animation */
+.blinkme {
+  animation: blinker 1s linear infinite;
+}
 
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
 
 
 

@@ -70,7 +70,7 @@ const Preview = () => {
       setTimeout(() => {
 
         setUpdatestatus(false)
-      }, 3000)
+      }, 4000)
     )
   };
   useEffect(() => {
@@ -109,7 +109,7 @@ const Preview = () => {
         </>
       )}
       <div
-        className="col-10 p-2 special-scroll"
+        className="col-10 m-0 pt-4 p-2 special-scroll"
         style={{ height: "91vh", overflowX: "hidden", overflowY: "auto" }}
       >
         <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -118,7 +118,7 @@ const Preview = () => {
 
             <NavLink to="/" target="_blank">
               <button
-                className="btn shadow px-3  "
+                className="btn shadow px-3 "
                 style={{
                   background: "#9e3a8ccc",
                   color: "#fff",
@@ -126,11 +126,11 @@ const Preview = () => {
                   boxShadow: "0 3px 6px #00000036",
                 }}
               >
-                Fullpage View<i className="fa fa-eye mx-2"></i>
+                Preview<i className="fa fa-eye mx-2"></i>
               </button>
             </NavLink>
             <button
-              className="btn px-5"
+              className="btn px-4"
               onClick={onSaveHandler}
               style={{
                 background: "#9e3a8ccc",
@@ -143,16 +143,17 @@ const Preview = () => {
             </button>
           </div>
           <Droppable droppableId="mounted">
-            {(provided) => (
+            {(provided, snapshot ) => (
               <div
                 className="mounted px-4"
                 ref={provided.innerRef}
-                {...provided.droppableProps}
-              >
+                {...provided.droppableProps}   >
+              
                 <div
-                  className={clsx(ctx.layoutFlow?.length > 0 ? "border" : "")}
+                  className="p-2"
                   ref={drop}
-                  style={{ zoom: "0.6" }}
+                  style={{ zoom: "0.6",border: ctx.layoutFlow?.length > 0 ?"1px solid #9e3a8ccc":""}}
+                
                 >
                   {ctx.layoutFlow?.length === 0 ? <NoLayout /> : <></>}
                   {mountedData.map((item, index) => (
@@ -161,12 +162,13 @@ const Preview = () => {
                       draggableId={item.uniqId}
                       index={index}
                     >
-                      {(provided) => (
+                      {(provided ) => (
                         <div
                           className="position-relative"
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
+                        
                         >
                           <div
                             onClick={() => deleteHandler(item.uniqId)}
@@ -191,6 +193,7 @@ const Preview = () => {
                             component={item.c}
                             id={item.uniqId}
                           />
+                        
                         </div>
                       )}
                     </Draggable>

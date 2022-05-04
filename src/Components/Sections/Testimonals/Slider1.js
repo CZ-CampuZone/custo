@@ -77,7 +77,7 @@ const useStyles = makeStyles(() =>
       width: "2.5rem",
       height: "2.5rem",
       padding: "0.3rem",
-      top: "0",
+      bottom: "0",
       right: "0",
       zIndex: 20,
       textAlign: "center",
@@ -209,12 +209,13 @@ export const Slider1 = (props) => {
       return;
     }
     const storage = getStorage();
-    const uploadPath = `images/${localData[i].title + localData[i].id}`; // upload path
+    const uploadPath = `images/${card[i].name + card[i].id}`; // upload path
     const storageRef = ref(storage, uploadPath); // create refernce to store data
 
     uploadBytes(storageRef, selected).then((snapshot) => {
       // console.log(snapshot);
       getDownloadURL(storageRef).then((url) => {
+        console.log(url)
         setCard((prevState) => {
           let updatedData = null;
           updatedData = {
@@ -247,25 +248,26 @@ export const Slider1 = (props) => {
   };
   let editable = (
     <div>
-        {updatestatus === true && <Update />}
-      <div className={classes.addCard} onClick={addCard}>
-        <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
-      </div>
-      <div className={classes.container}>
-        <input
+       <input
           className={classes.introHeader}
           placeholder="Header"
           id="header"
           onChange={onChange}
           value={localData.header}
         />
+        {updatestatus === true && <Update />}
+      <div className={classes.addCard} onClick={addCard}>
+        <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
+      </div>
+      <div className={classes.container}>
+       
         {card.map((details, index) => (
           <div key={index} className={classes.inside}>
             <div
               onClick={() => removeCard(details.id)}
               style={{
                 position: "absolute",
-                top: "0",
+                bottom: "0",
                 left: "0",
                 zIndex: 20,
                 cursor: "pointer",
@@ -343,7 +345,7 @@ export const Slider1 = (props) => {
       setTimeout(() => {
 
         setUpdatestatus(false)
-      }, 3000)
+      }, 4000)
     )
   };
 
@@ -356,7 +358,7 @@ export const Slider1 = (props) => {
               className="btn px-5"
               onClick={onSaveHandler}
               style={{
-                background: "9e3a8ccc",
+                background: "#9e3a8ccc",
                 fontSize: "20px",
                 color: "white",
                 borderRadius: "20px",
@@ -380,10 +382,12 @@ export const Slider1 = (props) => {
               <h2 className={classes.introHeader}>Copyrights@layatex.com</h2>
             </div> */}
       <div className={classes.root}>
-        <h2 className={classes.introHeader}>{localData.header}</h2>
+    
         {ctx.isEditable ? (
           editable
         ) : (
+          <>
+          <h2 className={classes.introHeader}>{localData.header}</h2>
           <div className={classes.container}>
             <OwlCarousel className="owl-theme" {...options}>
               {card.map((item, index) => (
@@ -410,8 +414,10 @@ export const Slider1 = (props) => {
               ))}
             </OwlCarousel>
           </div>
+          </>
         )}
       </div>
+
     </>
   );
 };

@@ -335,7 +335,7 @@ export const Gallery1 = (props) => {
       setTimeout(() => {
 
         setUpdatestatus(false)
-      }, 3000)
+      }, 4000)
     )
   };
   return (

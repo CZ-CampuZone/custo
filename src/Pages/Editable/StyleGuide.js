@@ -1,11 +1,16 @@
 import React, { useContext, useEffect } from "react";
 import AuthContext from "../../Context/Context";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import clsx from "clsx"
+
 import { ReactComponent as SectionIcon } from "../../Assests/sections.svg";
 import { ReactComponent as LayoutIcon } from "../../Assests/layout.svg";
 import { ReactComponent as EditIcon } from "../../Assests/edit.svg";
 
+
+ 
 const StyleGuide = () => {
+
   const ctx = useContext(AuthContext);
   useEffect(() => {
     // if (ctx.getWebstieData === null) {
@@ -44,7 +49,7 @@ const StyleGuide = () => {
 
 
   return <>
-    <div className="container my-2 style-guide">
+    <div className="container ml-2 my-2 style-guide">
       <h2 className="text-center " style={{color: "var(--primary)"}}> Guidelines</h2>
 
       <div class="content">
@@ -56,7 +61,7 @@ const StyleGuide = () => {
                 <div v-for="data in datas" class="card my-2">
                   <div className="d-flex">
                 
-                  <SectionIcon className="p-2"  style={{width:"4%",fill:"#9e3a8ccc",boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",borderRadius:"100px"}}/>
+                  <SectionIcon className="styleIcon p-2"/>
                     
                    
                     <p class="title mt-2 mx-2 ">Sections</p>
@@ -66,7 +71,7 @@ const StyleGuide = () => {
                 <div v-for="data in datas" class="card my-2">
                   <div className="d-flex">
                 
-            <LayoutIcon className="p-2"  style={{width:"4%",fill:"#9e3a8ccc",boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",borderRadius:"100px"}}/>
+            <LayoutIcon className="styleIcon p-2" />
                     
                    
                     <p class="title mt-2 mx-2 ">Layouts</p>
@@ -76,7 +81,7 @@ const StyleGuide = () => {
                 <div v-for="data in datas" class="card my-2">
                   <div className="d-flex">
             
-                <EditIcon className="p-2"  style={{width:"4%",fill:"#9e3a8ccc",boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",borderRadius:"100px"}}/>
+                <EditIcon className="styleIcon p-2"  />
             
                     
                     

@@ -1,8 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../Assests/logo.svg";
+// import { ReactComponent as Logo } from "../../Assests/logo.svg";
 import { ReactComponent as StyleIcon } from "../../Assests/style.svg";
 import { ReactComponent as LayoutIcon } from "../../Assests/layout.svg";
+
+import Logo from "../../Assests/fickle.png";
+import LandingImage from "../../Assests/Landing.png";
 import AuthContext from "../../Context/Context";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../services/firebase";
@@ -11,15 +14,13 @@ const Landing = (props) => {
   useEffect(() => {
     ctx.updateIsEditable(false);
   }, []);
-  const checkdata = {
-    h2: "tamil",
-  };
+  
 
   return (
-    <div className="p-2">
+    <div className=" container ">
       <div className="container-fluid p-0">
         <h1 className="text-center mb-1" style={{ color: "var(--primary)" }}>
-          <Logo className="landing_logo" />
+          {/* <Logo className="landing_logo" /> */}
           Manage your site.
         </h1>
         <h2 className="text-center mb-3"></h2>
@@ -31,9 +32,9 @@ const Landing = (props) => {
      
      
      
-      <div className="row mt-4">
+      <div className="row m-0 mt-4">
 
-        <div className="col-md-5 p-1 pr-2">
+        <div className="col-md-5 ">
           
         <div class="card-intro-box p-2 mb-4 py-3">
             <Link
@@ -75,7 +76,7 @@ const Landing = (props) => {
             <span className="ml-2 ">→</span>
           </Link> */}
         </div>
-        <div className="col-md-7 p-1">
+        <div className="col-md-7 m-0 ">
 
           <img className="img-fluid" src="/Images/landing.jpg" alt="landing" />
 

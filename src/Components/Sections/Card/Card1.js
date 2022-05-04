@@ -211,7 +211,7 @@ export const Card1 = (props) => {
     });
   };
   let editable = (
-    <div className={classes.root}>
+    <div className="container">
       {updatestatus === true && <Update />}
 
       {localData?.map((details, index) => (
@@ -280,7 +280,7 @@ export const Card1 = (props) => {
       setTimeout(() => {
 
         setUpdatestatus(false)
-      }, 3000)
+      }, 4000)
     )
   };
 

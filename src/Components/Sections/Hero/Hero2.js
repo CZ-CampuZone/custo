@@ -278,7 +278,7 @@ export const Hero2 = (props) => {
             setTimeout(() => {
       
               setUpdatestatus(false)
-            }, 3000)
+            },4000)
           )
     };
     return (
