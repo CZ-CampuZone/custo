@@ -125,7 +125,15 @@ const Edit = () => {
         </div>
 
         {/* <EditableList /> */}
-        <div className="col-10 p-3">
+        <div
+      className="col-10 p-2 special-scroll"
+      style={{
+        height: "91vh",
+        overflowX: "hidden",
+        overflowY: "auto",
+        scrollBehavior: "smooth",
+      }}
+    >
           {mountedComponent.map((single) => (
             <div key={single.uniqId} style={{ zoom: "0.7" }}>
               <CreateComponent component={single.c} id={single.uniqId} />
