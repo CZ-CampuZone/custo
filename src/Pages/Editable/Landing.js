@@ -17,7 +17,12 @@ const Landing = (props) => {
   
 
   return (
-    <div className=" container ">
+    <div className=" container special-scroll "  style={{
+      height: "91vh",
+      overflowX: "hidden",
+      overflowY: "auto",
+      scrollBehavior: "smooth",
+    }}>
       <div className="container-fluid p-0">
         <h1 className="text-center mb-1" style={{ color: "var(--primary)" }}>
           {/* <Logo className="landing_logo" /> */}
