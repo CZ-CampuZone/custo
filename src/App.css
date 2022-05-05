@@ -704,9 +704,7 @@ h6 {
   margin-top: 100px;
 }
 
-.Login-Edit .marg2{
-  margin-top: 50px;
-}
+
 
 .Login-Edit .pcolor{
   color: rgb(255, 255, 255);
@@ -715,34 +713,38 @@ h6 {
   color: #636363;
   width: 350px;
 }
-.Login-Edit .modal-login .modal-content {
+.Login-Edit .modal-signup {		
+  color: #636363;
+  
+}
+.Login-Edit  .modal-content {
   padding: 20px;
   border-radius: 5px;
   border: none;
 }
-.Login-Edit .modal-login .modal-header {
+.Login-Edit  .modal-header {
   border-bottom: none;   
       position: relative;
       justify-content: center;
 }
-.Login-Edit .modal-login h4 {
+.Login-Edit  h4 {
   text-align: center;
   font-size: 26px;
   margin: 30px 0 -15px;
 }
-.Login-Edit .modal-login .form-control:focus {
+.Login-Edit  .form-control:focus {
   border-color: #70c5c0;
 }
-.Login-Edit .modal-login .form-control, .modal-login .btn {
+.Login-Edit  .form-control,  .btn {
   min-height: 40px;
   border-radius: 3px; 
 }
-.Login-Edit .modal-login .close {
+.Login-Edit  .close {
       position: absolute;
   top: -5px;
   right: -5px;
 }	
-.Login-Edit .modal-login .modal-footer {
+.Login-Edit  .modal-footer {
   background: #ecf0f1;
   border-color: #dee4e7;
   cursor: pointer;
@@ -753,15 +755,15 @@ h6 {
   font-size: 13px;
 }
 		
-.Login-Edit .modal-login .modal-footer:hover p{
+.Login-Edit  .modal-footer:hover p{
 transition: 0.5s;
 color: #9e3a8c;
 transform: scale(1.5);
 }
-.Login-Edit .modal-login.modal-dialog {
+.Login-Edit .modal-dialog {
   margin-top: 80px;
 }
-.Login-Edit .modal-login .btn {
+.Login-Edit  .btn {
       color: #fff;
       border-radius: 4px;
       background: linear-gradient(to right top, #fb051acc,#ed0053c5,#cb1777c5, #9e3a8ccc,#6f498cc9 ) ;
@@ -770,7 +772,7 @@ transform: scale(1.5);
       line-height: normal;
       border: none;
   }
-  .Login-Edit .modal-login .btn:hover, .modal-login .btn:focus {
+  .Login-Edit  .btn:hover,  .btn:focus {
   background: linear-gradient(to right top, #6f498cc9, #9e3a8ccc, #cb1777c5, #ed0053c5, #fb051acc);
   outline: none;
 }
@@ -851,6 +853,9 @@ transform: scale(1.5);
 
 
 /* Settings */
+
+
+
 .user-card-full {
   overflow: hidden
 }

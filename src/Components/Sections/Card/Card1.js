@@ -27,18 +27,15 @@ const useStyles = makeStyles(() =>
       textAlign: "center",
     },
     addCard: {
-      fontSize: "25px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
       borderRadius: "1rem",
+      position: "absolute",
       background: "#fff",
+      padding: "1rem 2rem",
       cursor: "pointer",
+      top: "1rem",
       color:"#9e3a8ccc",
-      position: "relative",
-      width: "33.33%",
-      padding: "1rem",
-      boxShadow: "2px 2px 2px 3px #ccc",
+      right: "1rem",
+      boxShadow: "2px 2px 3px 0 #ccc",
     },
     card: {
       position: "relative",
@@ -88,7 +85,7 @@ const useStyles = makeStyles(() =>
       width: "2.5rem",
       height: "2.5rem",
       padding: "0.3rem",
-      top: "0",
+      bottom: "0",
       right: "0",
       zIndex: 20,
       textAlign: "center",
@@ -211,7 +208,8 @@ export const Card1 = (props) => {
     });
   };
   let editable = (
-    <div className="container">
+    <div className="position-relative">
+    <div className={classes.root}>
       {updatestatus === true && <Update />}
 
       {localData?.map((details, index) => (
@@ -265,7 +263,9 @@ export const Card1 = (props) => {
           </div>
         </div>
       ))}
-      <div className={classes.addCard} onClick={addCard}>
+     
+    </div>
+    <div className={classes.addCard} onClick={addCard}>
         <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
       </div>
     </div>

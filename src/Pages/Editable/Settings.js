@@ -10,7 +10,6 @@ import { ReactComponent as EditIcon } from "../../Assests/pencil.svg";
 import Loader from "../../loader/Loader";
 import clsx from "clsx";
 const useStyles = makeStyles({
-
   actions: {
     width: "10%",
     cursor: "pointer",
@@ -48,15 +47,8 @@ const Settings = () => {
 
   const ctx = useContext(AuthContext);
   let name = ctx.user.username;
-  const defaultvalues = {
-    username: ctx.user.username,
-    websitename: ctx.user.websitename,
-    phoneno: ctx.user.phoneno,
-    email: ctx.user.email,
-    password: ctx.user.password,
-    oldPassword: "",
-    newPassword: "",
-  }
+
+  let [updatedvalue, setUpdatedvalue] = useState({})
   const ProfilePic = (name) => {
     var FirstLetter = name.match(/\b(\w)/g); // returns an array of first letter of each word
     var Profile = FirstLetter.join(""); // joins each letter in an array to form a single word
@@ -67,7 +59,15 @@ const Settings = () => {
     ctx.updateIsEditable(false);
   }, []);
   const classes = useStyles();
-  const [formValues, setFormValues] = useState(defaultvalues);
+  const [formValues, setFormValues] = useState({
+    username: ctx.user.username,
+    websitename: ctx.user.websitename,
+    phoneno: ctx.user.phoneno,
+    email: ctx.user.email,
+    password: ctx.user.password,
+    oldPassword: "",
+    newPassword: "",
+  });
   const [enableUsername, setEnableUsername] = useState(false);
   const [enableSave, setEnableSave] = useState(false);
   const [error, setError] = useState(null);
@@ -140,21 +140,21 @@ const Settings = () => {
 
   };
   const handleChange = (inputObj) => {
-    setFormValues({
-      ...formValues,
+    setUpdatedvalue({
+      ...updatedvalue,
       [inputObj.id]: inputObj.value,
     });
     setEnableSave(true);
   };
 
-  
+
   const handleCancel = () => {
-    setFormValues(defaultvalues);
-    console.log(formValues,defaultvalues,ctx.user)
+    setUpdatedvalue(formValues);
+
     setEnableSave(false);
     setEnableUsername(false);
-  
   }
+  console.log(updatedvalue)
   return (
     <>
       {loading && (
@@ -195,7 +195,8 @@ const Settings = () => {
                         <div className={classes.input}>
                           <GInput
                             id={"username"}
-                            value={formValues.username}
+                            value={updatedvalue.username ?
+                              updatedvalue.username : formValues.username}
                             onInputChange={handleChange}
                             variant="standard"
                             disabled={!enableUsername}
@@ -209,7 +210,8 @@ const Settings = () => {
                         <div className={classes.input}>
                           <GInput
                             id={"websitename"}
-                            value={formValues.websitename}
+                            value={updatedvalue.websitename ?
+                              updatedvalue.websitename : formValues.websitename}
                             onInputChange={handleChange}
                             variant="standard"
                             disabled={!enableUsername}
@@ -223,7 +225,8 @@ const Settings = () => {
                         <div className={classes.input}>
                           <GInput
                             id={"phoneno"}
-                            value={formValues.phoneno}
+                            value={updatedvalue.phoneno ?
+                              updatedvalue.phoneno : formValues.phoneno}
                             onInputChange={handleChange}
                             variant="standard"
                             disabled
@@ -238,7 +241,9 @@ const Settings = () => {
                         <div className={classes.input}>
                           <GInput
                             id={"email"}
-                            value={formValues.email}
+                            value={
+                              updatedvalue.email ?
+                                updatedvalue.email : formValues.email}
                             onInputChange={handleChange}
                             variant="standard"
                             disabled
@@ -255,7 +260,9 @@ const Settings = () => {
                         <p class="m-b-10 f-w-600">Old Password</p>
                         <GInput
                           id={"oldPassword"}
-                          value={formValues.oldPassword}
+                          value={
+                            updatedvalue.oldPassword ?
+                              updatedvalue.oldPassword : formValues.oldPassword}
                           onInputChange={handleChange}
                           variant="standard"
                           type="password"
@@ -269,7 +276,10 @@ const Settings = () => {
                         <p class="m-b-10 f-w-600">New Password</p>
                         <GInput
                           id={"newPassword"}
-                          value={formValues.newPassword}
+                          value={
+                            updatedvalue.newPassword ?
+                              updatedvalue.newPassword :
+                              formValues.newPassword}
                           onInputChange={handleChange}
                           variant="standard"
                           type="password"

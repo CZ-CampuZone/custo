@@ -4,8 +4,52 @@ import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../services/firebase";
 import Loader from "../../loader/Loader";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
+import { ReactComponent as Bgicon1 } from "../../Assests/xd1.svg";
+import { ReactComponent as Bgicon2 } from "../../Assests/xd2.svg";
+// import { ReactComponent as Bgicon3 } from "../../Assests/xd3.svg";
+import { ReactComponent as Bgicon3 } from "../../Assests/xd4.svg";
 import Logo from "../../Assests/fickle.png";
+const useStyles = makeStyles({
+  Bgicon1: {
+    position: "fixed",
+    top: "33%",
+    left: "9%"
+  },
+  Bgicon2: {
+
+    top: "-10%",
+    left: "67%",
+    position: "fixed",
+  },
+  Bgicon3: {
+    position: "fixed",
+    bottom: "-8%",
+    left: "-8%",
+    
+  },
+  
+  Bgicon4: {
+    position: "fixed",
+    right: "37%",
+    bottom: "3%",
+    zoom: "0.6",
+  },
+  Bgicon5: {
+    position: "fixed", 
+    right: "5%",
+    bottom: "27%",
+  },
+
+  "@media (max-width: 1200px)": {
+    Bg2: {
+      left: "-73% "
+    }
+  }
+
+});
 const Login = (props) => {
+  const classes = useStyles();
   const ctx = useContext(AuthContext);
   // const [modalstate, setModalstate] = useState(false);
   const [loading, setloading] = useState(false);
@@ -99,28 +143,35 @@ const Login = (props) => {
           <Loader />
         </>
       )}
-      <div className=" Login-Edit overlay" style={{ height: "100vh" }}>
-      
+      <div className=" Login-Edit position-relative overlay" style={{ height: "100vh" }}>
+        <Bgicon1 className={classes.Bgicon1} />
+        
+        <Bgicon1   className={classes.Bgicon2}/>
+        {/* <Bgicon2 className={classes.Bgicon2} /> */}
+
+        <Bgicon3  className={classes.Bgicon3} />
+        <Bgicon3  className={classes.Bgicon4}/>
+        <Bgicon3  className={classes.Bgicon5} />
         <nav class="navbar navbar-expand-lg navbar-light  headercol ">
-        <a class="navbar-brand position-relative" href="#">
-              <img
-              style={{width:"8%"}}
+          <a class="navbar-brand position-relative" href="#">
+            <img
+              style={{ width: "8%" }}
               className="img-thumbnail d-inline"
-                src={Logo}
-                 
-                alt=""
-              />
-          
-              <h2 style={{top:"0",bottom:"0",left:"0",right:"0"}} className=" mt-2 text-white position-absolute  Login-name text-center" >Fickle</h2>
-             
-            
-            </a>
- 
-</nav>
-         
+              src={Logo}
+
+              alt=""
+            />
+
+            <h2 style={{ top: "0", bottom: "0", left: "0", right: "0" }} className=" mt-2 text-white position-absolute  Login-name text-center" >Fickle</h2>
 
 
-            {/* // <div class=" shadow position-absolute" style={{ zIndex: "999999999", left: "0", right: "0", top: "0", bottom: "0" }} > */}
+          </a>
+
+        </nav>
+
+
+
+        {/* // <div class=" shadow position-absolute" style={{ zIndex: "999999999", left: "0", right: "0", top: "0", bottom: "0" }} > */}
         <div className="row">
           <div className="col-md-6 marg">
             <div className="col-md-7 m-auto">

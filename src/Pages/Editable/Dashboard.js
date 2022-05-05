@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Navigate, Outlet, Route, Routes, useParams } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes, useNavigate, useParams } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Landing from "./Landing";
@@ -15,20 +15,25 @@ import Loader from "../../loader/Loader";
 const Dashboard = (props) => {
   const [loading, setLoading] = useState(true);
   let params = useParams();
+  const navigate =useNavigate();
   const ctx = useContext(AuthContext);
   useEffect(() => {
     ctx.getWebsiteData();
     ctx.getUserData();
     ctx.getLayoutData();
     setLoading(false);
+  
     window.addEventListener("beforeunload", alertUser);
     return () => {
       window.removeEventListener("beforeunload", alertUser);
+      navigate("/admin")
     };
   }, []);
+  
+
   const alertUser = (e) => {
-    setLoading(true);
-    console.log("reloaded");
+    e.preventDefault();
+    e.returnValue = "";
   };
   let ui = null;
   if (params.id === ctx.userId) {
