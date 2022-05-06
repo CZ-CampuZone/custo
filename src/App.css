@@ -119,10 +119,15 @@ h6 {
       
 }
 
-.landing_logo {
-  width: 50%;
-  height: inherit;
-  margin-right: 1rem;
+.nav_title {
+
+  background-size: contain;
+  background-repeat: no-repeat;
+   background-position: center;
+   height: 10vh;
+  overflow: hidden;
+  background-image: url("/src/Assests/fickle2.png");
+  
 }
 
 .landing_logo g {

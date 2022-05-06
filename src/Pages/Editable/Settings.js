@@ -59,7 +59,7 @@ const Settings = () => {
     ctx.updateIsEditable(false);
   }, []);
   const classes = useStyles();
-  const [formValues, setFormValues] = useState({
+  const defaultvalues = {
     username: ctx.user.username,
     websitename: ctx.user.websitename,
     phoneno: ctx.user.phoneno,
@@ -67,7 +67,9 @@ const Settings = () => {
     password: ctx.user.password,
     oldPassword: "",
     newPassword: "",
-  });
+  }
+  const [formValues, setFormValues] = useState(defaultvalues);
+
   const [enableUsername, setEnableUsername] = useState(false);
   const [enableSave, setEnableSave] = useState(false);
   const [error, setError] = useState(null);
@@ -140,7 +142,7 @@ const Settings = () => {
 
   };
   const handleChange = (inputObj) => {
-    setUpdatedvalue({
+    setFormValues({
       ...updatedvalue,
       [inputObj.id]: inputObj.value,
     });
@@ -149,8 +151,7 @@ const Settings = () => {
 
 
   const handleCancel = () => {
-    setUpdatedvalue(formValues);
-
+    setFormValues(defaultvalues)
     setEnableSave(false);
     setEnableUsername(false);
   }
@@ -195,8 +196,7 @@ const Settings = () => {
                         <div className={classes.input}>
                           <GInput
                             id={"username"}
-                            value={updatedvalue.username ?
-                              updatedvalue.username : formValues.username}
+                            value={formValues.username}
                             onInputChange={handleChange}
                             variant="standard"
                             disabled={!enableUsername}
@@ -210,8 +210,7 @@ const Settings = () => {
                         <div className={classes.input}>
                           <GInput
                             id={"websitename"}
-                            value={updatedvalue.websitename ?
-                              updatedvalue.websitename : formValues.websitename}
+                            value={formValues.websitename}
                             onInputChange={handleChange}
                             variant="standard"
                             disabled={!enableUsername}
@@ -225,8 +224,7 @@ const Settings = () => {
                         <div className={classes.input}>
                           <GInput
                             id={"phoneno"}
-                            value={updatedvalue.phoneno ?
-                              updatedvalue.phoneno : formValues.phoneno}
+                            value={formValues.phoneno}
                             onInputChange={handleChange}
                             variant="standard"
                             disabled
@@ -242,8 +240,7 @@ const Settings = () => {
                           <GInput
                             id={"email"}
                             value={
-                              updatedvalue.email ?
-                                updatedvalue.email : formValues.email}
+                              formValues.email}
                             onInputChange={handleChange}
                             variant="standard"
                             disabled
@@ -261,8 +258,7 @@ const Settings = () => {
                         <GInput
                           id={"oldPassword"}
                           value={
-                            updatedvalue.oldPassword ?
-                              updatedvalue.oldPassword : formValues.oldPassword}
+                            formValues.oldPassword}
                           onInputChange={handleChange}
                           variant="standard"
                           type="password"
@@ -277,9 +273,8 @@ const Settings = () => {
                         <GInput
                           id={"newPassword"}
                           value={
-                            updatedvalue.newPassword ?
-                              updatedvalue.newPassword :
-                              formValues.newPassword}
+
+                         formValues.newPassword}
                           onInputChange={handleChange}
                           variant="standard"
                           type="password"
