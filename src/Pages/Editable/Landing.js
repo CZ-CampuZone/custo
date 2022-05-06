@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as StyleIcon } from "../../Assests/style.svg";
 import { ReactComponent as LayoutIcon } from "../../Assests/layout.svg";
 
-import Logo from "../../Assests/fickle.png";
+
 import LandingImage from "../../Assests/Landing.png";
 import AuthContext from "../../Context/Context";
 import { doc, getDoc, updateDoc } from "firebase/firestore";

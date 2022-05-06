@@ -9,7 +9,7 @@ import { ReactComponent as Bgicon1 } from "../../Assests/xd1.svg";
 import { ReactComponent as Bgicon2 } from "../../Assests/xd2.svg";
 // import { ReactComponent as Bgicon3 } from "../../Assests/xd3.svg";
 import { ReactComponent as Bgicon3 } from "../../Assests/xd4.svg";
-import Logo from "../../Assests/fickle.png";
+import Logo from "../../Assests/fickle1.png";
 const useStyles = makeStyles({
   Bgicon1: {
     position: "fixed",

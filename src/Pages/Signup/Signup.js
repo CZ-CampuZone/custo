@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../services/firebase";
 import Loader from "../../loader/Loader";
 import { setDoc, doc } from "firebase/firestore";
-import Logo from "../../Assests/fickle.png";
+import Logo from "../../Assests/fickle1.png";
 import { setUserId } from "firebase/analytics";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as Bgicon1 } from "../../Assests/xd1.svg";
