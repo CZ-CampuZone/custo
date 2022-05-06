@@ -1,0 +1,114 @@
+.cardin {
+  width: 90%;
+  margin: auto;
+}
+
+.addCard {
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+  margin: 2rem;
+
+  height: auto;
+
+  width: 25%;
+  text-align: center;
+  border-radius: 22px 22px 22px 22px;
+  box-shadow: 0px 10px 60px -10px rgb(91 36 161 / 25%);
+}
+
+.cards {
+
+  display: flex;
+
+}
+
+.card {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background: #fff;
+  margin: 2rem;
+  display: inline-block;
+  height: auto;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  border-radius: 22px 22px 22px 22px;
+  box-shadow: 0px 10px 60px -10px rgb(91 36 161 / 25%);
+}
+
+.round {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 25vw;
+  height: 25vw;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.cards .round {
+  background-color: #ff236c;
+}
+
+/* .cards>.card:nth-child(2) .round {
+  background-color: #ffc259;
+}
+
+.cards>.card:nth-child(3) .round {
+  background-color: #5d58ef;
+}
+
+.cards>.card:nth-child(4) .round {
+  background-color: #ff7f59;
+} */
+
+
+.card h2,
+.card .inputHeading {
+  padding-top: 15px;
+  width: 100%;
+  font-weight: 600;
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: 0;
+  text-align: center;
+}
+
+.card p {
+  line-height: 2em;
+}
+
+.inputPara {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  line-height: 2em;
+  outline: 0;
+  text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+  .cards {
+    width: 100%;
+  }
+
+  .cardin {
+    width: 100%;
+    margin: auto;
+  }
+
+  .round {
+    width: 8vw;
+    height: 8vw;
+  }
+}
