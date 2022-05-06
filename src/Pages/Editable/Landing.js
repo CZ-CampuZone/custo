@@ -5,7 +5,7 @@ import { ReactComponent as StyleIcon } from "../../Assests/style.svg";
 import { ReactComponent as LayoutIcon } from "../../Assests/layout.svg";
 
 
-import LandingImage from "../../Assests/Landing.png";
+
 import AuthContext from "../../Context/Context";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../services/firebase";
@@ -25,7 +25,7 @@ const Landing = (props) => {
     }}>
       <div className="container-fluid p-0">
         <h1 className="text-center mb-1" style={{ color: "var(--primary)" }}>
-          {/* <Logo className="landing_logo" /> */}
+          
           Manage your site.
         </h1>
         <h2 className="text-center mb-3"></h2>

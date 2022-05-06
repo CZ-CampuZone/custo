@@ -31,9 +31,10 @@ const useStyles = makeStyles({
   
   Bgicon4: {
     position: "fixed",
-    right: "37%",
-    bottom: "3%",
+    right: "33%",
+    bottom: "6%",
     zoom: "0.6",
+    transform: "rotate(204deg)",
   },
   Bgicon5: {
     position: "fixed", 
@@ -241,13 +242,22 @@ const Login = (props) => {
                           {error}
                         </small>
                       )}
-                      <div class="form-group">
-                        <button onClick={forgotPassword ? resetHanler : handleLogin}
+                      <div class="form-group text-center">
+                      <button
+                         onClick={forgotPassword ? resetHanler : handleLogin}
                           type="submit"
-                          class="btn btn-primary btn-lg btn-block login-btn"
+                          style={{
+                            
+                            fontSize:"20px",
+                            color: "#fff",
+                            borderRadius: "20px",
+                            boxShadow: "0 3px 6px #00000036",
+                          }}
+                          class="btn mt-3 px-5 btntclr "
                         >
-                          {forgotPassword ? "Sent" : "Login"}
+                           {forgotPassword ? "Sent" : "Login"}
                         </button>
+                       
                       </div>
                     </form>
                   </div>

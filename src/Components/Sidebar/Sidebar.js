@@ -8,7 +8,7 @@ import { ReactComponent as EditIcon } from "../../Assests/edit.svg";
 import { ReactComponent as GalleryIcon } from "../../Assests/gallery.svg";
 import { ReactComponent as SettingsIcon } from "../../Assests/settings.svg";
 import AuthContext from "../../Context/Context";
-
+import Logo from "../../Assests/fickle2.png";
 const Sidebar = () => {
   const ctx = useContext(AuthContext);
   const navMenuList = [
@@ -55,13 +55,12 @@ const Sidebar = () => {
         style={{ top: 0, left: 0 }}
       >
         <div className="scroll-view border-right">
-          <div className="nav_title position-relative px-2 py-0 " >
-            <h5 className="text-center rounded text-capitalize m-0 px-1 py-2 nav-header">
-              {ctx.user.websitename}
-            </h5>
+          <div className="nav_title position-relative  text-center px-2 py-0 " >
+          <img src={Logo} className="landing_logo" />
+           
           </div>
           <div className="text-center" >
-            <h5 class="    p-3 rounded headtext mt-3 font-weight-bold m-1">Dashboard </h5>
+            <h5 class="    p-3 rounded headtext mt-3 font-weight-bold m-1">{ctx.user.websitename} </h5>
             </div>
           <ul className="nav side-menu  pt-2 px-2">
        

@@ -33,9 +33,10 @@ const useStyles = makeStyles({
 
   Bgicon4: {
     position: "fixed",
-    right: "37%",
-    bottom: "3%",
+    right: "33%",
+    bottom: "6%",
     zoom: "0.6",
+    transform: "rotate(204deg)",
   },
   Bgicon5: {
     position: "fixed",
@@ -323,20 +324,25 @@ const Signup = (props) => {
                         )}
                       </div>
                     
-                      <div class="form-group w-50 m-auto">
+                      <div class="form-group  text-center">
                         <button
                           onClick={handleSignup}
                           type="submit"
-                          class="btn btn-primary  btn-lg btn-block login-btn"
+                          style={{
+                            
+                            fontSize:"20px",
+                            color: "#fff",
+                            borderRadius: "20px",
+                            boxShadow: "0 3px 6px #00000036",
+                          }}
+                          class="btn mt-3 px-5 btntclr "
                         >
                           Register Now
                         </button>
                       </div>
                     </form>
                   </div>
-                  <div class="modal-footer">
-                    <p >   </p>
-                  </div>
+               
                 </div>
               </div>
             </div>

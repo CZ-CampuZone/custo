@@ -120,7 +120,7 @@ h6 {
 }
 
 .landing_logo {
-  width: 5%;
+  width: 50%;
   height: inherit;
   margin-right: 1rem;
 }
@@ -696,9 +696,7 @@ h6 {
 }
 .Login-Edit .btntclr{
   background: linear-gradient(to right top, #6f498cc9, #9e3a8ccc, #cb1777c5, #ed0053c5, #fb051acc);
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
+  
 }
 .Login-Edit .marg{
   margin-top: 100px;
