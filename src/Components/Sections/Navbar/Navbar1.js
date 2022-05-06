@@ -8,6 +8,7 @@ import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import Select from "react-select";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import AuthContext from "../../../Context/Context";
+import clsx from "clsx"
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -99,22 +100,15 @@ const useStyles = makeStyles(() =>
 );
 
 export const Navbar1 = (props) => {
+    const classes = useStyles();
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
-  const classes = useStyles();
+ 
   const headerData = {
     logo: HeaderLogo,
     menuItem: [
       {
-        label: "home",
-        path: "",
-      },
-      {
-        label: "womens",
-        path: "",
-      },
-      {
-        label: "kids",
+        label: "Home",
         path: "",
       },
       {
@@ -122,7 +116,15 @@ export const Navbar1 = (props) => {
         path: "",
       },
       {
-        label: "contact",
+        label: "Categories",
+        path: "",
+      },
+      {
+        label: "Grocery",
+        path: "",
+      },
+      {
+        label: "Contact",
         path: "",
       },
     ],

@@ -5,7 +5,7 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import AuthContext from "../../../Context/Context";
 import Loader from "../../../loader/Loader";
-import Product1 from "../Assets/Images/product1.jpg";
+import Product1 from "../../../Assests/Supermarket/product1.jpg";
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Update } from "../../../loader/Update";
@@ -16,13 +16,24 @@ const useStyles = makeStyles(() =>
     introHeader: {
       fontSize: "1.75rem !important",
       color: "#000",
-      textTransform: "capitalize",
-      textAlign: "center",
-      paddingBottom: "1.5rem",
+    
       background: "transparent",
       outline: 0,
       border: "none",
-      width: "100%",
+      width:"17%"
+    },
+    editableTitle:{
+      color: "#9797a5",
+      fontSize:"10px", 
+      background: "transparent",
+      outline: 0,
+      border: "none",
+    },
+    editablePara:{
+     
+      background: "transparent",
+      outline: 0,
+      border: "none",
     },
     addCard: {
       borderRadius: "1rem",
@@ -126,21 +137,12 @@ export const Gallery1 = (props) => {
     });
   };
   const onChangeHandler = (e, details, index) => {
+    const tempEventInputs = JSON.parse(JSON.stringify(details));
+    if (e.target) {
+      tempEventInputs[e.target.id] = e.target.value;
+    }
     setCard((prevState) => {
-      let updatedData = null;
-
-      if (e.target.id === "title") {
-        updatedData = {
-          ...details,
-          title: e.target.value,
-        };
-      } else {
-        updatedData = {
-          ...details,
-          rate: e.target.value,
-        };
-      }
-      prevState[index] = updatedData;
+      prevState[index] = tempEventInputs;
       return [...prevState];
     });
   };
@@ -190,7 +192,8 @@ export const Gallery1 = (props) => {
   let editable = (
     <>
       {updatestatus === true && <Update />}
-      <div className="container position-relative mt-4 py-2">
+      <div className=" position-relative mt-4 py-2">
+        
         <input
           className={clsx(classes.introHeader, "d-inline mb-2 mr-4")}
           placeholder="Header"
@@ -202,9 +205,9 @@ export const Gallery1 = (props) => {
           All Offers {">"}{" "}
         </span>
 
-        <div className=" mt-2 ">
+        <div className="row mt-2 ">
           {card.map((details, index) => (
-            <div key={index} className="m-0 position-relative">
+            <div key={index} className="m-0 col-md-3 position-relative">
               <div
                 onClick={() => removeCard(details.id)}
                 style={{
@@ -244,7 +247,7 @@ export const Gallery1 = (props) => {
               </div>
               <input
                 onChange={(e) => onChangeHandler(e, details, index)}
-                className={classes.introHeader}
+                className={classes.editableTitle}
                 id="title"
                 style={{ fontSize: "15px" }}
                 value={details.title}
@@ -253,24 +256,21 @@ export const Gallery1 = (props) => {
 
               <input
                 onChange={(e) => onChangeHandler(e, details, index)}
-                className={classes.introPara}
-                id="rate"
-                style={{
-                  color: "#9797a5",
-                  fontSize: "15px",
-                  marginLeft: "10px",
-                }}
-                value={details.rate}
-                placeholder="rate"
+                className={classes.editablePara}
+                id="para"
+               
+                value={details.para}
+                placeholder="para"
               />
             </div>
           ))}
         </div>
-      </div>
-
-      <div className={classes.addCard} onClick={addCard}>
+        <div className={classes.addCard} onClick={addCard}>
         <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
       </div>
+      </div>
+
+     
     </>
   );
 
@@ -324,7 +324,7 @@ export const Gallery1 = (props) => {
         editable
       ) : (
         <>
-          <div className="container mt-4 py-2">
+          <div className=" mt-4 py-2">
             <h4 className="d-inline mb-2 mr-4">{localData.header}</h4>{" "}
             <span style={{ color: "#9797a5" }} className="d-inline">
               All Offers {">"}

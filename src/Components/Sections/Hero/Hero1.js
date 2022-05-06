@@ -2,14 +2,15 @@ import React, { useContext, useState } from "react";
 import { createStyles, makeStyles } from "@mui/styles";
 import { Typography } from "@mui/material";
 import OwlCarousel from "react-owl-carousel";
+import{ Update} from "../../../loader/Update"
 import "owl.carousel/dist/assets/owl.carousel.css";
 import AuthContext from "../../../Context/Context";
 import Loader from "../../../loader/Loader";
 import clsx from "clsx";
-import Background from "../Assets/Images/bg.jpg";
-import Slider1 from "../Assets/Images/slider1.jpg";
-import Slider2 from "../Assets/Images/slider2.jpg";
-import Offer from "../Assets/Images/p1.jpg";
+import Background from "../../../Assests/Supermarket/bg.jpg";
+import Slider1 from "../../../Assests/Supermarket/slider1.jpg";
+import Slider2 from "../../../Assests/Supermarket/slider2.jpg";
+import Offer from "../../../Assests/Supermarket/p1.jpg";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -22,15 +23,16 @@ const useStyles = makeStyles(() =>
       backgroundSize: "cover",
       height: "400px",
     },
-    offer: {
+    offers: {
       backgroundSize: "cover",
       height: "400px",
     },
   })
 );
 
-export const Hero = (props) => {
-  const options = {
+export const Hero1 = (props) => {
+    const classes = useStyles();
+    const options = {
     loop: false,
     margin: 0,
     dots: false,
@@ -38,6 +40,7 @@ export const Hero = (props) => {
     items: 1,
   };
   const [loading, setloading] = useState(false);
+
   const ctx = useContext(AuthContext);
   const cardData = {
     header: "20% Sales Off",
@@ -88,7 +91,7 @@ export const Hero = (props) => {
     <>
       {updatestatus === true && <Update />}
       <div
-        className={clsx(classes.banner, "row m-0 justify-content-between p-3")}
+        className={clsx(classes.banner, "row m-0 justify-content-between p-5")}
       >
         <div className={clsx(classes.slider, "col-md-9 p-2 position-relative")}>
           <OwlCarousel className="owl-theme" {...options}>
@@ -96,7 +99,7 @@ export const Hero = (props) => {
               <div
                 key={index}
                 className={clsx(classes.item, "position-relative")}
-                style={{ background: "url(" + item.img + ")" }}
+                style={{ backgroundImage: "url(" + item.img + ")" }}
               >
                 <input
                   type="text"
@@ -153,7 +156,7 @@ export const Hero = (props) => {
       }, 4000)
     );
   };
-  const classes = useStyles();
+
   return ctx.isEditable ? (
     <>
       <div className="row py-3 justify-content-end">
@@ -192,10 +195,10 @@ export const Hero = (props) => {
               className={clsx(classes.item, "position-relative")}
               style={{ background: "url(" + item.img + ")" }}
             >
-              <Typography variant="h6" className="w-50 pl-4 pt-3">
+              <Typography variant="h3" className="w-50 pl-4 pt-5">
                 {item.title}
               </Typography>
-              <Typography variant="body2" className="w-50 pl-4 pt-3">
+              <Typography variant="h6" className="w-50 pl-4 pt-5">
                 {item.para}
               </Typography>
             </div>
@@ -205,12 +208,12 @@ export const Hero = (props) => {
       <div className={clsx(classes.slider, "col-md-3 p-2 position-relative")}>
         <div
           className={classes.offers}
-          style={{ background: "url(" + localData.img + ")" }}
+          style={{ backgroundImage: "url(" + localData.img + ")" }}
         >
-          <Typography variant="h6" className="w-50 pl-3 pt-3">
-            {localData.title}
+          <Typography variant="h4" className="w-50 pl-3 pt-5">
+            {localData.header}
           </Typography>
-          <Typography variant="body2" className="w-50 pl-3 pt-3">
+          <Typography variant="body2" className="w-50 pl-3 pt-2">
             {localData.para}
           </Typography>
         </div>

@@ -26,6 +26,14 @@ const useStyles = makeStyles(() =>
       border: "none",
       textAlign: "center",
     },
+    introHeader:{
+      
+      background: "transparent",
+      outline: 0,
+      border: "none",
+      fontSize: "1.75rem !important",
+      color: "#000",
+    },
     addCard: {
       borderRadius: "1rem",
       position: "absolute",
@@ -98,19 +106,16 @@ export const Card1 = (props) => {
     });
   };
   const onChangeHandler = (e, details, index) => {
+    const tempEventInputs = JSON.parse(JSON.stringify(details));
+    if (e.target) {
+      tempEventInputs[e.target.id] = e.target.value;
+    }
     setCard((prevState) => {
-      let updatedData = null;
-
-      if (e.target.id === "title") {
-        updatedData = {
-          ...details,
-          title: e.target.value,
-        };
-      }
-      prevState[index] = updatedData;
+      prevState[index] = tempEventInputs;
       return [...prevState];
     });
   };
+  
   const addCard = () => {
     let updatedData = {
       title: "",
@@ -127,7 +132,8 @@ export const Card1 = (props) => {
     });
   };
   let editable = (
-    <div className="container mt-4 py-2">
+    <div className=" position-relative ">
+    <div className=" position-relative mt-4 py-2">
       {updatestatus === true && <Update />}
       <input
         style={{ display: "inline" }}
@@ -140,13 +146,13 @@ export const Card1 = (props) => {
       <span style={{ color: "#9797a5" }} className="d-inline">
         All categories {">"}
       </span>
-      <div className="mt-2 p-2">
+      <div className="mt-2 row p-2">
         {card.map((details, index) => (
           <div
             key={index}
             className={clsx(
               classes.cardBox,
-              " rounded text-center pt-4 pb-2 position-relative"
+              " rounded text-center col-md-2 pt-4 pb-2 position-relative"
             )}
           >
             <div
@@ -183,7 +189,9 @@ export const Card1 = (props) => {
           </div>
         ))}
       </div>
-      <div className={classes.addCard} onClick={addCard}>
+    
+    </div>
+    <div className={classes.addCard} onClick={addCard}>
         <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
       </div>
     </div>
@@ -236,7 +244,7 @@ export const Card1 = (props) => {
       {ctx.isEditable ? (
         editable
       ) : (
-        <div className="container mt-4 py-2">
+        <div className=" mt-4 py-2">
           <h4 className="d-inline mb-2 mr-4">{localData.header}</h4>{" "}
           <span style={{ color: "#9797a5" }} className="d-inline">
             All categories {">"}
