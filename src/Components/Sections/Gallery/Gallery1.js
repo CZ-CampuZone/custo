@@ -5,9 +5,11 @@ import Loader from "../../../loader/Loader";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import Gallery from "../../../Assests/diviImages/gallery.jpg";
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
+import { Update } from "../../../loader/Update";
 
 const Gallery1 = (props) => {
   const ctx = useContext(AuthContext);
+  const [updatestatus, setUpdatestatus] = useState(false);
   const [loading, setloading] = useState(false);
 
   const cardData = {
@@ -110,7 +112,9 @@ const Gallery1 = (props) => {
     });
   };
   let editable = (
-    <section id="#Gallery">
+    <>
+    {updatestatus === true && <Update />}
+    <section id="#Gallery" className="position-relative">
       <div className={styles.galleryheading}>
         <input
           className={styles.inputHeader}
@@ -180,6 +184,7 @@ const Gallery1 = (props) => {
         </div>
       </div>
     </section>
+    </>
   );
   const onSaveHandler = () => {
     setloading(true);
@@ -191,7 +196,13 @@ const Gallery1 = (props) => {
     ctx.updateData(data, props.id);
     setTimeout(() => {
       setloading(false);
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 4000)
+    )
   };
   return (
     <>

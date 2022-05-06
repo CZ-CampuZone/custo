@@ -88,7 +88,7 @@ const Card2 = (props) => {
           <input
             placeholder="Header"
             id="header"
-            style={{ background: "transparent", outline: "0", border: "none", width: "100%", textAlign: "center" }}
+            style={{ background: "transparent",fontSize:"30px", outline: "0", border: "none", width: "100%", textAlign: "center" }}
             onChange={onChange}
             value={localData.header}
           />

@@ -192,17 +192,10 @@ const Login = (props) => {
             <div className="shadow">
               <div class="modal-dialog modal-login">
                 <div class="modal-content">
+                
                   <div class="modal-header">
-                    <h4 class="modal-title">Hello Buddy!</h4>
-                    {/* <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-hidden="true"
-                      onClick={() => { setModalstate(false) }}
-                    >
-                      &times;
-                    </button> */}
+                  
+                  <h4 class="">Hello Buddy!</h4>
                   </div>
                   <div class="modal-body">
                     <form

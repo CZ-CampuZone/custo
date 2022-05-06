@@ -772,7 +772,7 @@ transform: scale(1.5);
       line-height: normal;
       border: none;
   }
-  .Login-Edit  .btn:hover,  .btn:focus {
+  .Login-Edit .modal-login .btn:hover, .Login-Edit .modal-login .btn:focus {
   background: linear-gradient(to right top, #6f498cc9, #9e3a8ccc, #cb1777c5, #ed0053c5, #fb051acc);
   outline: none;
 }
