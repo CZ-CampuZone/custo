@@ -119,20 +119,13 @@ h6 {
       
 }
 
-.nav_title {
+.landing_logo {
+width: 65%;
+object-fit: contain;
 
-  background-size: contain;
-  background-repeat: no-repeat;
-   background-position: center;
-   height: 10vh;
-  overflow: hidden;
-  background-image: url("/src/Assests/fickle2.png");
   
 }
 
-.landing_logo g {
-  fill: #ff0000;
-}
 .card-intro-box {
   background-color: #FFF;
 
