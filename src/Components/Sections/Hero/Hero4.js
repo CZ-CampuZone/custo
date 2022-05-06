@@ -3,12 +3,15 @@ import AuthContext from "../../../Context/Context";
 import styles from "./Hero4.module.css";
 import Loader from "../../../loader/Loader";
 import clsx from "clsx";
+import { Update } from "../../../loader/Update";
 
 import banner from "../../../Assests/diviImages/banner1.jpg";
 
 const Hero4 = (props) => {
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
+  const [updatestatus, setUpdatestatus] = useState(false);
+  
   // const data = {
   //   container: {
   //     style: `container  ${styles.preschool}`,
@@ -45,26 +48,35 @@ const Hero4 = (props) => {
     ctx.updateData(localData, props.id);
     setTimeout(() => {
       setloading(false);
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 4000)
+    )
   };
   return (
     <>
     {ctx.isEditable ? (
-        <div className="row py-3 justify-content-end">
-     <button
-              className="btn px-5"
-              onClick={onSaveHandler}
-              style={{
-                background: "#fff",
-                fontSize:"20px",
-                color: "#dc3545",
-                borderRadius: "20px",
-                boxShadow: "0 3px 6px #00000036",
-              }}
-            >
-              Save<i className="fa fa-save mx-2"></i>{" "}
-            </button>
-        </div>
+       <>
+       {updatestatus === true && <Update />}
+       <div className="row py-3 justify-content-end">
+         <button
+           className="btn px-5"
+           onClick={onSaveHandler}
+           style={{
+             background: "#9e3a8ccc",
+             fontSize: "20px",
+             color: "#fff",
+             borderRadius: "20px",
+             boxShadow: "0 3px 6px #00000036",
+           }}
+         >
+           Save<i className="fa fa-save mx-2"></i>{" "}
+         </button>
+       </div>
+       </>
       ) : (
         <></>
       )}

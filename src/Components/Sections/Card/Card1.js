@@ -3,12 +3,14 @@ import styles from "./Card1.module.css";
 import AuthContext from "../../../Context/Context";
 import Loader from "../../../loader/Loader";
 import clsx from "clsx";
+import { Update } from "../../../loader/Update";
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 
 const Card1 = (props) => {
   // const classes = useStyles();
 
   const [loading, setloading] = useState(false);
+  const [updatestatus, setUpdatestatus] = useState(false);
   const ctx = useContext(AuthContext);
   const cardData = [
     {
@@ -69,7 +71,11 @@ const Card1 = (props) => {
   };
 
   let editable = (
-    <div className={clsx("row", styles.cards)}>
+    <>
+       {updatestatus === true && <Update />}
+  
+    <div className={clsx("row position-relative", styles.cards)}>
+
       {localData.map((details, index) => (
         <div className={`col-md-3  ${styles.card} `} key={index}>
           <div className={`${styles.cardin}`}>
@@ -115,6 +121,7 @@ const Card1 = (props) => {
         <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
       </div>
     </div>
+    </>
   );
 
   const onSaveHandler = () => {
@@ -122,7 +129,13 @@ const Card1 = (props) => {
     ctx.updateData(localData, props.id);
     setTimeout(() => {
       setloading(false);
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 4000)
+    )
   };
   return (
     <>
@@ -132,9 +145,9 @@ const Card1 = (props) => {
             className="btn px-5"
             onClick={onSaveHandler}
             style={{
-              background: "#fff",
+              background: "#9e3a8ccc",
               fontSize: "20px",
-              color: "#dc3545",
+              color: "#fff",
               borderRadius: "20px",
               boxShadow: "0 3px 6px #00000036",
             }}

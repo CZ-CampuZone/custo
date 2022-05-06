@@ -4,6 +4,7 @@ import styles from "./Footer.module.css";
 import AuthContext from "../../../Context/Context";
 import Loader from "../../../loader/Loader";
 import { createStyles, makeStyles } from "@mui/styles";
+import { Update } from "../../../loader/Update";
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
@@ -28,6 +29,7 @@ const useStyles = makeStyles(() =>
 
 const Footer1 = (props) => {
   const classes= useStyles();
+  const [updatestatus, setUpdatestatus] = useState(false);
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
   const data = 
@@ -51,6 +53,7 @@ const Footer1 = (props) => {
   
   let editable = (
     <>
+    {updatestatus === true && <Update />}
       <input
         onChange={(e) => onChangeHandler(e)}
         className={classes.editable}
@@ -66,7 +69,13 @@ const Footer1 = (props) => {
     ctx.updateData(localData, props.id);
     setTimeout(() => {
       setloading(false);
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 4000)
+    )
   };
   return (
     <>
@@ -77,9 +86,9 @@ const Footer1 = (props) => {
               className="btn px-5"
               onClick={onSaveHandler}
               style={{
-                background: "#fff",
+                background: "#9e3a8ccc",
                 fontSize: "20px",
-                color: "#dc3545",
+                color: "#fff",
                 borderRadius: "20px",
                 boxShadow: "0 3px 6px #00000036",
               }}

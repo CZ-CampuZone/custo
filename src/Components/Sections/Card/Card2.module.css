@@ -87,17 +87,15 @@
   background-color: #ff236c;
 } */
 .addCard {
-  background: #fff;
-  padding: 20px;
-  height: auto;
-  width: 25%;
-  text-align: center;
-  font-size: 25px;
   border-radius: 1rem;
+  position: absolute;
   background: #fff;
+  padding: 1rem 2rem;
   cursor: pointer;
-  padding: 1rem;
-  box-shadow: 2px 2px 2px 3px #ccc;
+  top: 1rem;
+  color:#9e3a8ccc;
+  right: 1rem;
+  box-shadow: 2px 2px 3px 0 #ccc;
 }
 @media screen and (min-width: 600px) {
   .cards {

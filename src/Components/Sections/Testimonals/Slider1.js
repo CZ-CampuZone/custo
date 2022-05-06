@@ -5,10 +5,13 @@ import Loader from "../../../loader/Loader";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import clsx from "clsx";
+import { Update } from "../../../loader/Update";
+
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 
 const Slider1 = (props) => {
   const [loading, setloading] = useState(false);
+  const [updatestatus, setUpdatestatus] = useState(false);
   const ctx = useContext(AuthContext);
   const cardData = {
     header: "What Our Families are Saying",
@@ -97,20 +100,28 @@ const Slider1 = (props) => {
     ctx.updateData(data, props.id);
     setTimeout(() => {
       setloading(false);
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 4000)
+    )
   };
 
   return (
     <>
       {ctx.isEditable ? (
+        <>
+        {updatestatus === true && <Update />}
         <div className="row py-3 justify-content-end">
           <button
             className="btn px-5"
             onClick={onSaveHandler}
             style={{
-              background: "#fff",
+              background: "#9e3a8ccc",
               fontSize: "20px",
-              color: "#dc3545",
+              color: "#fff",
               borderRadius: "20px",
               boxShadow: "0 3px 6px #00000036",
             }}
@@ -118,6 +129,7 @@ const Slider1 = (props) => {
             Save<i className="fa fa-save mx-2"></i>{" "}
           </button>
         </div>
+        </>
       ) : (
         <></>
       )}

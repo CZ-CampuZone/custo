@@ -4,9 +4,12 @@ import AuthContext from "../../../Context/Context";
 import Loader from "../../../loader/Loader";
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import clsx from "clsx";
+import { Update } from "../../../loader/Update";
 
 const Card2 = (props) => {
   const [loading, setloading] = useState(false);
+  const [updatestatus, setUpdatestatus] = useState(false);
+
   const ctx = useContext(AuthContext);
   const cardData = {
     header: "Curriculam",
@@ -78,73 +81,77 @@ const Card2 = (props) => {
     });
   };
   let editable = (
-    <section className="culm" id="#curriculam">
-      <div className={styles.curriculamheading}>
-        <input
-          placeholder="Header"
-          id="header"
-          style={{ background: "transparent", outline: "0", border: "none", width: "100%", textAlign: "center" }}
-          onChange={onChange}
-          value={localData.header}
-        />
-      </div>
-      <div className={clsx("container position-relative", styles.curriculam)}>
-        {card.map((details, index) => (
+    <>
+      {updatestatus === true && <Update />}
+      <section className="culm position-relative" id="#curriculam">
+        <div className={styles.curriculamheading}>
+          <input
+            placeholder="Header"
+            id="header"
+            style={{ background: "transparent", outline: "0", border: "none", width: "100%", textAlign: "center" }}
+            onChange={onChange}
+            value={localData.header}
+          />
+        </div>
+        <div className={clsx("container position-relative", styles.curriculam)}>
+          {card.map((details, index) => (
 
-          <div className={styles.curriculamcol} key={index}>
+            <div className={styles.curriculamcol} key={index}>
 
-            <div className={styles.cardin}>
-              <div className={clsx(styles.round, styles.ron3)}>
-                <i className="fa fa-pencil-square icon" aria-hidden="true"></i>
-              </div>
+              <div className={styles.cardin}>
+                <div className={clsx(styles.round, styles.ron3)}>
+                  <i className="fa fa-pencil-square icon" aria-hidden="true"></i>
+                </div>
 
-              <div
-                onClick={() => removeCard(details.id)}
-                style={{
-                  position: "absolute",
-                  top: "0",
-                  left: "0",
-                  zIndex: 20,
-                  cursor: "pointer",
-                }}
-              >
-                <DeleteIcon
+                <div
+                  onClick={() => removeCard(details.id)}
                   style={{
-                    width: "2rem",
-                    height: "2rem",
-                    fill: "#dc3545",
-                    padding: "5px",
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    zIndex: 20,
+                    cursor: "pointer",
                   }}
+                >
+                  <DeleteIcon
+                    style={{
+                      width: "2rem",
+                      height: "2rem",
+                      fill: "#dc3545",
+                      padding: "5px",
+                    }}
+                  />
+                </div>
+                <input
+                  onChange={(e) => onChangeHandler(e, details, index)}
+                  className={styles.inputHeading}
+                  id="title"
+                  name="title"
+                  value={details.title}
+                />
+                <textarea
+                  onChange={(e) => onChangeHandler(e, details, index)}
+                  className={styles.inputPara}
+                  id="para"
+                  name="para"
+                  value={details.para}
                 />
               </div>
-              <input
-                onChange={(e) => onChangeHandler(e, details, index)}
-                className={styles.inputHeading}
-                id="title"
-                name="title"
-                value={details.title}
-              />
-              <textarea
-                onChange={(e) => onChangeHandler(e, details, index)}
-                className={styles.inputPara}
-                id="para"
-                name="para"
-                value={details.para}
-              />
             </div>
-          </div>
-          
-        ))}
-       
+
+          ))}
+
+
+
+
+        </div>
 
         <div className={styles.addCard} onClick={addCard}>
           <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
         </div>
-      
-     
-      </div>
 
-    </section>
+      </section>
+    </>
   );
   const onSaveHandler = () => {
     setloading(true);
@@ -156,7 +163,13 @@ const Card2 = (props) => {
     ctx.updateData(data, props.id);
     setTimeout(() => {
       setloading(false);
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 4000)
+    )
   };
 
   return (
@@ -167,9 +180,9 @@ const Card2 = (props) => {
             className="btn px-5"
             onClick={onSaveHandler}
             style={{
-              background: "#fff",
+              background: "#9e3a8ccc",
               fontSize: "20px",
-              color: "#dc3545",
+              color: "#fff",
               borderRadius: "20px",
               boxShadow: "0 3px 6px #00000036",
             }}
