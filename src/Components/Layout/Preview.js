@@ -118,8 +118,9 @@ const Preview = () => {
 
             <NavLink to="/" target="_blank">
               <button
-                className="btn shadow px-3 "
+                className="btn shadow px-5 py-1"
                 style={{
+                  zoom:"0.8",
                   background: "#9e3a8ccc",
                   color: "#fff",
                   borderRadius: "20px",
@@ -130,9 +131,10 @@ const Preview = () => {
               </button>
             </NavLink>
             <button
-              className="btn px-4"
+              className="btn px-5 py-1"
               onClick={onSaveHandler}
               style={{
+                zoom:"0.8",
                 background: "#9e3a8ccc",
                 color: "#fff",
                 borderRadius: "20px",
