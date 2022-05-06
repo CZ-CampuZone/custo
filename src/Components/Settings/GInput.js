@@ -90,7 +90,7 @@ export const GInput = (props) => {
         disabled={disabled}
         variant={variant}
         placeholder={placeholder}
-        defaultValue={value}
+        value={value}
         inputProps={{
           maxLength: maxLength,
           minLength: minLength,

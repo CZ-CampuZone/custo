@@ -765,11 +765,9 @@ transform: scale(1.5);
 }
 .Login-Edit  .btn {
       color: #fff;
-      border-radius: 4px;
       background: linear-gradient(to right top, #fb051acc,#ed0053c5,#cb1777c5, #9e3a8ccc,#6f498cc9 ) ;
   text-decoration: none;
   transition: all 0.4s;
-      line-height: normal;
       border: none;
   }
   .Login-Edit .modal-login .btn:hover, .Login-Edit .modal-login .btn:focus {
