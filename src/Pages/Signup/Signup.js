@@ -269,7 +269,7 @@ const Signup = (props) => {
                         <div className="form-group col-sm-6">
 
                           <input
-                            type="number"
+                            type="text"
                             name="Phone no"
                             maxlength="10"
                             required="required"
@@ -327,7 +327,7 @@ const Signup = (props) => {
                           {error}
                         </small>
                       )}
-                      <div class="form-group">
+                      <div class="form-group w-50 m-auto">
                         <button
                           onClick={handleSignup}
                           type="submit"
