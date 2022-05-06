@@ -1,0 +1,75 @@
+.test {
+  height: auto;
+  width: 100%;
+  padding: 20px;
+  color: white;
+  background-size: initial;
+  background-image: url("https://www.elegantthemes.com/layouts/wp-content/uploads/2018/11/day_care_bg_01.png"),
+    linear-gradient(135deg, #08aeea 0%, #2ad);
+
+  border-radius: 38px 38px 38px 38px;
+}
+
+.test_text_h2 {
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+}
+.addCard {
+  font-size: 25px;
+  border-radius: 1rem;
+  background: #fff;
+  cursor: pointer;
+  color: black;
+  position: relative;
+  width: 33.33%;
+  padding: 1rem;
+  box-shadow: 2px 2px 2px 3px #ccc;
+}
+.inputPara {
+  width: 100%;
+  padding: 1rem;
+  background: transparent;
+  outline: 0;
+  color: white;
+  font-size: 20px;
+  display: block;
+  border: 1px solid;
+  text-align: justify;
+}
+
+.test_text_p {
+  color: white;
+  line-height: 2em;
+  font-size: 20px;
+}
+
+@media screen and (min-width: 600px) {
+  .test {
+    padding: 50px;
+    height: 350px;
+  }
+
+  .test_text_h2 {
+    color: white;
+    font-size: 3rem;
+    padding: 30px;
+  }
+
+  .tester {
+    width: 80%;
+    padding: 40px;
+  }
+
+  .test_text_p {
+    padding: 50px;
+  }
+}
+
+.inputHeader {
+  width: 100%;
+  padding: 1rem;
+  background: transparent;
+  outline: 0;
+  border: none;
+}
