@@ -167,7 +167,7 @@ const Signup = (props) => {
               alt=""
             />
 
-            <h2 style={{ top: "0", bottom: "0", left: "0", right: "0" }} className=" mt-2 text-white position-absolute  Login-name text-center" >Fickle</h2>
+            <h2 style={{ top: "0", bottom: "0", left: "0", right: "0"}} className=" mt-2 text-white position-absolute   Login-name text-center" >Fickle</h2>
 
 
           </a>
@@ -236,13 +236,13 @@ const Signup = (props) => {
 
                           <input
                             type="text"
-                            name="Websitename"
+                            name="websitename"
                             required="required"
                             className="form-control"
                             value={userCred.websitename}
                             autocomplete="off"
                             id="exampleInputschoolname"
-                            placeholder="SchoolName"
+                            placeholder="Website Name"
                             onChange={onChangeHandler}
 
                           />
@@ -269,8 +269,8 @@ const Signup = (props) => {
                         <div className="form-group col-sm-6">
 
                           <input
-                            type="text"
-                            name="Phone no"
+                            type="number"
+                            name="phoneno"
                             maxlength="10"
                             required="required"
                             className="form-control"
@@ -322,25 +322,26 @@ const Signup = (props) => {
                           </small>
                         )}
                       </div>
-                      {error && (
-                        <small className=" text-right d-block ">
-                          {error}
-                        </small>
-                      )}
-                      <div class="form-group w-50 m-auto">
+                    
+                      <div class="form-group  text-center">
                         <button
                           onClick={handleSignup}
                           type="submit"
-                          class="btn btn-primary btn-lg btn-block login-btn"
+                          style={{
+                            
+                            fontSize:"20px",
+                            color: "#fff",
+                            borderRadius: "20px",
+                            boxShadow: "0 3px 6px #00000036",
+                          }}
+                          class="btn mt-3 px-5 btntclr "
                         >
                           Register Now
                         </button>
                       </div>
                     </form>
                   </div>
-                  <div class="modal-footer">
-                    <p >   </p>
-                  </div>
+               
                 </div>
               </div>
             </div>
