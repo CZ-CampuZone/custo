@@ -11,7 +11,7 @@ const Layout = () => {
   }, []);
   return (
     <>
-      <div className="row">
+      <div className="row ">
         <DraggableList />
         <Preview />
       </div>

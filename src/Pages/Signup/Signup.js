@@ -5,8 +5,53 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../services/firebase";
 import Loader from "../../loader/Loader";
 import { setDoc, doc } from "firebase/firestore";
+import Logo from "../../Assests/fickle1.png";
 import { setUserId } from "firebase/analytics";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
+import { ReactComponent as Bgicon1 } from "../../Assests/xd1.svg";
+import { ReactComponent as Bgicon2 } from "../../Assests/xd2.svg";
+// import { ReactComponent as Bgicon3 } from "../../Assests/xd3.svg";
+import { ReactComponent as Bgicon3 } from "../../Assests/xd4.svg";
+const useStyles = makeStyles({
+  Bgicon1: {
+    position: "fixed",
+    top: "33%",
+    left: "9%"
+  },
+  Bgicon2: {
+
+    top: "-10%",
+    left: "67%",
+    position: "fixed",
+  },
+  Bgicon3: {
+    position: "fixed",
+    bottom: "-8%",
+    left: "-8%",
+
+  },
+
+  Bgicon4: {
+    position: "fixed",
+    right: "37%",
+    bottom: "3%",
+    zoom: "0.6",
+  },
+  Bgicon5: {
+    position: "fixed",
+    right: "5%",
+    bottom: "27%",
+  },
+
+  "@media (max-width: 1200px)": {
+    Bg2: {
+      left: "-73% "
+    }
+  }
+
+});
 const Signup = (props) => {
+  const classes = useStyles();
   const ctx = useContext(AuthContext);
   const [loading, setloading] = useState(false);
   const [error, setError] = useState(null);
@@ -60,11 +105,11 @@ const Signup = (props) => {
             websitename: userCred.websitename,
             password: userCred.password,
           })
-          setDoc(doc(db,"layout",user.uid),{
-            layout:[]
+          setDoc(doc(db, "layout", user.uid), {
+            layout: []
           });
-          setDoc(doc(db,"websitedata",user.uid),{
-            websiteData:{}
+          setDoc(doc(db, "websitedata", user.uid), {
+            websiteData: {}
           });
           setTimeout(() => {
             navigate("/login");
@@ -99,155 +144,208 @@ const Signup = (props) => {
           <Loader />
         </>
       )}
-      <div
-        className="Lg-form w-100 bg-danger  d-flex align-items-center justify-content-center"
-        style={{
-          // backgroundImage: `url("Images/bg.webp")`,
-          backgroundSize: "cover",
-        }}
-      >
-        <div className=" cz-form col-lg-7 col-sm-6 my-2 p-5  bg-white rounded">
-          <img
-            src="https://www.campuzone.com/logo2.png"
-            className="rounded mx-auto d-block "
-            alt="..."
-            style={{ width: "14%" }}
-          />
-          <form>
-            <h3 className="text-center reg-head">Register</h3>
-            <div className="row">
-              <div className="form-group col-sm-6 ">
-                <label for="exampleInputusername text-center ">UserName</label>
-                <input
-                  type="text"
-                  name="username"
-                  required
-                  maxlength="12"
-                  className="form-control"
-                  value={userCred.username}
-                  id="exampleInputusername"
-                  placeholder="userName"
-                  onChange={onChangeHandler}
-                  // ref={passwordRef}
-                  // onChange={(e) => setPassword(e.target.valve)}
-                />
-                {/* <p className="errorMsg">{passwordError}</p> */}
-              </div>
-              <div className="form-group col-sm-6">
-                <label for="exampleInputschoolname text-center ">
-                  Website name 
-                </label>
-                <input
-                  type="text"
-                  name="websitename"
-                  required
-                  className="form-control"
-                  value={userCred.websitename}
-                  id="exampleInputschoolname"
-                  placeholder="SchoolName"
-                  onChange={onChangeHandler}
-                  // ref={passwordRef}
-                  // onChange={(e) => setPassword(e.target.valve)}
-                />
-                {/* <p className="errorMsg">{passwordError}</p> */}
-              </div>
-              <div className="form-group col-sm-6">
-                <label for="exampleInputEmail1 text-center ">
-                  Email address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  value={userCred.email}
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter email"
-                  onChange={onChangeHandler}
-                  // onChange={(e) => setEmail(e.target.valve)}
-                />
-                {/* <p className="errorMsg">{emailError}</p> */}
-              </div>
 
-              <div className="form-group col-sm-6">
-                <label for="exampleInputphone text-center ">PhoneNo</label>
-                <input
-                  type="number"
-                  name="phoneno"
-                  maxlength="10"
-                  required
-                  className="form-control"
-                  value={userCred.phoneno}
-                  id="exampleInputschoolname"
-                  placeholder="PhoneNo"
-                  onChange={onChangeHandler}
-                  // ref={passwordRef}
-                  // onChange={(e) => setPassword(e.target.valve)}
-                />
-                {/* <p className="errorMsg">{passwordError}</p> */}
-              </div>
-              <div className="form-group col-sm-6 ">
-                <label for="exampleInputPassword1 text-center ">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  required
-                  className="form-control"
-                  value={userCred.password}
-                  id="exampleInputPassword1"
-                  placeholder="Password"
-                  onChange={onChangeHandler}
-                  // ref={passwordRef}
-                  // onChange={(e) => setPassword(e.target.valve)}
-                />
-                {/* <p className="errorMsg">{passwordError}</p> */}
-              </div>
-              <div className="form-group col-sm-6 ">
-                <label for="exampleInputPassword2 text-center ">
-                  {" "}
-                  Confirm Password
-                </label>
-                <input
-                  type="password"
-                  name="confirmpassword"
-                  required
-                  className="form-control"
-                  value={userCred.confirmpassword}
-                  id="exampleInputPassword1"
-                  placeholder="Confirm Password"
-                  onChange={onChangeHandler}
-                  // ref={passwordRef}
-                  // onChange={(e) => setPassword(e.target.valve)}
-                />
-                {/* <p className="errorMsg">{passwordError}</p> */}
-              </div>
 
-              {error && (
-                <small className="text-danger text-right d-block pt-2">
-                  {error}
-                </small>
-              )}
+
+      <div className=" Login-Edit overlay" style={{ height: "100vh" }}>
+        <Bgicon1 className={classes.Bgicon1} />
+
+        <Bgicon1 className={classes.Bgicon2} />
+        {/* <Bgicon2 className={classes.Bgicon2} /> */}
+
+        <Bgicon3 className={classes.Bgicon3} />
+        <Bgicon3 className={classes.Bgicon4} />
+        <Bgicon3 className={classes.Bgicon5} />
+
+        <nav class="navbar navbar-expand-lg navbar-light  headercol ">
+          <a class="navbar-brand position-relative" href="#">
+            <img
+              style={{ width: "8%" }}
+              className="img-thumbnail d-inline"
+              src={Logo}
+
+              alt=""
+            />
+
+            <h2 style={{ top: "0", bottom: "0", left: "0", right: "0" }} className=" mt-2 text-white position-absolute  Login-name text-center" >Fickle</h2>
+
+
+          </a>
+
+        </nav>
+
+
+
+        {/* // <div class=" shadow position-absolute" style={{ zIndex: "999999999", left: "0", right: "0", top: "0", bottom: "0" }} > */}
+        <div className="row">
+          <div className="col-md-5 marg">
+            <div className="col-md-7 m-auto">
+              <h2 className="content text-center">
+                Your<br /> Business<br />  At<br />  Your<br />  Fingertips
+              </h2>
+              {/* <p className="align-top pcolor mt-3">
+            Create the perfect palette or get inspired by thousands of
+            beautiful color schemes.
+          </p> */}
+              {/* <button onClick={() => { setModalstate(true) }} type="button" href="#myModal" class="btn px-4 btntclr mt-3" data-toggle="modal">
+              Login
+            </button> */}
             </div>
-            <div className="btnContainer ">
-              <div className="text-center my-2">
-                <button
-                  onClick={handleSignup}
-                  style={{
-                    borderRadius: "20px",
-                    fontWeight: "600",
-                    color: "#fff",
-                    boxShadow: "0 3px 6px #00000036",
-                    backgroundColor: "#dc3545",
-                  }}
-                  className="btn   mt-2 mx-2 px-3"
-                >
-                  <i className="fa fa-graduation-cap mx-1" aria-hidden="true"></i>{" "}
-                  Register Now
-                </button>
+
+          </div>
+          <div className="col-md-7  mt-5 ">
+            <div className="shadow">
+              <div class="mt-4 modal-signup" style={{ maxWidth: "562px" }}>
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Hello Buddy!</h4>
+                    {/* <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                    onClick={() => { setModalstate(false) }}
+                  >
+                    &times;
+                  </button> */}
+                  </div>
+                  <div class="modal-body">
+                    <form
+                      action="/examples/actions/confirmation.php"
+                      method="post"
+                    >
+                      <div className="row">
+                        <div className="form-group col-sm-6 ">
+
+                          <input
+                            type="text"
+                            name="username"
+                            required="required"
+                            maxlength="12"
+                            autocomplete="off"
+                            className="form-control"
+                            value={userCred.username}
+                            id="Inputusername"
+                            placeholder="Username"
+                            onChange={onChangeHandler}
+
+                          />
+
+                        </div>
+                        <div className="form-group col-sm-6">
+
+                          <input
+                            type="text"
+                            name="Websitename"
+                            required="required"
+                            className="form-control"
+                            value={userCred.websitename}
+                            autocomplete="off"
+                            id="exampleInputschoolname"
+                            placeholder="SchoolName"
+                            onChange={onChangeHandler}
+
+                          />
+
+                        </div>
+                        <div className="form-group col-sm-6">
+
+                          <input
+                            type="email"
+                            name="email"
+                            required="required"
+                            value={userCred.email}
+                            className="form-control"
+                            id="exampleInputEmail1"
+                            aria-describedby="emailHelp"
+                            placeholder="Enter email"
+                            autocomplete="off"
+                            onChange={onChangeHandler}
+
+                          />
+
+                        </div>
+
+                        <div className="form-group col-sm-6">
+
+                          <input
+                            type="number"
+                            name="Phone no"
+                            maxlength="10"
+                            required="required"
+                            className="form-control"
+                            value={userCred.phoneno}
+                            id="exampleInputschoolname"
+                            placeholder="PhoneNo"
+                            autocomplete="off"
+                            onChange={onChangeHandler}
+                          // ref={passwordRef}
+                          // onChange={(e) => setPassword(e.target.valve)}
+                          />
+                          {/* <p className="errorMsg">{passwordError}</p> */}
+                        </div>
+                        <div className="form-group col-sm-6 ">
+
+                          <input
+                            type="password"
+                            name="password"
+                            required="required"
+                            className="form-control"
+                            value={userCred.password}
+                            id="InputPassword1"
+                            placeholder="Password"
+                            onChange={onChangeHandler}
+                            autocomplete="off"
+                          />
+
+                        </div>
+                        <div className="form-group col-sm-6 ">
+
+                          <input
+                            autocomplete="off"
+                            type="password"
+                            name="confirmpassword"
+                            required="required"
+                            className="form-control"
+                            value={userCred.confirmpassword}
+                            id="exampleInputPassword1"
+                            placeholder="Confirm Password"
+                            onChange={onChangeHandler}
+
+                          />
+
+                        </div>
+
+                        {error && (
+                          <small className="text-danger text-right d-block pt-2">
+                            {error}
+                          </small>
+                        )}
+                      </div>
+                      {error && (
+                        <small className=" text-right d-block ">
+                          {error}
+                        </small>
+                      )}
+                      <div class="form-group">
+                        <button
+                          onClick={handleSignup}
+                          type="submit"
+                          class="btn btn-primary btn-lg btn-block login-btn"
+                        >
+                          Register Now
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <p >   </p>
+                  </div>
+                </div>
               </div>
             </div>
-          </form>
+            {/* <img src="https://s3-alpha.figma.com/hub/file/314494079/976a59d3-cf17-4dcc-a3d8-6651da344ee4-cover" /> */}
+          </div>
         </div>
       </div>
     </>

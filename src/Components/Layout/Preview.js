@@ -9,10 +9,13 @@ import { useDrop } from "react-dnd";
 import clsx from"clsx"
 import WebFont from "webfontloader";
 import { ReactComponent as DeleteIcon } from "../../Assests/delete.svg";
+import { Update } from "../../loader/Update";
+
 
 const Preview = () => {
   const ctx = useContext(AuthContext);
   const [mountedData, setMountedData] = useState([]);
+  const [updatestatus, setUpdatestatus] = useState(false);
   const [loading, setloading] = useState(false);
   useEffect(() => {
     setMountedData(ctx.layoutFlow ? ctx.layoutFlow : []);
@@ -62,7 +65,13 @@ const Preview = () => {
     updateDoc(doc(db, "layout", ctx.userId), { layout: tempArr });
     setTimeout(() => {
       setloading(false);
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 4000)
+    )
   };
   useEffect(() => {
     WebFont.load({
@@ -80,7 +89,7 @@ const Preview = () => {
         <h2 className="text-center">Drag and Drop Here</h2>
         <div className="d-flex justify-content-center">
           <lottie-player
-            src="https://assets1.lottiefiles.com/packages/lf20_4hlbkvut.json"
+            src="https://assets6.lottiefiles.com/packages/lf20_pgeevipp.json"
             background="transparent"
             speed="1"
             style={{ width: "500px", height: "500px", transform: "scale(1.8)", fontfamily:"raleway" }}
@@ -93,55 +102,58 @@ const Preview = () => {
   };
   return (
     <>
+      {updatestatus === true && <div style={{zoom:"0.7"}}> <Update /></div>}
       {loading && (
         <>
           <Loader />
         </>
       )}
       <div
-        className="col-10 p-2 special-scroll"
+        className="col-10 m-0 pt-4 p-2 special-scroll"
         style={{ height: "91vh", overflowX: "hidden", overflowY: "auto" }}
       >
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <div className="row px-4  pt-2 pb-4 justify-content-between">
+          
+
+            <NavLink to="/" target="_blank">
+              <button
+                className="btn shadow px-3 "
+                style={{
+                  background: "#9e3a8ccc",
+                  color: "#fff",
+                  borderRadius: "20px",
+                  boxShadow: "0 3px 6px #00000036",
+                }}
+              >
+                Preview<i className="fa fa-eye mx-2"></i>
+              </button>
+            </NavLink>
             <button
-              className="btn px-5"
+              className="btn px-4"
               onClick={onSaveHandler}
               style={{
-                background: "#fff",
-                color: "#dc3545",
+                background: "#9e3a8ccc",
+                color: "#fff",
                 borderRadius: "20px",
                 boxShadow: "0 3px 6px #00000036",
               }}
             >
               Save<i className="fa fa-save mx-2"></i>{" "}
             </button>
-
-            <NavLink to="/" target="_blank">
-              <button
-                className="btn shadow px-3  "
-                style={{
-                  background: "#fff",
-                  color: "#dc3545",
-                  borderRadius: "20px",
-                  boxShadow: "0 3px 6px #00000036",
-                }}
-              >
-                Fullpage View<i className="fa fa-eye mx-2"></i>
-              </button>
-            </NavLink>
           </div>
           <Droppable droppableId="mounted">
-            {(provided) => (
+            {(provided, snapshot ) => (
               <div
                 className="mounted px-4"
                 ref={provided.innerRef}
-                {...provided.droppableProps}
-              >
+                {...provided.droppableProps}   >
+              
                 <div
-                  className={clsx(ctx.layoutFlow?.length > 0 ? "border" : "")}
+                  className="p-2"
                   ref={drop}
-                  style={{ zoom: "0.6" }}
+                  style={{ zoom: "0.6",border: ctx.layoutFlow?.length > 0 ?"1px solid #9e3a8ccc":""}}
+                
                 >
                   {ctx.layoutFlow?.length === 0 ? <NoLayout /> : <></>}
                   {mountedData.map((item, index) => (
@@ -150,12 +162,13 @@ const Preview = () => {
                       draggableId={item.uniqId}
                       index={index}
                     >
-                      {(provided) => (
+                      {(provided ) => (
                         <div
                           className="position-relative"
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
+                        
                         >
                           <div
                             onClick={() => deleteHandler(item.uniqId)}
@@ -180,6 +193,7 @@ const Preview = () => {
                             component={item.c}
                             id={item.uniqId}
                           />
+                        
                         </div>
                       )}
                     </Draggable>

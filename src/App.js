@@ -4,7 +4,6 @@ import Home from "./Pages/Index/Home";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup";
 import Dashboard from "./Pages/Editable/Dashboard";
-import Card2 from "./Components/Sections/Card/Card2";
 import { useContext } from "react";
 import AuthContext from "./Context/Context";
 

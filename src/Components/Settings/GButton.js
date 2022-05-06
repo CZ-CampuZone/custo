@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     transition: "all 0.2s ease",
     border: "none",
     outline: "none",
+    margin:"10px",
     textTransform: "initial",
     "&:focus, &:active": {
       border: "none",
@@ -21,19 +22,19 @@ const useStyles = makeStyles({
     },
   },
   primary: {
-    background: "#dc3545",
+    background: "rgba(158, 58, 140, 0.8)",
     color: "#fff",
     "&:hover": {
       background: "#fff",
-      color: "#dc3545",
+      color: "rgba(158, 58, 140, 0.8)",
       "& $buttonTag": {
-        background: "#dc3545",
+        background: "rgba(158, 58, 140, 0.8)",
         color: "#fff",
       },
     },
     "& $buttonTag": {
       background: "#fff",
-      color: "#dc3545",
+      color: "rgba(158, 58, 140, 0.8)",
     },
   },
   buttonTag: {

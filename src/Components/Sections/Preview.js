@@ -19,11 +19,11 @@ const Preview = (props) => {
       }}
     >
       <h3 className="text-center p-2" style={{ color: "var(--primary)" }}>
-        Campuzone provides you with various options
+        Fickle provides you with various options
       </h3>
       {LocalSections.map((single, index) => (
-        <div key={index * 11}>
-          <h6 className="text-primary text-capitalize px-2 py-3">
+        <div style={{boxShadow:"rgba(0, 0, 0, 0.1) 0px 10px 50px"}} className="p-2 rounded  my-2" key={index * 11}>
+          <h6 style={{color:"rgba(158, 58, 140, 0.8)"}} className=" text-capitalize px-2 py-3">
             {single.group}
           </h6>
           <div className="row">
