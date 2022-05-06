@@ -765,14 +765,13 @@ transform: scale(1.5);
 }
 .Login-Edit  .btn {
       color: #fff;
-      border-radius: 4px;
       background: linear-gradient(to right top, #fb051acc,#ed0053c5,#cb1777c5, #9e3a8ccc,#6f498cc9 ) ;
   text-decoration: none;
   transition: all 0.4s;
-      line-height: normal;
+    
       border: none;
   }
-  .Login-Edit  .btn:hover,  .btn:focus {
+  .Login-Edit  .btn:hover,  .Login-Edit  .btn:focus {
   background: linear-gradient(to right top, #6f498cc9, #9e3a8ccc, #cb1777c5, #ed0053c5, #fb051acc);
   outline: none;
 }
