@@ -15,7 +15,7 @@ export const Layout = [
   { c: Card1, id: "Card1" },
   // { c: Card2, id: "Card2" },
   { c: Gallery1, id: "Gallery1" },
-  { c: Slider1, id: "Slider1" },
+  // { c: Slider1, id: "Slider1" },
   { c: Form1, id: "Form1" },
   { c: Footer1, id: "Footer1" },
 ];

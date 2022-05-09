@@ -1,13 +1,62 @@
 import React, { useContext, useState } from "react";
-import styles from "./Slider1.module.css";
+
 import AuthContext from "../../../Context/Context";
 import Loader from "../../../loader/Loader";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import clsx from "clsx";
+import { createStyles, makeStyles } from "@mui/styles";
+import { Update } from "../../../loader/Update";
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
+const useStyles = makeStyles(() =>
+  createStyles({
+    testiMonials: {
+      padding: "100px 0",
+    },
+    testCard: {
+      borderBottom: "3px #edb40b solid !important",
+      transition: "0.5s",
+      marginTop: "60px",
+    },
+    testIcon: {
+      backgroundColor: "#edb40b",
+      color: "#ffffff",
+      width: "75px",
+      height: "75px",
+      lineHeight: "75px",
+      margin: "-40px auto 0 auto",
+    },
+    addCard: {
+      borderRadius: "1rem",
+      position: "absolute",
+      background: "#fff",
+      padding: "1rem 2rem",
+      top: "1rem",
+      color: "#9e3a8ccc",
+      cursor: "pointer",
+      right: "1rem",
+      boxShadow: "2px 2px 3px 0 #ccc",
+    },
+    editablePara:{
+      width: "100%",
+      background: "transparent",
+      outline: 0,
+      border: "none",
+      textAlign: "center",
 
+    },
+    editableName:{
+      
+      background: "transparent",
+      outline: 0,
+      border: "none", 
+    }
+    
+  })
+);
 const Slider1 = (props) => {
+  const classes = useStyles();
+  const [updatestatus, setUpdatestatus] = useState(false);
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
   const cardData = {
@@ -15,14 +64,17 @@ const Slider1 = (props) => {
     data: [
       {
         para: "It is a long established fact that a reader will be distracted by the readable",
+        name: "Mohamed Nady",
         id: 0,
       },
       {
         para: "It is a long established fact that a reader will be distracted by the readable",
+        name: "Mohamed Nady",
         id: 1,
       },
       {
         para: "It is a long established fact that a reader will be distracted by the readable",
+        name: "Mohamed Nady",
         id: 2,
       },
     ],
@@ -42,39 +94,21 @@ const Slider1 = (props) => {
       };
     });
   };
-  const options = {
-    loop: false,
-    margin: 50,
-    dots: true,
-    nav: true,
-    autoplay: true,
-    autoplayTimeout: 4000,
-    autoplaySpeed: 2000,
-    autoplayHoverPause: true,
-    items: 1,
-  };
 
   const onChangeHandler = (e, details, index) => {
+    const tempEventInputs = JSON.parse(JSON.stringify(details));
+    if (e.target) {
+      tempEventInputs[e.target.id] = e.target.value;
+    }
     setCard((prevState) => {
-      let updatedData = null;
-      if (e.target.id === "heading") {
-        updatedData = {
-          ...details,
-          heading: e.target.value,
-        };
-      } else {
-        updatedData = {
-          ...details,
-          content: e.target.value,
-        };
-      }
-      prevState[index] = updatedData;
+      prevState[index] = tempEventInputs;
       return [...prevState];
     });
   };
   const addCard = () => {
     let updatedData = {
       para: "It is a long established fact that a reader will be distracted by the readable",
+      name: "Mohamed Nady",
       id: card.length,
     };
     setCard((prevState) => {
@@ -93,12 +127,91 @@ const Slider1 = (props) => {
       header: localData.header,
       data: card,
     };
-
     ctx.updateData(data, props.id);
     setTimeout(() => {
       setloading(false);
-    }, 2000);
+      setUpdatestatus(true);
+    }, 2000).then(
+      setTimeout(() => {
+        setUpdatestatus(false);
+      }, 4000)
+    );
   };
+    let editable = (
+      <>
+        {updatestatus === true && <Update />}
+
+        {card.map((details, index) => (
+            <div class="col-md-6 col-lg-4" key={index}>
+            <div
+              className={clsx(
+                classes.testCard,
+                " border-light bg-light position-relative text-center"
+              )}
+            >
+              <i
+                class={clsx(
+                  classes.testIcon,
+                  "fa fa-quote-left fa-3x card-img-top rounded-circle"
+                )}
+                aria-hidden="true"
+              ></i>
+          <div class="card-body blockquote " >
+            <div
+              onClick={() => removeCard(details.id)}
+              style={{
+                position: "absolute",
+                top: "0",
+                left: "0",
+                zIndex: 20,
+                cursor: "pointer",
+              }}
+            >
+              <DeleteIcon
+                style={{
+                  width: "2rem",
+                  height: "2rem",
+                  fill: "#dc3545",
+                  padding: "5px",
+                }}
+              />
+            </div>
+            <p class="card-text">
+              <textarea
+              rows={3}
+                onChange={(e) => onChangeHandler(e, details, index)}
+                className={classes.editablePara}
+                id="para"
+                name="para"
+                placeholder="para"
+                value={details.para}
+              />
+            </p>
+            <div className="text-center">
+            <footer class="blockquote-footer ">
+              <cite title="Source Title">
+                {" "}
+                <input
+                  onChange={(e) => onChangeHandler(e, details, index)}
+                  className={classes.editableName}
+                  id="name"
+                  name="name"
+                  placeholder="name"
+                  value={details.name}
+                />
+              </cite>
+            </footer>
+            </div>
+          </div>
+          </div>
+          </div>
+        ))}
+        <div className={classes.addCard} onClick={addCard}>
+          <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
+        </div>
+      </>
+    );
+
 
   return (
     <>
@@ -126,78 +239,44 @@ const Slider1 = (props) => {
           <Loader />
         </>
       )}
-      <section>
-        <div
-          className={clsx(
-            ctx.isEditable
-              ? "h-100 col-md-9 col-lg-7 m-auto"
-              : "col-md-9 col-lg-7 m-auto",
-            styles.test
-          )}
-        >
-          {ctx.isEditable ? (
-            <div className="text-center ">
-              <input
-                className={clsx(styles.test_text_h2, styles.inputHeader)}
-                placeholder="Header"
-                id="header"
-                onChange={onChange}
-                value={localData.header}
-              />
-              <div className="d-flex justify-content-center mb-5">
-              <div className={styles.addCard} onClick={addCard}>
-                <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
-              </div>
-              </div>
-              {card.map((details, index) => (
+      <div class={clsx(classes.testiMonials, " text-center")}>
+        <div class="container position-relative">
+          <h2 className=" mb-5">Testimonials</h2>
+          <div class="row">
+             {ctx.isEditable ? (
+                    editable
+                  ) : (
+                    <>
+            {card.map((data, index) => (
+              <div class="col-md-6 col-lg-4" key={index}>
                 <div
-                  className="row position-relative justify-content-center align-items-center mb-2"
-                  key={index}
-                > <div
-                  onClick={() => removeCard(details.id)}
-                  style={{
-                    position: "absolute",
-                    top: "0",
-                    left: "0",
-                    zIndex: 20,
-                    cursor: "pointer",
-                  }}
+                  className={clsx(
+                    classes.testCard,
+                    " border-light bg-light text-center"
+                  )}
                 >
-                    <DeleteIcon
-                      style={{
-                        width: "2rem",
-                        height: "2rem",
-                        fill: "#dc3545",
-                        padding: "5px",
-                      }}
-                    />
-                  </div>
-                  <h5 className="pr-4">{"Slider " + `${index + 1}`}</h5>
-                  <textarea
-                    key={index}
-                    onChange={(e) => onChangeHandler(e, details, index)}
-                    className={styles.inputPara}
-                    id="para"
-                    name="para"
-                    style={{ width: "75%" }}
-                    defaultValue={details.para}
-                  >
-                  </textarea>
+                  <i
+                    class={clsx(
+                      classes.testIcon,
+                      "fa fa-quote-left fa-3x card-img-top rounded-circle"
+                    )}
+                    aria-hidden="true"
+                  ></i>
+                 
+                    <div class="card-body blockquote">
+                      <p class="card-text">{data.para}</p>
+                      <footer class="blockquote-footer">
+                        <cite title="Source Title">{data.name}</cite>
+                      </footer>
+                    </div>
+                   
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center">
-              <h2 className={styles.test_text_h2}>{localData.header}</h2>
-              <OwlCarousel className="owl-theme" {...options}>
-                {card.map((details, index) => (
-                  <p key={index}>{details.para}</p>
-                ))}
-              </OwlCarousel>
-            </div>
-          )}
+              </div>
+            ))}
+             </>)}
+          </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };

@@ -1,8 +1,6 @@
-import "./Footer1.css";
+
 import React, { useContext, useState } from "react";
 import { createStyles, makeStyles } from "@mui/styles";
-import { Typography } from "@mui/material";
-import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import AuthContext from "../../../Context/Context";
 import Loader from "../../../loader/Loader";
@@ -40,8 +38,16 @@ const useStyles = makeStyles(() =>
       cursor: "pointer",
       right: "1rem",
       boxShadow: "2px 2px 3px 0 #ccc",
+    }, 
+    blockDark: {
+    backgroundColor: "#0d151e",
     },
-
+    Topcurvedbg: {
+    height: "150px!important",
+    backgroundImage: "url('https://keenthemes.com/images/misc/curve-dark-top-bg.png')",
+    }   
+    
+      
     // "@media (max-width: 600px)": {
     //   card: {
     //     width: "100%",
@@ -55,17 +61,13 @@ export const Footer1 = (props) => {
   const ctx = useContext(AuthContext);
   const cardData = {
     copyright: "www.supermarket.com",
-    head1: "Fast Delivery",
-    tag1: "For All the oders over 200",
-    head2: "Fast Delivery",
-    tag2: "For All the oders over 200",
-    head3: "Fast Delivery",
-    tag3: "For All the oders over 200",
-    head4: "Fast Delivery",
-    tag4: "For All the oders over 200",
+
     data: [
       {
-        header: "Intro header 1",
+        
+        header: "Intro header 2",
+        headline: "Fast Delivery",
+        tagline: "For All the oders over 200",
         line1: "loerum",
         line2: "loerum",
         line3: "loerum",
@@ -73,7 +75,10 @@ export const Footer1 = (props) => {
         id: "0",
       },
       {
+        
         header: "Intro header 2",
+        headline: "Fast Delivery",
+        tagline: "For All the oders over 200",
         line1: "loerum",
         line2: "loerum",
         line3: "loerum",
@@ -81,7 +86,10 @@ export const Footer1 = (props) => {
         id: "1",
       },
       {
+        
         header: "Intro header 2",
+        headline: "Fast Delivery",
+        tagline: "For All the oders over 200",
         line1: "loerum",
         line2: "loerum",
         line3: "loerum",
@@ -89,7 +97,10 @@ export const Footer1 = (props) => {
         id: "2",
       },
       {
+        
         header: "Intro header 2",
+        headline: "Fast Delivery",
+        tagline: "For All the oders over 200",
         line1: "loerum",
         line2: "loerum",
         line3: "loerum",
@@ -115,35 +126,12 @@ export const Footer1 = (props) => {
     });
   };
   const onChangeHandler = (e, details, index) => {
-    setLocalData((prevState) => {
-      let updatedData = null;
-      if (e.target.id === "header") {
-        updatedData = {
-          ...details,
-          header: e.target.value,
-        };
-      } else if (e.target.id === "line1") {
-        updatedData = {
-          ...details,
-          line1: e.target.value,
-        };
-      } else if (e.target.id === "line2") {
-        updatedData = {
-          ...details,
-          line2: e.target.value,
-        };
-      } else if (e.target.id === "line3") {
-        updatedData = {
-          ...details,
-          line3: e.target.value,
-        };
-      } else if (e.target.id === "line4") {
-        updatedData = {
-          ...details,
-          line4: e.target.value,
-        };
-      }
-      prevState[index] = updatedData;
+    const tempEventInputs = JSON.parse(JSON.stringify(details));
+    if (e.target) {
+      tempEventInputs[e.target.id] = e.target.value;
+    }
+    setCard((prevState) => {
+      prevState[index] = tempEventInputs;
       return [...prevState];
     });
   };
@@ -342,14 +330,7 @@ export const Footer1 = (props) => {
     setloading(true);
     let data = {
       header: localData.header,
-      head1: localData.head1,
-      head2: localData.head2,
-      head3: localData.head3,
-      head4: localData.head4,
-      tag1: localData.tag1,
-      tag2: localData.tag2,
-      tag3: localData.tag3,
-      tag4: localData.tag4,
+
       data: card,
     };
 
@@ -392,82 +373,30 @@ export const Footer1 = (props) => {
         </>
       )}
 
-      <footer class="footer block-dark mt-n15 mt-lg-n30 ">
-        <div class="h-150px  bgi-no-repeat bgi-position-x-center bgi-position-y-top bgi-size-cover dark-top-curved-bg"></div>
+      <footer className={classes.blockDark} >
+        <div className={classes.Topcurvedbg}></div>
         {ctx.isEditable ? (
           editable
         ) : (
           <>
-            <div className="row w-100 m-auto p-2">
-              <div className="col-md-3  d-md-flex justify-content-center">
-                <div>
-                  <i
-                    style={{
-                      fontSize: "25px ",
-                      padding: "5px",
-                      background: "#ffc107",
-                      borderRadius: "50px",
-                      color: "#0d151e",
-                    }}
-                    class="fa fa-car mx-1  d-inline fa-lg"
-                  ></i>
-                  <h5 className="d-inline text-white">{localData.head1}</h5>
-                  <p className="text-white">{localData.tag1}</p>
-                </div>
-              </div>
-              <div className="col-md-3 d-md-flex  justify-content-center">
-                <div>
-                  <i
-                    style={{
-                      fontSize: "25px ",
-                      padding: "5px",
-                      background: "#ffc107",
-                      borderRadius: "50px",
-                      color: "#0d151e",
-                    }}
-                    class="fas fa-store-slash  mx-1  d-inline fa-lg"
-                  ></i>
-                  <h5 className="d-inline text-white">{localData.head2}</h5>
-                  <p className="text-white">{localData.tag2}</p>
-                </div>
-              </div>
-              <div className="col-md-3 d-md-flex  justify-content-center">
-                <div>
-                  <i
-                    style={{
-                      fontSize: "25px ",
-                      padding: "5px",
-                      background: "#ffc107",
-                      borderRadius: "50px",
-                      color: "#0d151e",
-                    }}
-                    class="	far fa-credit-card mx-1  d-inline fa-lg"
-                  ></i>
-                  <h5 className="d-inline text-white">{localData.head3}</h5>
-                  <p className="text-white">{localData.tag3}</p>
-                </div>
-              </div>
-              <div className="col-md-3  d-md-flex justify-content-center">
-                <div>
-                  <i
-                    style={{
-                      fontSize: "25px ",
-                      padding: "5px",
-                      background: "#ffc107",
-                      borderRadius: "50px",
-                      color: "#0d151e",
-                    }}
-                    class="fas fa-leaf mx-1  d-inline fa-lg"
-                  ></i>
-                  <h5 className="d-inline text-white">{localData.head4}</h5>
-                  <p className="text-white">{localData.tag4}</p>
-                </div>
-              </div>
-            </div>
-            <div class="container mt-n15">
-              <div class="row">
+            <div class="container ">
+              <div class="row py-3">
                 {card.map((data, index) => (
-                  <div key={index} class="col-6 col-lg">
+                  <div key={index} class="col-md-3">
+                    <div>
+                      <i
+                        style={{
+                          fontSize: "25px ",
+                          padding: "5px",
+                          background: "#ffc107",
+                          borderRadius: "50px",
+                          color: "#0d151e",
+                        }}
+                        class="fa fa-car mx-1  d-inline fa-lg"
+                      ></i>
+                      <h5 className="d-inline text-white">{data.headline}</h5>
+                      <p className="text-white">{data.tagline}</p>
+                    </div>
                     <div class="pb-10">
                       <h3
                         style={{ color: "#ffc107" }}

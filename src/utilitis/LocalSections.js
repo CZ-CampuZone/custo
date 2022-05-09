@@ -31,10 +31,10 @@ export const LocalSections = [
     group: "Gallery",
     variants: [{ c: Gallery1, id: "Gallery1" }],
   },
-  {
-    group: "Testimonal",
-    variants: [{ c: Slider1, id: "Slider1" }],
-  },
+  // {
+  //   group: "Testimonal",
+  //   variants: [{ c: Slider1, id: "Slider1" }],
+  // },
   {
     group: "Contact",
     variants: [{ c: Form1, id: "Form1" }],
