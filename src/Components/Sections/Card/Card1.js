@@ -44,6 +44,27 @@ const useStyles = makeStyles(() =>
       right: "1rem",
       boxShadow: "2px 2px 3px 0 #ccc",
     },
+    inputFile: {
+      width: 0,
+      height: 0,
+      opacity: 0,
+      zIndex: "0",
+    },
+    inputLabel: {
+      position: "absolute",
+      background: "#fff",
+      width: "2.5rem",
+      height: "2.5rem",
+      padding: "0.3rem",
+      bottom: "0",
+      right: "0",
+      zIndex: 20,
+      textAlign: "center",
+      cursor: "pointer",
+      "& i": {
+        fontSize: "1.75rem",
+      },
+    },
   })
 );
 export const Card1 = (props) => {
@@ -114,7 +135,40 @@ export const Card1 = (props) => {
       return [...prevState];
     });
   };
-  
+  const onImageChange = (e, i) => {
+    // setError(null);
+
+    let selected = e.target.files[0];
+
+    if (!selected) {
+      // setError("Please select file");
+      return;
+    }
+
+    if (!selected.type.includes("image")) {
+      // setError("Please select image file");
+      return;
+    }
+    const storage = getStorage();
+    const uploadPath = `images/${card[i].title + card[i].id}`; // upload path
+    const storageRef = ref(storage, uploadPath); // create refernce to store data
+
+    uploadBytes(storageRef, selected).then((snapshot) => {
+      // console.log(snapshot);
+      getDownloadURL(storageRef).then((url) => {
+        setcardData((prevState) => {
+          let updatedData = null;
+          updatedData = {
+            ...prevState[i],
+            img: url,
+          };
+          prevState[i] = updatedData;
+          return [...prevState];
+        });
+      });
+    });
+    // setError(null);
+  };
   const addCard = () => {
     let updatedData = {
       title: "",
@@ -185,6 +239,16 @@ export const Card1 = (props) => {
               placeholder="title"
               value={details.title}
             />
+              <input
+            type="file"
+            onChange={(e) => onImageChange(e, index)}
+            className={classes.inputFile}
+            id={details.id}
+            name={details.title}
+          />
+          <label className={classes.inputLabel} htmlFor={details.id}>
+            <i className="fa fa-upload"></i>
+          </label>
           </div>
         ))}
       </div>
