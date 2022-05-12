@@ -27,7 +27,6 @@ const useStyles = makeStyles(() =>
       textAlign: "center",
     },
     introHeader:{
-      
       background: "transparent",
       outline: 0,
       border: "none",

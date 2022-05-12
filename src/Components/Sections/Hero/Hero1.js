@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { createStyles, makeStyles } from "@mui/styles";
 import { Typography } from "@mui/material";
 import OwlCarousel from "react-owl-carousel";
-import{ Update} from "../../../loader/Update"
+import { Update } from "../../../loader/Update";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import AuthContext from "../../../Context/Context";
 import Loader from "../../../loader/Loader";
@@ -18,7 +18,12 @@ const useStyles = makeStyles(() =>
       background: "url(" + Background + ")",
       backgroundSize: "cover",
     },
-    slider: {},
+    slider: {
+      // "& .button.owl-next": {
+      //   position: "absolute",
+      //   background:"red"
+      // },
+    },
     item: {
       backgroundSize: "cover",
       height: "400px",
@@ -27,15 +32,29 @@ const useStyles = makeStyles(() =>
       backgroundSize: "cover",
       height: "400px",
     },
+    editableHead: {
+      outline: "0",
+      width: "100%",
+      fontSize: "40px",
+      background: "transparent",
+      border: "none",
+    },
+    editablePara: {
+      outline: "0",
+      width: "50%",
+      background: "transparent",
+      border: "none",
+    },
   })
 );
 
 export const Hero1 = (props) => {
-    const classes = useStyles();
-    const options = {
-    loop: false,
+  const classes = useStyles();
+  const options = {
+    loop: true,
     margin: 0,
     dots: false,
+    nav: true,
     autoplay: false,
     items: 1,
   };
@@ -94,7 +113,10 @@ export const Hero1 = (props) => {
         className={clsx(classes.banner, "row m-0 justify-content-between p-5")}
       >
         <div className={clsx(classes.slider, "col-md-9 p-2 position-relative")}>
-          <OwlCarousel className="owl-theme" {...options}>
+          <OwlCarousel
+            className={clsx(classes.slider, "owl-theme")}
+            {...options}
+          >
             {card.map((item, index) => (
               <div
                 key={index}
@@ -104,14 +126,28 @@ export const Hero1 = (props) => {
                 <input
                   type="text"
                   name="title"
+                  className={classes.editableHead}
                   value={item.title}
                   onChange={onChangeHandler}
                 />
+                <br />
                 <input
                   type="text"
                   name="para"
+                  className={classes.editablePara}
                   value={item.para}
                   onChange={onChangeHandler}
+                />
+                <i
+                  style={{ fontSize: "50px", color: "#edb40b" }}
+                  class="fas fa-store-slash"
+                ></i>
+                <input
+                  onChange={(e) => onChangeHandler(e, details, index)}
+                  className={classes.editable}
+                  id="title"
+                  placeholder="title"
+                  value={details.title}
                 />
               </div>
             ))}
@@ -123,17 +159,20 @@ export const Hero1 = (props) => {
             style={{ background: "url(" + localData.img + ")" }}
           >
             <input
-                  type="text"
-                  name="title"
-                  value={localData.header}
-                  onChange={onChange}
-                />
-                <input
-                  type="text"
-                  name="para"
-                  value={localData.para}
-                  onChange={onChange}
-                />
+              type="text"
+              name="title"
+              className={classes.editableHead}
+              value={localData.header}
+              onChange={onChange}
+            />
+            <br />
+            <input
+              type="text"
+              name="para"
+              className={classes.editablePara}
+              value={localData.para}
+              onChange={onChange}
+            />
           </div>
         </div>
       </div>
@@ -188,7 +227,7 @@ export const Hero1 = (props) => {
       className={clsx(classes.banner, "row m-0 justify-content-between p-3")}
     >
       <div className={clsx(classes.slider, "col-md-9 p-2 position-relative")}>
-        <OwlCarousel className="owl-theme" {...options}>
+        <OwlCarousel className={clsx(classes.slider, "owl-theme")} {...options}>
           {card.map((item, index) => (
             <div
               key={index}

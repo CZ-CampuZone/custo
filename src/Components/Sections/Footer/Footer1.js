@@ -1,4 +1,3 @@
-
 import React, { useContext, useState } from "react";
 import { createStyles, makeStyles } from "@mui/styles";
 import "owl.carousel/dist/assets/owl.carousel.css";
@@ -38,16 +37,16 @@ const useStyles = makeStyles(() =>
       cursor: "pointer",
       right: "1rem",
       boxShadow: "2px 2px 3px 0 #ccc",
-    }, 
+    },
     blockDark: {
-    backgroundColor: "#0d151e",
+      backgroundColor: "#0d151e",
     },
     Topcurvedbg: {
-    height: "150px!important",
-    backgroundImage: "url('https://keenthemes.com/images/misc/curve-dark-top-bg.png')",
-    }   
-    
-      
+      height: "100px!important",
+      backgroundImage:
+        "url('https://keenthemes.com/images/misc/curve-dark-top-bg.png')",
+    },
+
     // "@media (max-width: 600px)": {
     //   card: {
     //     width: "100%",
@@ -64,7 +63,6 @@ export const Footer1 = (props) => {
 
     data: [
       {
-        
         header: "Intro header 2",
         headline: "Fast Delivery",
         tagline: "For All the oders over 200",
@@ -75,7 +73,6 @@ export const Footer1 = (props) => {
         id: "0",
       },
       {
-        
         header: "Intro header 2",
         headline: "Fast Delivery",
         tagline: "For All the oders over 200",
@@ -86,7 +83,6 @@ export const Footer1 = (props) => {
         id: "1",
       },
       {
-        
         header: "Intro header 2",
         headline: "Fast Delivery",
         tagline: "For All the oders over 200",
@@ -97,7 +93,6 @@ export const Footer1 = (props) => {
         id: "2",
       },
       {
-        
         header: "Intro header 2",
         headline: "Fast Delivery",
         tagline: "For All the oders over 200",
@@ -138,125 +133,39 @@ export const Footer1 = (props) => {
   let editable = (
     <>
       {updatestatus === true && <Update />}
-      <div className="row w-100 m-auto p-2">
-        <div className="col-md-3  d-md-flex justify-content-center">
-          <div>
-            <i
-              style={{
-                fontSize: "25px ",
-                padding: "5px",
-                background: "#ffc107",
-                borderRadius: "50px",
-                color: "#0d151e",
-              }}
-              class="fa fa-car mx-1  d-inline fa-lg"
-            ></i>
-            <h5 className="">{localData.head1}</h5>
-            <input
-              className={clsx("d-inline text-white", classes.editable)}
-              placeholder="head1"
-              id="head1"
-              onChange={onChange}
-              value={localData.head1}
-            />
-            <input
-              className={clsx(" text-white", classes.editable)}
-              placeholder="tag1"
-              id="tag1"
-              onChange={onChange}
-              value={localData.tag1}
-            />
-          </div>
-        </div>
-        <div className="col-md-3 d-md-flex  justify-content-center">
-          <div>
-            <i
-              style={{
-                fontSize: "25px ",
-                padding: "5px",
-                background: "#ffc107",
-                borderRadius: "50px",
-                color: "#0d151e",
-              }}
-              class="fas fa-store-slash  mx-1  d-inline fa-lg"
-            ></i>
-            <input
-              className={clsx("d-inline text-white", classes.editable)}
-              placeholder="head2"
-              id="head2"
-              onChange={onChange}
-              value={localData.head2}
-            />
-            <input
-              className={clsx(" text-white", classes.editable)}
-              placeholder="tag2"
-              id="tag2"
-              onChange={onChange}
-              value={localData.tag2}
-            />
-          </div>
-        </div>
-        <div className="col-md-3 d-md-flex  justify-content-center">
-          <div>
-            <i
-              style={{
-                fontSize: "25px ",
-                padding: "5px",
-                background: "#ffc107",
-                borderRadius: "50px",
-                color: "#0d151e",
-              }}
-              class="	far fa-credit-card mx-1  d-inline fa-lg"
-            ></i>
-            <input
-              className={clsx("d-inline text-white", classes.editable)}
-              placeholder="head3"
-              id="head3"
-              onChange={onChange}
-              value={localData.head3}
-            />
-            <input
-              className={clsx(" text-white", classes.editable)}
-              placeholder="tag3"
-              id="tag3"
-              onChange={onChange}
-              value={localData.tag3}
-            />
-          </div>
-        </div>
-        <div className="col-md-3  d-md-flex justify-content-center">
-          <div>
-            <i
-              style={{
-                fontSize: "25px ",
-                padding: "5px",
-                background: "#ffc107",
-                borderRadius: "50px",
-                color: "#0d151e",
-              }}
-              class="fas fa-leaf mx-1  d-inline fa-lg"
-            ></i>
-            <input
-              className={clsx("d-inline text-white", classes.editable)}
-              placeholder="head4"
-              id="head4"
-              onChange={onChange}
-              value={localData.head4}
-            />
-            <input
-              className={clsx(" text-white", classes.editable)}
-              placeholder="tag4"
-              id="tag4"
-              onChange={onChange}
-              value={localData.tag4}
-            />
-          </div>
-        </div>
-      </div>
+   
+     
+    
       <div class="container mt-n15">
         <div class="row">
           {card.map((details, index) => (
-            <div key={index} class="col-6 col-lg">
+            <div key={index} class="col-md-3">
+              <div className="py-2">
+                <i
+                  style={{
+                    fontSize: "25px ",
+                    padding: "5px",
+                    background: "#ffc107",
+                    borderRadius: "50px",
+                    color: "#0d151e",
+                  }}
+                  class="fa fa-car mx-1  d-inline fa-lg"
+                ></i>
+                <input
+                  className={clsx("d-inline text-white", classes.editable)}
+                  placeholder="headline"
+                  id="headline"
+                  onChange={(e) => onChangeHandler(e, details, index)}
+                  value={localData.headline}
+                />
+                <input
+                  className={clsx(" text-white", classes.editable)}
+                  placeholder="tagline"
+                  id="tagline"
+                  onChange={(e) => onChangeHandler(e, details, index)}
+                  value={localData.tagline}
+                />
+              </div>
               <div class="pb-10">
                 <input
                   style={{ color: "#ffc107" }}
@@ -264,7 +173,7 @@ export const Footer1 = (props) => {
                   placeholder="Header"
                   id="header"
                   onChange={(e) => onChangeHandler(e, details, index)}
-                  value={localData.header}
+                  value={details.header}
                 />
 
                 <div class="d-flex flex-column font-size-2 font-weight-bold">
@@ -373,7 +282,7 @@ export const Footer1 = (props) => {
         </>
       )}
 
-      <footer className={classes.blockDark} >
+      <footer className={classes.blockDark}>
         <div className={classes.Topcurvedbg}></div>
         {ctx.isEditable ? (
           editable
@@ -383,7 +292,7 @@ export const Footer1 = (props) => {
               <div class="row py-3">
                 {card.map((data, index) => (
                   <div key={index} class="col-md-3">
-                    <div>
+                    <div className="py-2">
                       <i
                         style={{
                           fontSize: "25px ",
