@@ -9,7 +9,7 @@ import clsx from "clsx";
 const useStyles = makeStyles(() =>
   createStyles({
     editable: {
-      textAlign: "center",
+      textAlign: "left",
       color: "white",
       background: "transparent",
       outline: "0",
@@ -156,14 +156,14 @@ export const Footer1 = (props) => {
                   placeholder="headline"
                   id="headline"
                   onChange={(e) => onChangeHandler(e, details, index)}
-                  value={localData.headline}
+                  value={details.headline}
                 />
                 <input
                   className={clsx(" text-white", classes.editable)}
                   placeholder="tagline"
                   id="tagline"
                   onChange={(e) => onChangeHandler(e, details, index)}
-                  value={localData.tagline}
+                  value={details.tagline}
                 />
               </div>
               <div class="pb-10">
@@ -219,7 +219,7 @@ export const Footer1 = (props) => {
       <div class="page_speed_247610277"></div>
 
       <div class="container text-center  py-2 py-lg-10">
-        {localData.copyright}
+
         <input
           className={clsx(
             "font-size-2 font-weight-bold  pt-1",

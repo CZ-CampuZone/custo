@@ -150,8 +150,9 @@ export const Gallery1 = (props) => {
     // setError(null);
     let selected = e.target.files[0];
     if (card[i].title === "") {
-      alert("Image name cannot be Empty");
-    } else {
+      alert("Image name cannot be Empty")
+    }
+    else {
       const storage = getStorage();
       const uploadPath = `images/${card[i].title + i}`;
       // upload path
@@ -171,7 +172,7 @@ export const Gallery1 = (props) => {
         });
       });
     }
-  };
+  }
   const addCard = () => {
     let updatedData = {
       img: Product1,

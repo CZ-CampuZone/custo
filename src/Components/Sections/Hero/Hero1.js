@@ -6,7 +6,9 @@ import { Update } from "../../../loader/Update";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import AuthContext from "../../../Context/Context";
 import Loader from "../../../loader/Loader";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import clsx from "clsx";
+import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import Background from "../../../Assests/Supermarket/bg.jpg";
 import Slider1 from "../../../Assests/Supermarket/slider1.jpg";
 import Slider2 from "../../../Assests/Supermarket/slider2.jpg";
@@ -39,11 +41,44 @@ const useStyles = makeStyles(() =>
       background: "transparent",
       border: "none",
     },
+    addCard: {
+      borderRadius: "1rem",
+      position: "absolute",
+      background: "#fff",
+      padding: "1rem 2rem",
+      top: "1rem",
+      color: "#9e3a8ccc",
+      cursor: "pointer",
+      right: "1rem",
+      boxShadow: "2px 2px 3px 0 #ccc",
+    },
     editablePara: {
       outline: "0",
       width: "50%",
       background: "transparent",
       border: "none",
+    },
+    inputFile: {
+      width: 0,
+      height: 0,
+      opacity: 0,
+      zIndex: "0",
+    },
+    inputLabel: {
+      position: "absolute",
+      background: "#fff",
+      width: "2.5rem",
+      height: "2.5rem",
+      padding: "0.3rem",
+      bottom: "0",
+      right: "0",
+      zIndex: 20,
+      textAlign: "center",
+      cursor: "pointer",
+      "& i": {
+        fontSize: "1.75rem",
+      },
+
     },
   })
 );
@@ -65,6 +100,7 @@ export const Hero1 = (props) => {
     header: "20% Sales Off",
     para: "Synthetic seeds ",
     img: Offer,
+    id:1,
     data: [
       {
         img: Slider1,
@@ -96,6 +132,60 @@ export const Hero1 = (props) => {
       };
     });
   };
+  const onImageChange = (e, i) => {
+    // setError(null);
+    let selected = e.target.files[0];
+    if (card[i].title === "") {
+      alert("Image name cannot be Empty")
+    }
+    else {
+      const storage = getStorage();
+      const uploadPath = `images/${card[i].title + i}`;
+      // upload path
+      const storageRef = ref(storage, uploadPath); // create refernce to store data
+      uploadBytes(storageRef, selected).then((snapshot) => {
+        // console.log(snapshot);
+        getDownloadURL(storageRef).then((url) => {
+          setCard((prevState) => {
+            let updatedData = null;
+            updatedData = {
+              ...prevState[i],
+              img: url,
+            };
+            prevState[i] = updatedData;
+            return [...prevState];
+          });
+        });
+      });
+    }
+  }
+  const onSideImageChange = (e) => {
+    // setError(null);
+    let selected = e.target.files[0];
+    if (localData.header === "") {
+      alert("Image header cannot be Empty")
+    }
+    else {
+      const storage = getStorage();
+      const uploadPath = `images/${localData.header }`;
+      // upload path
+      const storageRef = ref(storage, uploadPath); // create refernce to store data
+      uploadBytes(storageRef, selected).then((snapshot) => {
+        // console.log(snapshot);
+        getDownloadURL(storageRef).then((url) => {
+          setLocalData((prevState) => {
+            let updatedData = null;
+            updatedData = {
+              ...prevState,
+              img: url,
+            };
+            prevState = updatedData;
+            return {...prevState};
+          });
+        });
+      });
+    }
+  }
   const onChangeHandler = (e, details, index) => {
     const tempEventInputs = JSON.parse(JSON.stringify(details));
     if (e.target) {
@@ -106,49 +196,89 @@ export const Hero1 = (props) => {
       return [...prevState];
     });
   };
+  const addCard = () => {
+    let updatedData = {
+      img: Slider1,
+      title: "",
+      para: "",
+      id: card.length,
+    };
+    setCard((prevState) => {
+      return [...prevState, updatedData];
+    });
+  };
+  const removeCard = (value) => {
+    setCard((prevState) => {
+      prevState = prevState.filter((item) => item.id !== value);
+      return [...prevState];
+    });
+  };
   let editable = (
     <>
       {updatestatus === true && <Update />}
       <div
-        className={clsx(classes.banner, "row m-0 justify-content-between p-5")}
+        className={clsx(classes.banner, "row m-0 position-relative justify-content-between p-5")}
       >
         <div className={clsx(classes.slider, "col-md-9 p-2 position-relative")}>
           <OwlCarousel
             className={clsx(classes.slider, "owl-theme")}
             {...options}
           >
-            {card.map((item, index) => (
+            {card.map((details, index) => (
               <div
                 key={index}
                 className={clsx(classes.item, "position-relative")}
-                style={{ backgroundImage: "url(" + item.img + ")" }}
+                style={{ backgroundImage: "url(" + details.img + ")" }}
               >
+                 <div
+                onClick={() => removeCard(details.id)}
+                style={{
+                  position: "absolute",
+            
+                  top: "0",
+                  left: "0",
+                  zIndex: 20,
+                  cursor: "pointer",
+                }}
+              >
+                <DeleteIcon
+                  style={{
+                    width: "2rem",
+                    height: "2rem",
+                    fill: "#dc3545",
+                    padding: "5px",
+                  }}
+                />
+              </div>
                 <input
                   type="text"
                   name="title"
                   className={classes.editableHead}
-                  value={item.title}
+                  value={details.title}
+                  placeholder="title"
                   onChange={onChangeHandler}
                 />
                 <br />
                 <input
                   type="text"
                   name="para"
+                  placeholder="para"
                   className={classes.editablePara}
-                  value={item.para}
+                  value={details.para}
                   onChange={onChangeHandler}
                 />
-                <i
-                  style={{ fontSize: "50px", color: "#edb40b" }}
-                  class="fas fa-store-slash"
-                ></i>
-                <input
-                  onChange={(e) => onChangeHandler(e, details, index)}
-                  className={classes.editable}
-                  id="title"
-                  placeholder="title"
-                  value={details.title}
-                />
+                  <input
+                type="file"
+                onChange={(e) => onImageChange(e, index)}
+                className={classes.inputFile}
+                id={details.id}
+                name={details.title}
+              />
+              <label className={classes.inputLabel} htmlFor={details.id}>
+                <i className="fa fa-upload"></i>
+              </label>
+            
+              
               </div>
             ))}
           </OwlCarousel>
@@ -173,8 +303,21 @@ export const Hero1 = (props) => {
               value={localData.para}
               onChange={onChange}
             />
+               <input
+                type="file"
+                onChange={(e) => onSideImageChange(e)}
+                className={classes.inputFile}
+                id={localData.id}
+                name={localData.header}
+              />
+              <label className={classes.inputLabel} htmlFor={localData.id}>
+                <i className="fa fa-upload"></i>
+              </label>
           </div>
         </div>
+        <div className={classes.addCard} onClick={addCard}>
+        <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
+      </div>
       </div>
     </>
   );

@@ -1,24 +1,45 @@
 import React, { useContext, useState } from "react";
 import AuthContext from "../../../Context/Context";
 import styles from "./Form1.css";
+import { createStyles, makeStyles } from "@mui/styles";
 import Loader from "../../../loader/Loader";
 import clsx from "clsx";
 
-
+const useStyles = makeStyles(() =>
+  createStyles({
+    introPara: {
+      textAlign: "center",
+      color: "#999999",
+      width: "100%",
+      background: "transparent",
+      outline: "0",
+      border: "none",
+    },
+    contactInfo: {
+      display: "inline-block",
+      width: "100%",
+      textAlign: "center",
+      marginBottom: "10px",
+    },
+  })
+);
 const Form1 = (props) => {
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
+  const classes = useStyles();
   const data = {
     header: "Contact Us",
-    para: " Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmodtempor incidunt ut labore et dolore magna aliqua. Ut enim ad minimeniam, quis nostrum",
-    address: "xxx, yyy, zzz - 123123",
-    phone: "99887 766554",
-    email: "sample@gmail.com",
+    address1: "xxx, yyy, zzz - ",
+    address2: "123123",
+    phone1: "9988766554",
+    phone2: "9988766554",
+    email1: "sample@gmail.com",
+    email2: "sample@gmail.com",
   };
   const [localData, setLocalData] = useState(
     ctx.websiteData[props.id] === undefined ? data : ctx.websiteData[props.id]
   );
-  const onChangeHandler = (event) => {
+  const onChange = (event) => {
     let val = event.target.value;
     setLocalData((prevState) => {
       return {
@@ -27,6 +48,90 @@ const Form1 = (props) => {
       };
     });
   };
+  let editable = (
+    <>
+      <div class="row">
+        <div class="col-md-4">
+          <div class={classes.contactInfo}>
+            <div class="contact-info-item">
+              <div class="mb-3 contact-info-icon">
+                <i class="fas fa-map-marked"></i>
+              </div>
+              <div class="contact-info-text">
+                <h2>address</h2>
+                <input
+                  className={clsx(classes.introPara, "d-inline mb-2 mr-4")}
+                  placeholder="address1"
+                  id="address1"
+                  onChange={onChange}
+                  value={localData.address1}
+                />
+                <input
+                  className={clsx(classes.introPara, "d-inline mb-2 mr-4")}
+                  placeholder="address2"
+                  id="address2"
+                  onChange={onChange}
+                  value={localData.address2}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class={classes.contactInfo}>
+            <div class="contact-info-item">
+              <div class="mb-3 contact-info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-info-text">
+                <h2>E-mail</h2>
+                <input
+                  className={clsx(classes.introPara, "d-inline mb-2 mr-4")}
+                  placeholder="email1"
+                  id="email1"
+                  onChange={onChange}
+                  value={localData.email1}
+                />
+                <input
+                  className={clsx(classes.introPara, "d-inline mb-2 mr-4")}
+                  placeholder="email2"
+                  id="email2"
+                  onChange={onChange}
+                  value={localData.email2}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class={classes.contactInfo}>
+            <div class="contact-info-item">
+              <div class="mb-3 contact-info-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-info-text">
+                <h2>Phone No</h2>
+                <input
+                  className={clsx(classes.introPara, "d-inline mb-2 mr-4")}
+                  placeholder="phone1"
+                  id="phone1"
+                  onChange={onChange}
+                  value={localData.phone1}
+                />
+                <input
+                  className={clsx(classes.introPara, "d-inline mb-2 mr-4")}
+                  placeholder="phone2"
+                  id="phone2"
+                  onChange={onChange}
+                  value={localData.phone2}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
   return (
     <>
       {ctx.isEditable ? (
@@ -52,41 +157,58 @@ const Form1 = (props) => {
           <Loader />
         </>
       )}
-    <section class="about-section">
+      <section class="contact-page-sec">
         <div class="container">
-            <div class="row">                
-                <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">
-                    <div class="inner-column">
-                        <div class="sec-title">
-                            <span class="title">Contact us</span>
-                            <h2>We are leader in <br/>Industrial market Since 1992</h2>
-                        </div>
-                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur.</div>
-                        <ul class="list-style-one">
-                            <li>Lorem Ipsum is simply dummy tex</li>
-                            <li>Consectetur adipisicing elit</li>
-                            <li>Sed do eiusmod tempor incididunt</li>
-                        </ul>
-                        <div class="btn-box">
-                            <a href="#" class="theme-btn btn-style-one">Contact Us</a>
-                        </div>
+          {ctx.isEditable ? (
+            editable
+          ) : (
+            <div class="row">
+              <div class="col-md-4">
+                <div class={classes.contactInfo}>
+                  <div class="contact-info-item">
+                    <div class="mb-3 contact-info-icon">
+                      <i class="fas fa-map-marked"></i>
                     </div>
-                </div>
-
-         
-                <div class="image-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-column wow fadeInLeft">
-                        <figure class="image-1"><a href="#" class="lightbox-image" data-fancybox="images"><img src="https://i.ibb.co/QP6Nmpf/image-1-about.jpg" alt=""/></a></figure>
-                        <figure class="image-2"><a href="#" class="lightbox-image" data-fancybox="images"><img src="https://i.ibb.co/JvN0NVB/image-2-about.jpg" alt=""/></a></figure>
+                    <div class="contact-info-text">
+                      <h2>address</h2>
+                      <span>{localData.address1} </span>
+                      <span>{localData.address2}</span>
                     </div>
+                  </div>
                 </div>
+              </div>
+              <div class="col-md-4">
+                <div class={classes.contactInfo}>
+                  <div class="contact-info-item">
+                    <div class="mb-3 contact-info-icon">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-info-text">
+                      <h2>E-mail</h2>
+                      <span>{localData.email1}</span>
+                      <span>{localData.email2}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class={classes.contactInfo}>
+                  <div class="contact-info-item">
+                    <div class="mb-3 contact-info-icon">
+                      <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-info-text">
+                      <h2>Phone No</h2>
+                      <span>{localData.phone1}</span>
+                      <span>{localData.phone2}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          )}
         </div>
-    </section>
+      </section>
     </>
   );
 };
