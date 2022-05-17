@@ -26,6 +26,7 @@ const AuthContext = React.createContext({
   setUserId: () => {},
   updateUser: () => {},
   updateData: () => {},
+  deleteData: () => {},
   updateIsEditable: () => {},
   updateLayout: () => {},
   addLayout: () => {},
@@ -121,8 +122,22 @@ export const AuthContextProvider = (props) => {
     updateDoc(doc(db, "websitedata", userId), {
       websiteData: websiteData,
     });
+
   };
-  console.log(websiteData, "success");
+
+  const deleteData = (data) => {
+    let tempArr = Object.keys(websiteData);
+    tempArr = tempArr.filter((e) => e !== data);
+    console.log(data, tempArr);
+
+    let updatedData = {};
+    tempArr.forEach((value) => {
+      updatedData[value] = websiteData[value];
+      return true;
+    });
+  
+   setWebsiteData(updateData)
+  };
 
   const updateUser = (data) => {
     setUser(data);
@@ -207,6 +222,7 @@ export const AuthContextProvider = (props) => {
         getLayoutData: getLayoutData,
         updateUser: updateUser,
         updateData: updateData,
+        deleteData: deleteData,
         updateLayout: updateLayout,
         addLayout: addLayout,
       }}

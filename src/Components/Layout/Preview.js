@@ -50,10 +50,12 @@ const Preview = () => {
       ctx.updateLayout(prevState);
       return [...prevState];
     });
+    ctx.deleteData(id);
   };
   const onSaveHandler = () => {
     setloading(true);
     ctx.updateLayout(mountedData);
+
     var tempArr = [];
     for (var i = 0; i < mountedData.length; i++) {
       let newData = {
@@ -63,6 +65,10 @@ const Preview = () => {
       tempArr = tempArr.concat(newData);
     }
     updateDoc(doc(db, "layout", ctx.userId), { layout: tempArr });
+     // upadte in db
+     updateDoc(doc(db, "websitedata", ctx.userId), {
+      websiteData: ctx.websiteData,
+    });
     setTimeout(() => {
       setloading(false);
       setUpdatestatus(true)
@@ -118,29 +124,28 @@ const Preview = () => {
 
             <NavLink to="/" target="_blank">
               <button
-               className="btn px-5 py-1"
-             
-               style={{
-                 zoom:"0.8",
-                 background: "#9e3a8ccc",
-                 color: "#fff",
-                 borderRadius: "20px",
-                 boxShadow: "0 3px 6px #00000036",
-               }}
+                className="btn shadow px-5 py-1"
+                style={{
+                  zoom:"0.8",
+                  background: "#9e3a8ccc",
+                  color: "#fff",
+                  borderRadius: "20px",
+                  boxShadow: "0 3px 6px #00000036",
+                }}
               >
                 Preview<i className="fa fa-eye mx-2"></i>
               </button>
             </NavLink>
             <button
-             className="btn px-5 py-1"
-             onClick={onSaveHandler}
-             style={{
-               zoom:"0.8",
-               background: "#9e3a8ccc",
-               color: "#fff",
-               borderRadius: "20px",
-               boxShadow: "0 3px 6px #00000036",
-             }}
+              className="btn px-5 py-1"
+              onClick={onSaveHandler}
+              style={{
+                zoom:"0.8",
+                background: "#9e3a8ccc",
+                color: "#fff",
+                borderRadius: "20px",
+                boxShadow: "0 3px 6px #00000036",
+              }}
             >
               Save<i className="fa fa-save mx-2"></i>{" "}
             </button>
