@@ -47,7 +47,6 @@ export const Layout = [
   { c: BGallery2, id: "BGallery2" },
   { c: ISlider1, id: "ISlider1" },
   { c: BSlider1, id: "BSlider1" },
-  { c: BSlider2, id: "BSlider2" },
   { c: IForm1, id: "IForm1" },
   { c: BForm1, id: "BForm1" },
   { c: BForm2, id: "BForm2" },

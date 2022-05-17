@@ -69,7 +69,7 @@ export const LocalSections = [
     variants: [
       { c: ISlider1, id: "ISlider1" },
       { c: BSlider1, id: "BSlider1" },
-      { c: BSlider2, id: "BSlider2" },
+   
     ],
   },
   {
