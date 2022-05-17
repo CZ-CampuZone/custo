@@ -47,7 +47,7 @@ const useStyles = makeStyles(() =>
     },
   })
 );
-export const BCard2 = (props) => {
+export const Card1 = (props) => {
   const classes = useStyles();
   const ctx = useContext(AuthContext);
   const cardData = {

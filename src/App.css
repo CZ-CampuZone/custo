@@ -11,7 +11,8 @@ body {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
-
+.owl-next:focus, .owl-prev:focus {outline: none;
+box-shadow: none;}
 :root {
   --primary: #ed0053c5;
   --secondary: #fff;
