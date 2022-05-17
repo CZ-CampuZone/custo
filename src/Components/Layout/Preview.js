@@ -50,10 +50,12 @@ const Preview = () => {
       ctx.updateLayout(prevState);
       return [...prevState];
     });
+    ctx.deleteData(id);
   };
   const onSaveHandler = () => {
     setloading(true);
     ctx.updateLayout(mountedData);
+
     var tempArr = [];
     for (var i = 0; i < mountedData.length; i++) {
       let newData = {
@@ -63,6 +65,10 @@ const Preview = () => {
       tempArr = tempArr.concat(newData);
     }
     updateDoc(doc(db, "layout", ctx.userId), { layout: tempArr });
+     // upadte in db
+     updateDoc(doc(db, "websitedata", ctx.userId), {
+      websiteData: ctx.websiteData,
+    });
     setTimeout(() => {
       setloading(false);
       setUpdatestatus(true)
