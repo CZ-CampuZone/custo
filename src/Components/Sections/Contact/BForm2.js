@@ -213,4 +213,4 @@ const BForm2 = (props) => {
   );
 };
 
-export default Form1;
+export default BForm2;

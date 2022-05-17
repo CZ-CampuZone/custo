@@ -24,7 +24,7 @@ import {BNavbar1} from "../Components/Sections/Navbar/BNavbar1";
 import {BNavbar2} from "../Components/Sections/Navbar/BNavbar2";
 import ISlider1 from "../Components/Sections/Testimonals/ISlider1";
 import {BSlider1} from "../Components/Sections/Testimonals/BSlider1";
-import BSlider2 from "../Components/Sections/Testimonals/BSlider2";
+
 
 export const Layout = [
   { c: INavbar1, id: "INavbar1" },
