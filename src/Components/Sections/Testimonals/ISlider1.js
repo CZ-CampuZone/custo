@@ -214,4 +214,4 @@ const ISlider1 = (props) => {
   );
 };
 
-export default Slider1;
+export default ISlider1;

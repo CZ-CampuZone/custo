@@ -332,4 +332,4 @@ export const BForm1 = (props) => {
     </>
   );
 };
-export default Form1;
+export default BForm1;

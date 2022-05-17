@@ -281,4 +281,4 @@ const BSlider2 = (props) => {
   );
 };
 
-export default Slider1;
+export default BSlider2;
