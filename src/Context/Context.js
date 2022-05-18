@@ -136,7 +136,7 @@ export const AuthContextProvider = (props) => {
       return true;
     });
   
-   setWebsiteData(updateData)
+   setWebsiteData(updatedData)
   };
 
   const updateUser = (data) => {
