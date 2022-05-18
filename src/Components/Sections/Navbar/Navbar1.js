@@ -8,7 +8,7 @@ import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import Select from "react-select";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import AuthContext from "../../../Context/Context";
-import { Update } from "../../../loader/Update";
+import clsx from "clsx"
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -92,30 +92,23 @@ const useStyles = makeStyles(() =>
         padding: "0",
         paddingLeft: "2px",
       },
-      menuItem:{
-        fontSize:"8px"
-      }
+      menuItem: {
+        fontSize: "8px",
+      },
     },
   })
 );
 
 export const Navbar1 = (props) => {
+    const classes = useStyles();
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
-  const classes = useStyles();
+ 
   const headerData = {
     logo: HeaderLogo,
     menuItem: [
       {
-        label: "home",
-        path: "",
-      },
-      {
-        label: "womens",
-        path: "",
-      },
-      {
-        label: "kids",
+        label: "Home",
         path: "",
       },
       {
@@ -123,7 +116,15 @@ export const Navbar1 = (props) => {
         path: "",
       },
       {
-        label: "contact",
+        label: "Women",
+        path: "",
+      },
+      {
+        label: "Men",
+        path: "",
+      },
+      {
+        label: "Contact",
         path: "",
       },
     ],
@@ -133,7 +134,6 @@ export const Navbar1 = (props) => {
       ? headerData
       : ctx.websiteData[props.id]
   );
-  const [updatestatus, setUpdatestatus] = useState(false);
   const [menuItem, setMenuItem] = useState(localData.menuItem);
   const rename = (name, i) => {
     let firstName = name.substring(0, name.length - 2);
@@ -200,13 +200,7 @@ export const Navbar1 = (props) => {
     ctx.updateData(data, props.id);
     setTimeout(() => {
       setloading(false);
-      setUpdatestatus(true)
-    }, 2000).then(
-      setTimeout(() => {
-
-        setUpdatestatus(false)
-      }, 4000)
-    )
+    }, 2000);
   };
   console.log(menuItem);
   return (
@@ -217,9 +211,9 @@ export const Navbar1 = (props) => {
             className="btn px-5"
             onClick={onSaveHandler}
             style={{
-              background: "#9e3a8ccc",
+              background: "#fff",
               fontSize: "20px",
-              color: "#fff",
+              color: "#dc3545",
               borderRadius: "20px",
               boxShadow: "0 3px 6px #00000036",
             }}
@@ -234,7 +228,6 @@ export const Navbar1 = (props) => {
 
       {ctx.isEditable ? (
         <>
-          {updatestatus === true && <Update />}
           <div className={classes.rootNav}>
             <div className={classes.logoContainer}>
               <input
@@ -282,20 +275,32 @@ export const Navbar1 = (props) => {
           </div>
         </>
       ) : (
-        <div className={classes.rootNav}>
+        <nav className={clsx(classes.rootNav, "navbar navbar-expand-lg")}>
           <div className={classes.logoContainer}>
             <img src={localData.logo} alt="headerLogo" />
           </div>
-          <div className={classes.menuList}>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            className={clsx(classes.menuList, "collapse navbar-collapse")}
+            id="navbarTogglerDemo01"
+          >
             {menuItem.map((item, index) => (
               <HashLink to={`#${item.path}`} key={index}>
-                <p className={classes.menuItems}>
-                  {item.label}
-                </p>
+                <p className={classes.menuItems}>{item.label}</p>
               </HashLink>
             ))}
           </div>
-        </div>
+        </nav>
       )}
     </>
   );
