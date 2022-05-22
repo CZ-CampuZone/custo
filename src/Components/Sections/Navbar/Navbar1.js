@@ -214,7 +214,7 @@ export const Navbar1 = (props) => {
   return (
     <>
       {ctx.isEditable ? (
-        {updatestatus === true && <Update />}
+      
         <div className="row py-3 justify-content-end">
           <button
             className="btn px-5"
@@ -237,6 +237,7 @@ export const Navbar1 = (props) => {
 
       {ctx.isEditable ? (
         <>
+          {updatestatus === true && <Update />}
           <div className={classes.rootNav}>
             <div className={classes.logoContainer}>
               <input
