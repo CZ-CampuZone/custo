@@ -9,6 +9,7 @@ import Select from "react-select";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import AuthContext from "../../../Context/Context";
 import clsx from "clsx"
+import { Update } from "../../../loader/Update";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -134,6 +135,7 @@ export const Navbar1 = (props) => {
       ? headerData
       : ctx.websiteData[props.id]
   );
+  const [updatestatus, setUpdatestatus] = useState(false);
   const [menuItem, setMenuItem] = useState(localData.menuItem);
   const rename = (name, i) => {
     let firstName = name.substring(0, name.length - 2);
@@ -200,7 +202,13 @@ export const Navbar1 = (props) => {
     ctx.updateData(data, props.id);
     setTimeout(() => {
       setloading(false);
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 4000)
+    )
   };
   console.log(menuItem);
   return (
@@ -228,6 +236,7 @@ export const Navbar1 = (props) => {
 
       {ctx.isEditable ? (
         <>
+        {updatestatus === true && <Update />}
           <div className={classes.rootNav}>
             <div className={classes.logoContainer}>
               <input

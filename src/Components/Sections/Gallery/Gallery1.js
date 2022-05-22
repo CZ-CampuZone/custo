@@ -91,7 +91,7 @@ const useStyles = makeStyles(() =>
       width: "2.5rem",
       height: "2.5rem",
       padding: "0.3rem",
-      top: "0",
+      bottom: "0",
       right: "0",
       zIndex: 20,
       textAlign: "center",
