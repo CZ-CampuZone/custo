@@ -9,6 +9,7 @@ import Select from "react-select";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import AuthContext from "../../../Context/Context";
 import clsx from "clsx"
+import { Update } from "../../../loader/Update";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -100,6 +101,7 @@ const useStyles = makeStyles(() =>
 );
 
 export const Navbar1 = (props) => {
+  const [updatestatus, setUpdatestatus] = useState(false);
     const classes = useStyles();
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
@@ -200,12 +202,19 @@ export const Navbar1 = (props) => {
     ctx.updateData(data, props.id);
     setTimeout(() => {
       setloading(false);
-    }, 2000);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 4000)
+    )
   };
   console.log(menuItem);
   return (
     <>
       {ctx.isEditable ? (
+        {updatestatus === true && <Update />}
         <div className="row py-3 justify-content-end">
           <button
             className="btn px-5"

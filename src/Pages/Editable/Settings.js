@@ -9,6 +9,7 @@ import { GButton } from "../../Components/Settings/GButton";
 import { ReactComponent as EditIcon } from "../../Assests/pencil.svg";
 import Loader from "../../loader/Loader";
 import clsx from "clsx";
+import { Update } from "../../loader/Update";
 const useStyles = makeStyles({
   actions: {
     width: "10%",
@@ -69,7 +70,7 @@ const Settings = () => {
     newPassword: "",
   }
   const [formValues, setFormValues] = useState(defaultvalues);
-
+  const [updatestatus, setUpdatestatus] = useState(false);
   const [enableUsername, setEnableUsername] = useState(false);
   const [enableSave, setEnableSave] = useState(false);
   const [error, setError] = useState(null);
@@ -137,8 +138,14 @@ const Settings = () => {
       setEnableUsername(!enableUsername);
     }
     setTimeout(() => {
-      setloading(false)
-    }, 3000);
+      setloading(false);
+      setUpdatestatus(true)
+    }, 2000).then(
+      setTimeout(() => {
+
+        setUpdatestatus(false)
+      }, 4000)
+    )
 
   };
   const handleChange = (inputObj) => {
@@ -163,7 +170,7 @@ const Settings = () => {
           <Loader />
         </>
       )}
-
+{updatestatus === true && <Update/>}
       <div class=" settings page-content page-container py-2" id="page-content">
 
         <div class="row container d-flex align-items-center justify-content-center" style={{ height: "80vh" }}>
