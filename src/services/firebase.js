@@ -9,16 +9,25 @@ import Context from "../Context/Context";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCXXVS2lUu6hXW0AXaeJelACy7CD8jZPRU",
-  authDomain: "layatex-bc78f.firebaseapp.com",
-  projectId: "layatex-bc78f",
-  storageBucket: "layatex-bc78f.appspot.com",
-  messagingSenderId: "772693300879",
-  appId: "1:772693300879:web:f260180f270e2bbcb502fa",
-  measurementId: "G-JGXMHD742R"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCXXVS2lUu6hXW0AXaeJelACy7CD8jZPRU",
+//   authDomain: "layatex-bc78f.firebaseapp.com",
+//   projectId: "layatex-bc78f",
+//   storageBucket: "layatex-bc78f.appspot.com",
+//   messagingSenderId: "772693300879",
+//   appId: "1:772693300879:web:f260180f270e2bbcb502fa",
+//   measurementId: "G-JGXMHD742R"
+// };
 
+const firebaseConfig = {
+  apiKey: "AIzaSyDP4kewU6kt94bBFoZHAfeVUh9DtD0z2PA",
+  authDomain: "layatex-b9cbc.firebaseapp.com",
+  projectId: "layatex-b9cbc",
+  storageBucket: "layatex-b9cbc.appspot.com",
+  messagingSenderId: "918256160962",
+  appId: "1:918256160962:web:8750d031aa4fc0e142ab5b",
+  measurementId: "G-5HQ829NF2Z"
+};
 const firebase = initializeApp(firebaseConfig);
 const analytics = getAnalytics(firebase);
 const auth = getAuth(firebase);

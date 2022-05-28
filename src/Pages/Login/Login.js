@@ -7,7 +7,7 @@ import Loader from "../../loader/Loader";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { ReactComponent as Bgicon1 } from "../../Assests/xd1.svg";
 import { ReactComponent as Bgicon2 } from "../../Assests/xd2.svg";
-// import { ReactComponent as Bgicon3 } from "../../Assests/xd3.svg";
+
 import { ReactComponent as Bgicon3 } from "../../Assests/xd4.svg";
 import Logo from "../../Assests/fickle1.png";
 const useStyles = makeStyles({
@@ -64,7 +64,7 @@ const Login = (props) => {
   const navigate = useNavigate();
   const titleCase = (str) => {
     return str
-      .split("-")
+      .split("-") 
       .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
       .join(" ");
   };
@@ -148,7 +148,7 @@ const Login = (props) => {
         <Bgicon1 className={classes.Bgicon1} />
         
         <Bgicon1   className={classes.Bgicon2}/>
-        {/* <Bgicon2 className={classes.Bgicon2} /> */}
+     
 
         <Bgicon3  className={classes.Bgicon3} />
         <Bgicon3  className={classes.Bgicon4}/>
@@ -172,20 +172,14 @@ const Login = (props) => {
 
 
 
-        {/* // <div class=" shadow position-absolute" style={{ zIndex: "999999999", left: "0", right: "0", top: "0", bottom: "0" }} > */}
+
         <div className="row">
           <div className="col-md-6 marg">
             <div className="col-md-7 m-auto">
               <h2 className="content text-center">
                 Your<br /> Business<br />  At<br />  Your<br />  Fingertips
               </h2>
-              {/* <p className="align-top pcolor mt-3">
-              Create the perfect palette or get inspired by thousands of
-              beautiful color schemes.
-            </p> */}
-              {/* <button onClick={() => { setModalstate(true) }} type="button" href="#myModal" class="btn px-4 btntclr mt-3" data-toggle="modal">
-                Login
-              </button> */}
+        
             </div>
 
           </div>
@@ -195,15 +189,7 @@ const Login = (props) => {
                 <div class="modal-content">
                   <div class="modal-header">
                     <h4 class="modal-title">Hello Buddy!</h4>
-                    {/* <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-hidden="true"
-                      onClick={() => { setModalstate(false) }}
-                    >
-                      &times;
-                    </button> */}
+                   
                   </div>
                   <div class="modal-body">
                     <form
@@ -255,7 +241,7 @@ const Login = (props) => {
                           }}
                           class="btn mt-3 px-5 btntclr "
                         >
-                           {forgotPassword ? "Sent" : "Login"}
+                           {forgotPassword ? "Send" : "Login"}
                         </button>
                        
                       </div>
@@ -267,7 +253,7 @@ const Login = (props) => {
                 </div>
               </div>
             </div>
-            {/* <img src="https://s3-alpha.figma.com/hub/file/314494079/976a59d3-cf17-4dcc-a3d8-6651da344ee4-cover" /> */}
+
           </div>
         </div>
       </div>

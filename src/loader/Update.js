@@ -7,7 +7,8 @@ export const Update = () => {
                     <div class="btn p-3 shadow blinkme" style={{
                         position:"fixed",
                         top: "75px",
-                        right: "0px"     
+                        right: "0px",
+                        zIndex:"99999"     
 
                     }}>
 

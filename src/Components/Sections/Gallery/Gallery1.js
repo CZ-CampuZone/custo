@@ -11,7 +11,7 @@ import Dress3 from "../../../Assests/images/dress3.jpg";
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Update } from "../../../loader/Update";
-
+import clsx from "clsx"
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
@@ -99,12 +99,24 @@ const useStyles = makeStyles(() =>
       "& i": {
         fontSize: "1.75rem",
       },
-      // "@media (max-width: 600px)": {
-      //   card: {
-      //     width: "100%",
-      //   },
-      // },
+      owlSlide:{
+        ".owl-nav":{
+          top:"16px"
+        },
+         "& .owl-nav.disabled":{
+           display:"block",
+  
+         } 
+      },
+      "@media (max-width: 600px)": {
+        owlSlide:{
+          ".owl-nav":{
+            top:"20px"
+          },
+      },
     },
+  }
+   
   })
 );
 
@@ -117,11 +129,12 @@ export const Gallery1 = (props) => {
     loop: true,
     margin: 30,
     dots: false,
-    nav: false,
+    nav: true,
     autoplay: true,
     autoplayTimeout: 4000,
     autoplaySpeed: 2000,
     autoplayHoverPause: true,
+   
     responsive: {
       0: {
         items: 1,
@@ -375,7 +388,7 @@ export const Gallery1 = (props) => {
             <Typography className={classes.introHeader}>
               {localData.header}
             </Typography>
-            <OwlCarousel className="owl-theme" {...options}>
+            <OwlCarousel className={clsx(classes.owlSlide,"owl-theme")} {...options}>
               {card.map((item, index) => (
                 <div className={classes.card} key={index}>
                   <img src={item.img} alt={item.title} />

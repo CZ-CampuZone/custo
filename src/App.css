@@ -12,6 +12,7 @@ body {
   scroll-behavior: smooth;
 }
 
+
 :root {
   --primary: #ed0053c5;
   --secondary: #fff;
@@ -481,7 +482,9 @@ object-fit: contain;
   width: 80%;
   margin: auto;
 }
-
+.owl-nav button.owl-next, .owl-nav button.owl-prev{
+  outline: none;
+}
 .owl-prev {
   position: absolute;
   top: -3rem;

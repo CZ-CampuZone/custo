@@ -6,16 +6,44 @@ import { doc, updateDoc } from "firebase/firestore";
 import Loader from "../../loader/Loader";
 import { NavLink } from "react-router-dom";
 import { useDrop } from "react-dnd";
-import clsx from"clsx"
+import clsx from "clsx";
 import WebFont from "webfontloader";
 import { ReactComponent as DeleteIcon } from "../../Assests/delete.svg";
 import { Update } from "../../loader/Update";
+import { createStyles, makeStyles } from "@mui/styles";
 
-
+const useStyles = makeStyles(() =>
+  createStyles({
+    modalBox: {
+      position: "fixed",
+      left: "0",
+      right: "0",
+      top: "0",
+      bottom: "0",
+      width: "35%",
+      margin: "auto",
+      height: "fit-content",
+      zIndex: "9999",
+    },
+    backDrop: {
+      position: "fixed",
+      left: "0",
+      right: "0",
+      top: "0",
+      bottom: "0",
+      height: "170vh",
+      width: "100%",
+      background: " rgba(0, 0, 0, 0.5)",
+      zIndex: "9999",
+    },
+  })
+);
 const Preview = () => {
+  const classes = useStyles();
   const ctx = useContext(AuthContext);
   const [mountedData, setMountedData] = useState([]);
   const [updatestatus, setUpdatestatus] = useState(false);
+  const [modalstate, setModalstate] = useState(false);
   const [loading, setloading] = useState(false);
   useEffect(() => {
     setMountedData(ctx.layoutFlow ? ctx.layoutFlow : []);
@@ -51,6 +79,7 @@ const Preview = () => {
       return [...prevState];
     });
     ctx.deleteData(id);
+    setModalstate(false)
   };
   const onSaveHandler = () => {
     setloading(true);
@@ -65,19 +94,18 @@ const Preview = () => {
       tempArr = tempArr.concat(newData);
     }
     updateDoc(doc(db, "layout", ctx.userId), { layout: tempArr });
-     // upadte in db
-     updateDoc(doc(db, "websitedata", ctx.userId), {
+    // upadte in db
+    updateDoc(doc(db, "websitedata", ctx.userId), {
       websiteData: ctx.websiteData,
     });
     setTimeout(() => {
       setloading(false);
-      setUpdatestatus(true)
+      setUpdatestatus(true);
     }, 2000).then(
       setTimeout(() => {
-
-        setUpdatestatus(false)
+        setUpdatestatus(false);
       }, 4000)
-    )
+    );
   };
   useEffect(() => {
     WebFont.load({
@@ -98,7 +126,12 @@ const Preview = () => {
             src="https://assets6.lottiefiles.com/packages/lf20_pgeevipp.json"
             background="transparent"
             speed="1"
-            style={{ width: "500px", height: "500px", transform: "scale(1.8)", fontfamily:"raleway" }}
+            style={{
+              width: "500px",
+              height: "500px",
+              transform: "scale(1.8)",
+              fontfamily: "raleway",
+            }}
             loop
             autoplay
           ></lottie-player>
@@ -108,7 +141,12 @@ const Preview = () => {
   };
   return (
     <>
-      {updatestatus === true && <div style={{zoom:"0.7"}}> <Update /></div>}
+      {updatestatus === true && (
+        <div style={{ zoom: "0.7" }}>
+          {" "}
+          <Update />
+        </div>
+      )}
       {loading && (
         <>
           <Loader />
@@ -120,13 +158,11 @@ const Preview = () => {
       >
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <div className="row px-4  pt-2 pb-4 justify-content-between">
-          
-
             <NavLink to="/" target="_blank">
               <button
-                className="btn shadow px-5 py-1"
+                className="btn  px-5 py-1"
                 style={{
-                  zoom:"0.8",
+                  zoom: "0.8",
                   background: "#9e3a8ccc",
                   color: "#fff",
                   borderRadius: "20px",
@@ -140,7 +176,7 @@ const Preview = () => {
               className="btn px-5 py-1"
               onClick={onSaveHandler}
               style={{
-                zoom:"0.8",
+                zoom: "0.8",
                 background: "#9e3a8ccc",
                 color: "#fff",
                 borderRadius: "20px",
@@ -151,17 +187,20 @@ const Preview = () => {
             </button>
           </div>
           <Droppable droppableId="mounted">
-            {(provided, snapshot ) => (
+            {(provided, snapshot) => (
               <div
                 className="mounted px-4"
                 ref={provided.innerRef}
-                {...provided.droppableProps}   >
-              
+                {...provided.droppableProps}
+              >
                 <div
                   className="p-2"
                   ref={drop}
-                  style={{ zoom: "0.6",border: ctx.layoutFlow?.length > 0 ?"1px solid #9e3a8ccc":""}}
-                
+                  style={{
+                    zoom: "0.6",
+                    border:
+                      ctx.layoutFlow?.length > 0 ? "1px solid #9e3a8ccc" : "",
+                  }}
                 >
                   {ctx.layoutFlow?.length === 0 ? <NoLayout /> : <></>}
                   {mountedData.map((item, index) => (
@@ -170,16 +209,57 @@ const Preview = () => {
                       draggableId={item.uniqId}
                       index={index}
                     >
-                      {(provided ) => (
+                      {(provided) => (
                         <div
                           className="position-relative"
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                        
                         >
+                          {modalstate && (
+                            <div className={classes.backDrop}>
+                              <div
+                                className={clsx(
+                                  classes.modalBox,
+                                  "px-2 text-center rounded bg-white py-5"
+                                )}
+                              >
+                                <h3 className="p-3 m-4">
+                                  Are you sure want to delete the component
+                                </h3>
+                                <button
+                                  style={{
+                                    background: "#9e3a8ccc",
+                                    color: "#fff",
+                                    borderRadius: "20px",
+                                    boxShadow: "0 3px 6px #00000036",
+                                    transform:"scale(1.4)"
+                                  }}
+                                  className="btn mx-5 px-5 py-1"
+                                   onClick={() => deleteHandler(item.uniqId)
+                                  }
+                                >
+                                  Yes{" "}
+                                </button>
+                                <button
+                                  style={{
+                                    background: "#9e3a8ccc",
+                                    color: "#fff",
+                                    borderRadius: "20px",
+                                    boxShadow: "0 3px 6px #00000036",
+                                    transform:"scale(1.4)"
+                                  }}
+                                  className="btn mx-5 px-5 py-1"
+                                  onClick={() => setModalstate(false)}
+                                >
+                                  No{" "}
+                                </button>
+                              </div>
+                            </div>
+                          )}
                           <div
-                            onClick={() => deleteHandler(item.uniqId)}
+                            onClick={() => setModalstate(true)}
+                           
                             style={{
                               position: "absolute",
                               top: "0",
@@ -197,11 +277,11 @@ const Preview = () => {
                               }}
                             />
                           </div>
+
                           <CreateComponent
                             component={item.c}
                             id={item.uniqId}
                           />
-                        
                         </div>
                       )}
                     </Draggable>

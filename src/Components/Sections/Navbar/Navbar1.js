@@ -96,6 +96,10 @@ const useStyles = makeStyles(() =>
       menuItem: {
         fontSize: "8px",
       },
+      logoContainer: {
+        width: "25%",
+    
+      },
     },
   })
 );
@@ -284,7 +288,7 @@ export const Navbar1 = (props) => {
           </div>
         </>
       ) : (
-        <nav className={clsx(classes.rootNav, "navbar navbar-expand-lg")}>
+        <nav className={clsx(classes.rootNav, "navbar navbar-expand-lg navbar-light px-2")}>
           <div className={classes.logoContainer}>
             <img src={localData.logo} alt="headerLogo" />
           </div>
@@ -300,7 +304,7 @@ export const Navbar1 = (props) => {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div
-            className={clsx(classes.menuList, "collapse navbar-collapse")}
+            className={clsx( "collapse navbar-collapse text-center ")}
             id="navbarTogglerDemo01"
           >
             {menuItem.map((item, index) => (

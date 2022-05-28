@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { createStyles, makeStyles } from "@mui/styles";
 import { Typography } from "@mui/material";
 import AuthContext from "../../../Context/Context";
@@ -9,6 +9,7 @@ import Cat3 from "../../../Assests/images/cat3.jpg";
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Update } from "../../../loader/Update";
+import clsx from "clsx"
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles(() =>
     },
     addCard: {
       borderRadius: "1rem",
-      position: "absolute",
+ heigh:"fit-content",
       background: "#fff",
       padding: "1rem 2rem",
       cursor: "pointer",
@@ -190,17 +191,31 @@ export const Card1 = (props) => {
     });
     // setError(null);
   };
+  const testRef =useRef(cardData.length.toLocaleString())
   const addCard = () => {
     let updatedData = {
       img: Cat1,
-      title: "",
-      count: "",
+      title: "Casual Dresses",
+      count: "1",
       id: localData.length,
+      
     };
     setLocalData((prevState) => {
       return [...prevState, updatedData];
+    })
+    window.scrollTo({
+      top: testRef.current.offsetTop,
+      behavior: "smooth",
+      // You can also assign value "auto"
+      // to the behavior parameter.
     });
+    console.log(testRef.current.offset)
   };
+ 
+
+  // useEffect(()=>{
+
+  // },[cardData.length])
   const removeCard = (value) => {
     setLocalData((prevState) => {
       prevState = prevState.filter((item) => item.id !== value);
@@ -213,7 +228,7 @@ export const Card1 = (props) => {
       {updatestatus === true && <Update />}
 
       {localData?.map((details, index) => (
-        <div className={classes.card} key={index}>
+        <div className={classes.card} key={index} ref={testRef}>
           <div
             onClick={() => removeCard(details.id)}
             style={{
@@ -263,11 +278,15 @@ export const Card1 = (props) => {
           </div>
         </div>
       ))}
-     
-    </div>
-    <div className={classes.addCard} onClick={addCard}>
+      <div 
+      className={clsx(classes.card,"d-flex align-items-center justify-content-center")}>
+      <div className={classes.addCard} onClick={addCard}>
         <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
       </div>
+      </div>
+      
+    </div>
+  
     </div>
   );
   const onSaveHandler = () => {
@@ -288,23 +307,24 @@ export const Card1 = (props) => {
     <>
 
       {ctx.isEditable ? (
-        <div className="row py-3 justify-content-end">
-          <div className="row py-3 justify-content-end">
-            <button
-              className="btn px-5"
-              onClick={onSaveHandler}
-              style={{
-                background: "#9e3a8ccc",
-                fontSize: "20px",
-                color: "#fff",
-                borderRadius: "20px",
-                boxShadow: "0 3px 6px #00000036",
-              }}
-            >
-              Save<i className="fa fa-save mx-2"></i>{" "}
-            </button>
-          </div>
-        </div>
+         <div className="row py-3 justify-content-end">
+         <div className="row py-3 justify-content-end">
+           <button
+             className="btn px-5"
+             onClick={onSaveHandler}
+             style={{
+               background: "#9e3a8ccc",
+               fontSize: "20px",
+               color: "white",
+               borderRadius: "20px",
+               boxShadow: "0 3px 6px #00000036",
+             }}
+           >
+             Save<i className="fa fa-save mx-2"></i>{" "}
+           </button>
+         </div>
+       </div>
+        
       ) : (
         <></>
       )}
@@ -322,7 +342,7 @@ export const Card1 = (props) => {
             <div className={classes.card} key={index}>
               <img src={item.img} alt={item.title} />
               <div className={classes.overlay}>
-                <Typography variant="h6">{item.title}</Typography>
+                <Typography className="font-weight-bold" variant="h6">{item.title}</Typography>
                 <Typography variant="body1">{item.count}&ensp;items</Typography>
               </div>
             </div>
