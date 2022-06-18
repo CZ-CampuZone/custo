@@ -122,7 +122,6 @@ export const AuthContextProvider = (props) => {
     updateDoc(doc(db, "websitedata", userId), {
       websiteData: websiteData,
     });
-
   };
 
   const deleteData = (data) => {
@@ -135,8 +134,8 @@ export const AuthContextProvider = (props) => {
       updatedData[value] = websiteData[value];
       return true;
     });
-  
-   setWebsiteData(updateData)
+
+    setWebsiteData(updatedData);
   };
 
   const updateUser = (data) => {
