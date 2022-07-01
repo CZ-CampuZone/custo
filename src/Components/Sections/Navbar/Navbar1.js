@@ -8,8 +8,9 @@ import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import Select from "react-select";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import AuthContext from "../../../Context/Context";
-import clsx from "clsx"
+import clsx from "clsx";
 import { Update } from "../../../loader/Update";
+import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -98,17 +99,16 @@ const useStyles = makeStyles(() =>
       },
       logoContainer: {
         width: "25%",
-    
       },
     },
   })
 );
 
 export const Navbar1 = (props) => {
-    const classes = useStyles();
+  const classes = useStyles();
   const [loading, setloading] = useState(false);
   const ctx = useContext(AuthContext);
- 
+  const location = useLocation();
   const headerData = {
     logo: HeaderLogo,
     menuItem: [
@@ -206,13 +206,12 @@ export const Navbar1 = (props) => {
     ctx.updateData(data, props.id);
     setTimeout(() => {
       setloading(false);
-      setUpdatestatus(true)
+      setUpdatestatus(true);
     }, 2000).then(
       setTimeout(() => {
-
-        setUpdatestatus(false)
+        setUpdatestatus(false);
       }, 4000)
-    )
+    );
   };
   console.log(menuItem);
   return (
@@ -240,7 +239,7 @@ export const Navbar1 = (props) => {
 
       {ctx.isEditable ? (
         <>
-        {updatestatus === true && <Update />}
+          {updatestatus === true && <Update />}
           <div className={classes.rootNav}>
             <div className={classes.logoContainer}>
               <input
@@ -288,7 +287,14 @@ export const Navbar1 = (props) => {
           </div>
         </>
       ) : (
-        <nav className={clsx(classes.rootNav, "navbar navbar-expand-lg navbar-light px-2")}>
+        <nav
+          className={clsx(
+            classes.rootNav,
+            `navbar navbar-expand-lg  navbar-light px-2 ${
+              location.pathname === "/" ? "fixed-top" : ""
+            }`
+          )}
+        >
           <div className={classes.logoContainer}>
             <img src={localData.logo} alt="headerLogo" />
           </div>
@@ -304,7 +310,7 @@ export const Navbar1 = (props) => {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div
-            className={clsx( "collapse navbar-collapse text-center ")}
+            className={clsx("collapse navbar-collapse text-center ")}
             id="navbarTogglerDemo01"
           >
             {menuItem.map((item, index) => (

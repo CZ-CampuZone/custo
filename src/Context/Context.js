@@ -122,7 +122,6 @@ export const AuthContextProvider = (props) => {
     updateDoc(doc(db, "websitedata", userId), {
       websiteData: websiteData,
     });
-
   };
 
   const deleteData = (data) => {
@@ -135,13 +134,15 @@ export const AuthContextProvider = (props) => {
       updatedData[value] = websiteData[value];
       return true;
     });
-  
-   setWebsiteData(updatedData)
+
+    setWebsiteData(updatedData);
   };
 
   const updateUser = (data) => {
     setUser(data);
+    console.log("procees1", data);
     updateDoc(doc(db, "users", userId), data);
+
     // function to update new passsowrd
     if (data.newPassword !== "") {
       updatePassword(auth.currentUser, data.newPassword)

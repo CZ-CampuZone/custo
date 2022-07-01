@@ -8,39 +8,60 @@ import clsx from "clsx";
 import "./Form1.css";
 import Cat2 from "../../../Assests/images/cat2.jpg";
 import Cat1 from "../../../Assests/images/cat1.jpg";
-import { fontSize, margin, textAlign } from "@mui/system";
+
 import { Update } from "../../../loader/Update";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const useStyles = makeStyles(() =>
   createStyles({
-    contactTitle:{
+    contactTitle: {
       position: "relative",
       display: "block",
       color: "#131313",
       fontSize: "36px",
       lineHeight: "46px",
       fontWeight: "700",
-      textTransform: "uppercase"
+      textTransform: "uppercase",
     },
-    editableHeader:{
-      width:"100%",
-      fontSize:"25px",
+    editableHeader: {
+      width: "100%",
+      fontSize: "25px",
       textAlign: "center",
       color: "red",
       background: "transparent",
       outline: "0",
       border: "none",
-      marginBottom:"10px"
+      marginBottom: "10px",
     },
     editable: {
-      width:"100%",
+      width: "100%",
       textAlign: "center",
       color: "black",
       background: "transparent",
       outline: "0",
       border: "none",
     },
-   
+    inputFile: {
+      width: 0,
+      height: 0,
+      opacity: 0,
+      zIndex: "0",
+    },
+    inputLabel: {
+      position: "absolute",
+      background: "#fff",
+      width: "2.5rem",
+      height: "2.5rem",
+      padding: "0.3rem",
+      bottom: "0",
+      right: "0",
+      zIndex: 20,
+      textAlign: "center",
+      cursor: "pointer",
+      "& i": {
+        fontSize: "1.75rem",
+      },
+    },
     "@media (max-width: 600px)": {
       col: {
         width: "100%",
@@ -60,7 +81,7 @@ export const Form1 = (props) => {
       address: "Intro header 1 Vel Nagar, Aavadi",
       contact: "l472487229",
       email: "loerum@gmail.com",
-      img1: Cat2,
+      img1: Cat1,
       img2: Cat2,
     },
   ];
@@ -68,43 +89,91 @@ export const Form1 = (props) => {
   const [localData, setLocalData] = useState(
     ctx.websiteData[props.id] === undefined ? data : ctx.websiteData[props.id]
   );
+
   const onChangeHandler = (e, details, index) => {
+    const tempEventInputs = JSON.parse(JSON.stringify(details));
+    if (e.target) {
+      tempEventInputs[e.target.id] = e.target.value;
+    }
     setLocalData((prevState) => {
-      let updatedData = null;
-      if (e.target.id === "header") {
-        updatedData = {
-          ...details,
-          header: e.target.value,
-        };
-      } else if (e.target.id === "para") {
-        updatedData = {
-          ...details,
-          para: e.target.value,
-        };
-      } else if (e.target.id === "address") {
-        updatedData = {
-          ...details,
-          address: e.target.value,
-        };
-      } else if (e.target.id === "contact") {
-        updatedData = {
-          ...details,
-          contact: e.target.value,
-        };
-      } else if (e.target.id === "email") {
-        updatedData = {
-          ...details,
-          email: e.target.value,
-        };
-      }
-      prevState[index] = updatedData;
+      prevState[index] = tempEventInputs;
       return [...prevState];
     });
+  };
+  const onImageChange = (e, i) => {
+    // setError(null);
+
+    let selected = e.target.files[0];
+
+    if (!selected) {
+      // setError("Please select file");
+      return;
+    }
+
+    if (!selected.type.includes("image")) {
+      // setError("Please select image file");
+      return;
+    }
+    const storage = getStorage();
+    const uploadPath = `images/${localData[i].title + localData[i].id}`; // upload path
+    const storageRef = ref(storage, uploadPath); // create refernce to store data
+
+    uploadBytes(storageRef, selected).then((snapshot) => {
+      // console.log(snapshot);
+      getDownloadURL(storageRef).then((url) => {
+        setLocalData((prevState) => {
+          let updatedData = null;
+          updatedData = {
+            ...prevState[i],
+            img1: url,
+          };
+
+          prevState[i] = updatedData;
+          return [...prevState];
+        });
+      });
+    });
+    // setError(null);
+  };
+  const onImgChange = (e, i) => {
+    // setError(null);
+
+    let selected = e.target.files[0];
+
+    if (!selected) {
+      // setError("Please select file");
+      return;
+    }
+
+    if (!selected.type.includes("image")) {
+      // setError("Please select image file");
+      return;
+    }
+    const storage = getStorage();
+    const uploadPath = `images/${localData[i].title + localData[i].id}`; // upload path
+    const storageRef = ref(storage, uploadPath); // create refernce to store data
+
+    uploadBytes(storageRef, selected).then((snapshot) => {
+      // console.log(snapshot);
+      getDownloadURL(storageRef).then((url) => {
+        setLocalData((prevState) => {
+          let updatedData = null;
+          updatedData = {
+            ...prevState[i],
+            img2: url,
+          };
+
+          prevState[i] = updatedData;
+          return [...prevState];
+        });
+      });
+    });
+    // setError(null);
   };
   const classes = useStyles();
   let editable = (
     <div class="contact-address-area">
-       {updatestatus === true && <Update />}
+      {updatestatus === true && <Update />}
       {localData?.map((details, index) => (
         <div key={index} class="container">
           <div class="sec-title-style1 text-center max-width">
@@ -132,6 +201,16 @@ export const Form1 = (props) => {
           <div class="contact-address-box row">
             {/* <!--Start Single Contact Address Box--> */}
             <div class="col-sm-4 single-contact-address-box text-center">
+              <input
+                type="file"
+                onChange={(e) => onImageChange(e, index)}
+                className={classes.inputFile}
+                id={details.address}
+                name={details.address}
+              />
+              <label className={classes.inputLabel} htmlFor={details.address}>
+                <i className="fa fa-upload"></i>
+              </label>
               <img src={details.img1} />
             </div>
             {/* <!--End Single Contact Address Box-->
@@ -204,6 +283,16 @@ export const Form1 = (props) => {
             {/* <!--End Single Contact Address Box-->
               <!--Start Single Contact Address Box--> */}
             <div class="col-sm-4 single-contact-address-box text-center">
+              <input
+                type="file"
+                onChange={(e) => onImgChange(e, index)}
+                className={classes.inputFile}
+                id={details.contact}
+                name={details.contact}
+              />
+              <label className={classes.inputLabel} htmlFor={details.contact}>
+                <i className="fa fa-upload"></i>
+              </label>
               <img src={details.img2} />
             </div>
           </div>
@@ -216,13 +305,12 @@ export const Form1 = (props) => {
     ctx.updateData(localData, props.id);
     setTimeout(() => {
       setloading(false);
-      setUpdatestatus(true)
+      setUpdatestatus(true);
     }, 2000).then(
       setTimeout(() => {
-
-        setUpdatestatus(false)
+        setUpdatestatus(false);
       }, 4000)
-    )
+    );
   };
 
   return (
@@ -278,7 +366,7 @@ export const Form1 = (props) => {
               <div class="contact-address-box row">
                 {/* <!--Start Single Contact Address Box--> */}
                 <div class="col-sm-4 single-contact-address-box text-center">
-                  <img src={Cat2}  alt={item.header}/>
+                  <img src={item.img1} alt={item.header} />
                 </div>
                 {/* <!--End Single Contact Address Box-->
               <!--Start Single Contact Address Box--> */}
@@ -322,7 +410,7 @@ export const Form1 = (props) => {
                 {/* <!--End Single Contact Address Box-->
               <!--Start Single Contact Address Box--> */}
                 <div class="col-sm-4 single-contact-address-box text-center">
-                  <img src={Cat1}  alt={item.header}/>
+                  <img src={item.img2} alt={item.header} />
                 </div>
               </div>
             </div>

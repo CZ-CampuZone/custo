@@ -9,7 +9,10 @@ import Cat3 from "../../../Assests/images/cat3.jpg";
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Update } from "../../../loader/Update";
-import clsx from "clsx"
+import clsx from "clsx";
+import { ShareSocial } from "react-share-social";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
@@ -29,12 +32,12 @@ const useStyles = makeStyles(() =>
     },
     addCard: {
       borderRadius: "1rem",
- heigh:"fit-content",
+      heigh: "fit-content",
       background: "#fff",
       padding: "1rem 2rem",
       cursor: "pointer",
       top: "1rem",
-      color:"#9e3a8ccc",
+      color: "#9e3a8ccc",
       right: "1rem",
       boxShadow: "2px 2px 3px 0 #ccc",
     },
@@ -59,7 +62,6 @@ const useStyles = makeStyles(() =>
       left: 0,
       right: 0,
       bottom: "2rem",
-      padding: "2rem",
       background: "#fff",
       "& h6": {
         color: "#000",
@@ -140,20 +142,12 @@ export const Card1 = (props) => {
       : ctx.websiteData[props.id]
   );
   const onChangeHandler = (e, details, index) => {
+    const tempEventInputs = JSON.parse(JSON.stringify(details));
+    if (e.target) {
+      tempEventInputs[e.target.id] = e.target.value;
+    }
     setLocalData((prevState) => {
-      let updatedData = null;
-      if (e.target.id === "title") {
-        updatedData = {
-          ...details,
-          title: e.target.value,
-        };
-      } else {
-        updatedData = {
-          ...details,
-          count: e.target.value,
-        };
-      }
-      prevState[index] = updatedData;
+      prevState[index] = tempEventInputs;
       return [...prevState];
     });
   };
@@ -191,27 +185,26 @@ export const Card1 = (props) => {
     });
     // setError(null);
   };
-  const testRef =useRef(cardData.length.toLocaleString())
+
+  const testRef = useRef(cardData.length.toLocaleString());
   const addCard = () => {
     let updatedData = {
       img: Cat1,
       title: "Casual Dresses",
       count: "1",
       id: localData.length,
-      
     };
     setLocalData((prevState) => {
       return [...prevState, updatedData];
-    })
+    });
     window.scrollTo({
       top: testRef.current.offsetTop,
       behavior: "smooth",
       // You can also assign value "auto"
       // to the behavior parameter.
     });
-    console.log(testRef.current.offset)
+    console.log(testRef.current.offset);
   };
- 
 
   // useEffect(()=>{
 
@@ -224,69 +217,71 @@ export const Card1 = (props) => {
   };
   let editable = (
     <div className="position-relative">
-    <div className={classes.root}>
-      {updatestatus === true && <Update />}
+      <div className={classes.root}>
+        {updatestatus === true && <Update />}
 
-      {localData?.map((details, index) => (
-        <div className={classes.card} key={index} ref={testRef}>
-          <div
-            onClick={() => removeCard(details.id)}
-            style={{
-              position: "absolute",
-              top: "0",
-              left: "0",
-              zIndex: 20,
-              cursor: "pointer",
-            }}
-          >
-            <DeleteIcon
+        {localData?.map((details, index) => (
+          <div className={classes.card} key={index} ref={testRef}>
+            <div
+              onClick={() => removeCard(details.id)}
               style={{
-                width: "2rem",
-                height: "2rem",
-                fill: "#dc3545",
-                padding: "5px",
+                position: "absolute",
+                top: "0",
+                left: "0",
+                zIndex: 20,
+                cursor: "pointer",
               }}
+            >
+              <DeleteIcon
+                style={{
+                  width: "2rem",
+                  height: "2rem",
+                  fill: "#dc3545",
+                  padding: "5px",
+                }}
+              />
+            </div>
+            <input
+              type="file"
+              onChange={(e) => onImageChange(e, index)}
+              className={classes.inputFile}
+              id={details.id}
+              name={details.title}
             />
-          </div>
-          <input
-            type="file"
-            onChange={(e) => onImageChange(e, index)}
-            className={classes.inputFile}
-            id={details.id}
-            name={details.title}
-          />
-          <label className={classes.inputLabel} htmlFor={details.id}>
-            <i className="fa fa-upload"></i>
-          </label>
+            <label className={classes.inputLabel} htmlFor={details.id}>
+              <i className="fa fa-upload"></i>
+            </label>
 
-          <img src={details.img} alt={details.title} />
-          <div className={classes.overlay}>
-            <input
-              onChange={(e) => onChangeHandler(e, details, index)}
-              className={classes.editable}
-              id="title"
-              placeholder="title"
-              value={details.title}
-            />
-            <input
-              onChange={(e) => onChangeHandler(e, details, index)}
-              className={classes.editable}
-              id="count"
-              placeholder="count"
-              value={details.count}
-            />
+            <img src={details.img} alt={details.title} />
+            <div className={classes.overlay}>
+              <input
+                onChange={(e) => onChangeHandler(e, details, index)}
+                className={classes.editable}
+                id="title"
+                placeholder="title"
+                value={details.title}
+              />
+              <input
+                onChange={(e) => onChangeHandler(e, details, index)}
+                className={classes.editable}
+                id="count"
+                placeholder="count"
+                value={details.count}
+              />
+            </div>
+          </div>
+        ))}
+        <div
+          className={clsx(
+            classes.card,
+            "d-flex align-items-center justify-content-center"
+          )}
+        >
+          <div className={classes.addCard} onClick={addCard}>
+            <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
           </div>
         </div>
-      ))}
-      <div 
-      className={clsx(classes.card,"d-flex align-items-center justify-content-center")}>
-      <div className={classes.addCard} onClick={addCard}>
-        <i class="fa fa-plus-circle mx-2" aria-hidden="true"></i> Add Card
       </div>
-      </div>
-      
-    </div>
-  
     </div>
   );
   const onSaveHandler = () => {
@@ -294,37 +289,34 @@ export const Card1 = (props) => {
     ctx.updateData(localData, props.id);
     setTimeout(() => {
       setloading(false);
-      setUpdatestatus(true)
+      setUpdatestatus(true);
     }, 2000).then(
       setTimeout(() => {
-
-        setUpdatestatus(false)
+        setUpdatestatus(false);
       }, 4000)
-    )
+    );
   };
 
   return (
     <>
-
       {ctx.isEditable ? (
-         <div className="row py-3 justify-content-end">
-         <div className="row py-3 justify-content-end">
-           <button
-             className="btn px-5"
-             onClick={onSaveHandler}
-             style={{
-               background: "#9e3a8ccc",
-               fontSize: "20px",
-               color: "white",
-               borderRadius: "20px",
-               boxShadow: "0 3px 6px #00000036",
-             }}
-           >
-             Save<i className="fa fa-save mx-2"></i>{" "}
-           </button>
-         </div>
-       </div>
-        
+        <div className="row py-3 justify-content-end">
+          <div className="row py-3 justify-content-end">
+            <button
+              className="btn px-5"
+              onClick={onSaveHandler}
+              style={{
+                background: "#9e3a8ccc",
+                fontSize: "20px",
+                color: "white",
+                borderRadius: "20px",
+                boxShadow: "0 3px 6px #00000036",
+              }}
+            >
+              Save<i className="fa fa-save mx-2"></i>{" "}
+            </button>
+          </div>
+        </div>
       ) : (
         <></>
       )}
@@ -342,9 +334,13 @@ export const Card1 = (props) => {
             <div className={classes.card} key={index}>
               <img src={item.img} alt={item.title} />
               <div className={classes.overlay}>
-                <Typography className="font-weight-bold" variant="h6">{item.title}</Typography>
+                <Typography className="font-weight-bold" variant="h6">
+                  {item.title}
+                </Typography>
                 <Typography variant="body1">{item.count}&ensp;items</Typography>
               </div>
+
+              <img src={item.img} alt={item.title} />
             </div>
           ))}
         </div>

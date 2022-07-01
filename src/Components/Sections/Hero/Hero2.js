@@ -170,6 +170,7 @@ export const Hero2 = (props) => {
             });
         });
         // setError(null);
+        console.log("finished")
     };
 
 
