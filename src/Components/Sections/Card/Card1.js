@@ -340,7 +340,6 @@ export const Card1 = (props) => {
                 <Typography variant="body1">{item.count}&ensp;items</Typography>
               </div>
 
-              <img src={item.img} alt={item.title} />
             </div>
           ))}
         </div>
