@@ -115,7 +115,7 @@ export const Form1 = (props) => {
       return;
     }
     const storage = getStorage();
-    const uploadPath = `images/${localData[i].title + localData[i].id}`; // upload path
+    const uploadPath = `images/${localData[i].title + localData[i].id + e.target.name}`; // upload path
     const storageRef = ref(storage, uploadPath); // create refernce to store data
 
     uploadBytes(storageRef, selected).then((snapshot) => {
