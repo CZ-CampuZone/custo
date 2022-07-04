@@ -6,6 +6,7 @@ import { Slider1 } from "../Components/Sections/Testimonals/Slider1";
 import { Gallery1 } from "../Components/Sections/Gallery/Gallery1";
 import { Footer1 } from "../Components/Sections/Footer/Footer1";
 import { Form1 } from "../Components/Sections/Contact/Form1";
+import { Gallery2 } from "../Components/Sections/Gallery/Gallery2";
 
 
 export const Layout = [
@@ -14,6 +15,7 @@ export const Layout = [
   { c: Hero2, id: "Hero2" },
   { c: Card1, id: "Card1" },
   { c: Gallery1, id: "Gallery1" },
+  { c: Gallery2, id: "Gallery2" },
   { c: Slider1, id: "Slider1" },
   { c: Form1, id: "Form1" },
   { c: Footer1, id: "Footer1" },
