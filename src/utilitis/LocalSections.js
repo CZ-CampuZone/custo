@@ -6,6 +6,7 @@ import { Slider1 } from "../Components/Sections/Testimonals/Slider1";
 import { Gallery1 } from "../Components/Sections/Gallery/Gallery1";
 import { Footer1 } from "../Components/Sections/Footer/Footer1";
 import { Form1 } from "../Components/Sections/Contact/Form1";
+import { Form2 } from "../Components/Sections/Contact/Form2";
 
 export const LocalSections = [
   {
@@ -14,7 +15,10 @@ export const LocalSections = [
   },
   {
     group: "Hero",
-    variants: [{ c: Hero1, id: "Hero1" },{ c: Hero2, id: "Hero2" }],
+    variants: [
+      { c: Hero1, id: "Hero1" },
+      { c: Hero2, id: "Hero2" },
+    ],
   },
   {
     group: "Card",
@@ -30,7 +34,10 @@ export const LocalSections = [
   },
   {
     group: "Contact",
-    variants: [{ c: Form1, id: "Form1" }],
+    variants: [
+      { c: Form1, id: "Form1" },
+      { c: Form2, id: "Form2" },
+    ],
   },
   {
     group: "Footer",
