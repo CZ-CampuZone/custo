@@ -33,6 +33,7 @@ const Home = () => {
     ctx.userLayoutData();
     ctx.userWebsiteData();
   }, []);
+  console.log(ctx.layoutFlow);
 
   const CreateComponent = ({ component, id }) => {
     const Component = component;

@@ -198,7 +198,7 @@ export const Messages = () => {
                 ))}
               </ul>
             </div>
-          </div>
+          </div> 
         </div>
         {
           posts.length >= 4 && (
