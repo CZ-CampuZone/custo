@@ -6,7 +6,7 @@ import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import clsx from "clsx";
 import { Update } from "../../../loader/Update";
 
-const Card2 = (props) => {
+const Card3 = (props) => {
   const [loading, setloading] = useState(false);
   const [updatestatus, setUpdatestatus] = useState(false);
 
@@ -227,4 +227,4 @@ const Card2 = (props) => {
   );
 };
 
-export default Card2;
+export default Card3;

@@ -7,7 +7,7 @@ import Gallery from "../../../Assests/diviImages/gallery.jpg";
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import { Update } from "../../../loader/Update";
 
-const Gallery1 = (props) => {
+const Gallery3 = (props) => {
   const ctx = useContext(AuthContext);
   const [updatestatus, setUpdatestatus] = useState(false);
   const [loading, setloading] = useState(false);
@@ -255,4 +255,4 @@ const Gallery1 = (props) => {
   );
 };
 
-export default Gallery1;
+export default Gallery3;

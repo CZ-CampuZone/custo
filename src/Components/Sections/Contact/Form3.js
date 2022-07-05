@@ -5,7 +5,7 @@ import Loader from "../../../loader/Loader";
 import clsx from "clsx";
 import { Update } from "../../../loader/Update";
 
-const Form1 = (props) => {
+const Form3 = (props) => {
   const [loading, setloading] = useState(false);
   const [updatestatus, setUpdatestatus] = useState(false);
   const ctx = useContext(AuthContext);
@@ -200,4 +200,4 @@ const Form1 = (props) => {
   );
 };
 
-export default Form1;
+export default Form3;

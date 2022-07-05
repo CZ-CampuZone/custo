@@ -27,7 +27,7 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const Footer1 = (props) => {
+const Footer2 = (props) => {
   const classes= useStyles();
   const [updatestatus, setUpdatestatus] = useState(false);
   const [loading, setloading] = useState(false);
@@ -121,4 +121,4 @@ const Footer1 = (props) => {
   );
 };
 
-export default Footer1;
+export default Footer2;

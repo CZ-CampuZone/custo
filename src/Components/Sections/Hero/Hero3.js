@@ -56,7 +56,7 @@ const useStyles = makeStyles(() =>
     })
 );
 
-export const Hero2 = () => {
+export const Hero3 = () => {
     const data = [
         {
             img: BannerImage1,
