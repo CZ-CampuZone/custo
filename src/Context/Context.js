@@ -30,6 +30,8 @@ const AuthContext = React.createContext({
   updateIsEditable: () => {},
   updateLayout: () => {},
   addLayout: () => {},
+  getFormData: () => {},
+  messageData: [],
   logout: () => {},
 });
 
@@ -41,6 +43,7 @@ export const AuthContextProvider = (props) => {
   const [layoutData, setLayoutData] = useState(null);
   const [layoutFlow, setLayoutFlow] = useState(null);
   const [isEditable, setIsEditable] = useState(false);
+  const [messageData, setMessageData] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(userId ? true : false);
 
   useEffect(() => {}, []);
@@ -72,7 +75,7 @@ export const AuthContextProvider = (props) => {
   }
   // function to get website data by admin
   async function getWebsiteData() {
-    const docRef = doc(db, "websitedata", userId);
+    const docRef = doc(db, "      ", userId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       setWebsiteData(docSnap.data().websiteData);
@@ -80,6 +83,17 @@ export const AuthContextProvider = (props) => {
       console.log("No such document!");
     }
   }
+  // Get Contact Form Data
+  async function getFormData() {
+    const docRef = doc(db, "formdata", userId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      setMessageData(docSnap.data().message);
+    } else {
+      console.log("No such document!");
+    }
+  }
+  //
   // function to get user data of admin
   async function getUserData() {
     const docRef = doc(db, "users", userId);
@@ -226,6 +240,8 @@ export const AuthContextProvider = (props) => {
         deleteData: deleteData,
         updateLayout: updateLayout,
         addLayout: addLayout,
+        getFormData: getFormData,
+        messageData: messageData,
       }}
     >
       {props.children}

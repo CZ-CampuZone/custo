@@ -42,11 +42,11 @@ const Sidebar = () => {
     //   path: "gallery",
     //   icon: GalleryIcon,
     // },
-    // {
-    //   name: "Settings",
-    //   path: "settings",
-    //   icon: SettingsIcon,
-    // },
+    {
+      name: "Messages",
+      path: "messages",
+      icon: SettingsIcon,
+    },
   ];
   return (
     <>
@@ -55,21 +55,24 @@ const Sidebar = () => {
         style={{ top: 0, left: 0 }}
       >
         <div className="scroll-view border-right">
-          <div className="nav_title position-relative  text-center  p-0 " style={{height:"9vh",overflow:"hidden"}} >
-          <img src={Logo} className="landing_logo" />
-           
+          <div
+            className="nav_title position-relative  text-center  p-0 "
+            style={{ height: "9vh", overflow: "hidden" }}
+          >
+            <img src={Logo} className="landing_logo" />
           </div>
-          <div className="text-center m-0" >
-            <h5 class=" p-3 rounded headtext m-0 font-weight-bold m-1">{ctx.user.websitename} </h5>
-            </div>
+          <div className="text-center m-0">
+            <h5 class=" p-3 rounded headtext m-0 font-weight-bold m-1">
+              {ctx.user.websitename}{" "}
+            </h5>
+          </div>
           <ul className="nav side-menu  pt-2 px-2">
-       
             {navMenuList.map((menuItem) => {
               return (
                 <li className="list-item d-block w-100" key={menuItem.name}>
                   <NavLink to={menuItem.path}>
-               {menuItem.icon && <menuItem.icon />}
-                  <div className="set">{menuItem.name}</div>  
+                    {menuItem.icon && <menuItem.icon />}
+                    <div className="set">{menuItem.name}</div>
                   </NavLink>
                 </li>
               );

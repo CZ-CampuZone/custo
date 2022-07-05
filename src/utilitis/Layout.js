@@ -8,6 +8,7 @@ import { Footer1 } from "../Components/Sections/Footer/Footer1";
 import { Form1 } from "../Components/Sections/Contact/Form1";
 import { Gallery2 } from "../Components/Sections/Gallery/Gallery2";
 
+import { Form2 } from "../Components/Sections/Contact/Form2";
 
 export const Layout = [
   { c: Navbar1, id: "Navbar1" },
@@ -18,5 +19,6 @@ export const Layout = [
   { c: Gallery2, id: "Gallery2" },
   { c: Slider1, id: "Slider1" },
   { c: Form1, id: "Form1" },
+  { c: Form2, id: "Form2" },
   { c: Footer1, id: "Footer1" },
 ];

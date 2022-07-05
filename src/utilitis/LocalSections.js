@@ -8,6 +8,9 @@ import { Footer1 } from "../Components/Sections/Footer/Footer1";
 import { Form1 } from "../Components/Sections/Contact/Form1";
 import { Gallery2 } from "../Components/Sections/Gallery/Gallery2";
 
+
+import { Form2 } from "../Components/Sections/Contact/Form2";
+
 export const LocalSections = [
   {
     group: "Navbar",
@@ -31,7 +34,7 @@ export const LocalSections = [
   },
   {
     group: "Contact",
-    variants: [{ c: Form1, id: "Form1" }],
+    variants: [{ c: Form1, id: "Form1" },{ c: Form2, id: "Form2" }],
   },
   {
     group: "Footer",
