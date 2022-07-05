@@ -11,10 +11,9 @@ import {
 } from "firebase/firestore";
 import {db} from "../../services/firebase";
 import "./Messages.css";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
+import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../Context/Context";
 export const Messages = () => {
@@ -173,8 +172,10 @@ export const Messages = () => {
                         <h6 class="company">{data.company}</h6>
                       </div>
                       <div className="col-md-6  p-0">
-                        <h6 class="company mt-3">{data.phone}</h6>
-                        <h6 class="company">{data.email}</h6>
+                      
+                        <h6 class="company "> <i class="fa fa-phone-square mx-2" aria-hidden="true"></i> {data.phone}</h6>
+                        
+                        <h6 class="company"><i class="fa fa-envelope mx-2" aria-hidden="true"></i>{data.email}</h6>
                       </div>
 
                       <p
@@ -199,7 +200,9 @@ export const Messages = () => {
             </div>
           </div>
         </div>
-        <div className="row m-0   justify-content-center align-items-center">
+        {
+          posts.length >= 4 && (
+            <div className="row m-0   justify-content-center align-items-center">
           <div
             className={` btn  text-white px-4  ${
               currentPage === 1 ? "arrow-disabled" : "buttonnav"
@@ -234,6 +237,8 @@ export const Messages = () => {
             <i class="fas fa-angle-double-right"></i>
           </div>
         </div>
+          )
+        }
       </div>
     </>
   );
