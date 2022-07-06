@@ -1,11 +1,10 @@
 import { Card1 } from "../Components/Sections/Card/Card1";
 import Card2 from "../Components/Sections/Card/Card2";
 import Card3 from "../Components/Sections/Card/Card3";
-import Hero7 from "../Components/Sections/Hero/Hero7";
 import Hero6 from "../Components/Sections/Hero/Hero6";
 import Hero5 from "../Components/Sections/Hero/Hero5";
 import Hero4 from "../Components/Sections/Hero/Hero4";
-import { Hero3 } from "../Components/Sections/Hero/Hero3";
+import  Hero3  from "../Components/Sections/Hero/Hero3";
 import { Hero2 } from "../Components/Sections/Hero/Hero2";
 import { Hero1 } from "../Components/Sections/Hero/Hero1";
 import { Navbar1 } from "../Components/Sections/Navbar/Navbar1";
@@ -30,7 +29,7 @@ export const LocalSections = [
   },
   {
     group: "Hero",
-    variants: [{ c: Hero1, id: "Hero1" },{ c: Hero2, id: "Hero2" },{ c: Hero3, id: "Hero3" },{ c: Hero4, id: "Hero4" },{ c: Hero5, id: "Hero5" },{ c: Hero6, id: "Hero6" },{ c: Hero7, id: "Hero7" }],
+    variants: [{ c: Hero1, id: "Hero1" },{ c: Hero2, id: "Hero2" },{ c: Hero3, id: "Hero3" },{ c: Hero4, id: "Hero4" },{ c: Hero5, id: "Hero5" },{ c: Hero6, id: "Hero6" }],
   },
   {
     group: "Card",

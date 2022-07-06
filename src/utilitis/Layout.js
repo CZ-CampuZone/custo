@@ -3,11 +3,11 @@ import Card2 from "../Components/Sections/Card/Card2";
 import Card3 from "../Components/Sections/Card/Card3";
 import { Hero1 } from "../Components/Sections/Hero/Hero1";
 import { Hero2 } from "../Components/Sections/Hero/Hero2";
-import { Hero3 } from "../Components/Sections/Hero/Hero3";
-import Hero4 from "../Components/Sections/Hero/Hero4";
-import Hero5 from "../Components/Sections/Hero/Hero5";
-import Hero6 from "../Components/Sections/Hero/Hero6";
-import Hero7 from "../Components/Sections/Hero/Hero7";
+import Hero3  from "../Components/Sections/Hero/Hero3";
+import Hero4 from "../Components/Sections/Hero/Hero3";
+import Hero5 from "../Components/Sections/Hero/Hero4";
+import Hero6 from "../Components/Sections/Hero/Hero5";
+
 import { Navbar1 } from "../Components/Sections/Navbar/Navbar1";
 import { Navbar2 } from "../Components/Sections/Navbar/Navbar2";
 import { Slider1 } from "../Components/Sections/Testimonals/Slider1";
@@ -29,7 +29,7 @@ export const Layout = [
   { c: Hero4, id: "Hero4" },
   { c: Hero5, id: "Hero5" },
   { c: Hero6, id: "Hero6" },
-  { c: Hero7, id: "Hero7" },
+
   { c: Card1, id: "Card1" },
   { c: Card2, id: "Card2" },
   { c: Card3, id: "Card3" },

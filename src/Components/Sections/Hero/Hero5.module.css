@@ -1,78 +1,46 @@
-.hero {
-  width: 100%;
-  min-height: 88vh;
-  background-color: #4f4aef;
-  padding-left: 0%;
-  padding-right: 0%;
-  box-sizing: border-box;
-  background-image: url("https://www.elegantthemes.com/layouts/wp-content/uploads/2018/11/day_care_bg_02.png");
-  position: relative;
-  background-size: cover;
-  background-position: top;
-  z-index: 1;
-  overflow: hidden;
-}
-.texter {
-  width: 100%;
-  color: white;
+.about {
   text-align: center;
-  padding-top: 0px;
 }
 
-.texter h2,
+.about_h2,
 .inputHeading {
-  display: block;
+  padding-top: 10px;
   width: 100%;
+  font-size: 60px;
+  font-weight: 500;
+  line-height: 1.2em;
   background: transparent;
+  color: #333;
   border: none;
   outline: 0;
-  font-weight: 600;
-  color: white;
-  font-family: "Fredoka One", cursive;
-  font-weight: 500;
   text-align: center;
-  text-shadow: 0em 0.1em 0.14em rgb(0 0 0 / 12%);
+  font-family: "Fredoka One", cursive;
 }
 
-.texter p,
+.about_p,
 .inputPara {
-  color: white;
   width: 100%;
-  font-family: Open Sans, Arial, sans-serif;
   font-weight: 500;
-  display: block;
-  background: transparent;
-  border: none;
+  padding-top: 10px;
+  line-height: 2em;
+  color: #666;
   text-align: center;
+  border: none;
+
+  font-size: 17px;
   outline: 0;
+  background: transparent;
+  font-weight: 500;
+  font-family: Open Sans, Arial, sans-serif;
 }
 
-.texter .btn {
-  z-index: 3;
-  background: white;
-  font-weight: 900;
-  color: #ff236c;
-  border-radius: 50px;
-  font-family: "Fredoka One", cursive;
-}
 @media screen and (min-width: 600px) {
-  .hero {
-    height: auto;
+  .about {
+    width: 90%;
   }
 
-  .texter {
-    width: 80%;
-  }
-
-  .texter h2,
+  .about_h2,
   .inputHeading {
     font-size: 5rem;
-  }
-
-  .texter .btn {
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 20px;
   }
 }

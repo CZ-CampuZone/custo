@@ -20,13 +20,13 @@ import Context from "../Context/Context";
 // };
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDaDKQtnaAs8WHOv9kmGH_5u7hOyMK2Unw",
-  authDomain: "testing-361e7.firebaseapp.com",
-  projectId: "testing-361e7",
-  storageBucket: "testing-361e7.appspot.com",
-  messagingSenderId: "757958341695",
-  appId: "1:757958341695:web:bdefd47b791d9cb53ab48a",
-  measurementId: "G-RC5GYSL876"
+  apiKey: "AIzaSyDP4kewU6kt94bBFoZHAfeVUh9DtD0z2PA",
+  authDomain: "layatex-b9cbc.firebaseapp.com",
+  projectId: "layatex-b9cbc",
+  storageBucket: "layatex-b9cbc.appspot.com",
+  messagingSenderId: "918256160962",
+  appId: "1:918256160962:web:8750d031aa4fc0e142ab5b",
+  measurementId: "G-5HQ829NF2Z"
 };
 const firebase = initializeApp(firebaseConfig);
 const analytics = getAnalytics(firebase);
