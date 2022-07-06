@@ -1,0 +1,48 @@
+
+.headerlogo {
+  padding-left: 10px;
+  width: 25%;
+}
+
+.img_logo {
+  width: 70px;
+  height: 70px;
+}
+.navbarcollapse {
+    justify-content: right;
+  }
+  
+  .navbartog {
+    position: relative;
+  }
+  
+   .navlink {
+    color: black;
+    position: relative;
+  }
+  
+  .navlink:hover {
+    color: black;
+  }
+  
+ .navlink {
+    font-weight: 600;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+@media screen and (min-width: 600px) {
+    .navbartog {
+      background: white;
+      position: absolute;
+      top: 0;
+    }
+  
+    .navbarcollapse {
+      justify-content: right;
+    }
+  
+     .navbartog {
+      position: relative;
+    }
+}  

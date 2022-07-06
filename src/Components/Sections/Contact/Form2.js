@@ -4,7 +4,6 @@ import OwlCarousel from "react-owl-carousel";
 import AuthContext from "../../../Context/Context";
 import Loader from "../../../loader/Loader";
 import clsx from "clsx";
-import "./Form2.css";
 import Cat2 from "../../../Assests/images/cat2.jpg";
 import Cat1 from "../../../Assests/images/cat1.jpg";
 
@@ -109,6 +108,7 @@ export const Form2 = (props) => {
       };
     });
   };
+ 
   function formHandler(e) {
     e.preventDefault();
     if (

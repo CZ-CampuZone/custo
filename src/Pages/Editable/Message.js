@@ -1,6 +1,6 @@
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../services/firebase";
 import "./Messages.css";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
 import { useContext, useEffect, useState } from "react";
@@ -11,14 +11,25 @@ export const Messages = () => {
     ctx.getFormData();
   }, []);
   console.log(ctx.messageData);
-  const [formData, setFormData] = useState(ctx.messageData);
+
+  function removehol(e) {
+    console.log(e, "data");
+    updateDoc(doc(db, "formdata", ctx.userId), {
+      message: posts.filter((x) => x.id !== e),
+    }).then(() => {
+      alert("Message was removed");
+      ctx.getFormData();
+    });
+  }
+
   const [posts, SetPosts] = useState([]);
   const [postPerPage, SetPostPerPage] = useState(10);
   const [currentPage, SetCurrentPage] = useState(1);
+  console.log(posts);
 
   useEffect(() => {
-    SetPosts(formData);
-  }, [formData]);
+    SetPosts(ctx.messageData);
+  }, [ctx.messageData]);
   const [pageItem, SetPageItem] = useState({
     start: 0,
     end: postPerPage,
@@ -123,11 +134,7 @@ export const Messages = () => {
         <h2 className="text-center " style={{ color: "var(--primary)" }}>
           {" "}
           Messages
-          <Badge
-            badgeContent={formData.length}
-            color="secondary"
-            className="mx-2"
-          >
+          <Badge badgeContent={posts.length} color="secondary" className="mx-2">
             <MailIcon color="action" />
           </Badge>
         </h2>
@@ -136,7 +143,7 @@ export const Messages = () => {
           <div class="row">
             <div class="col-md-10 offset-md-1">
               <ul class="job-list">
-                {formData?.map((data, index) => (
+                {posts?.map((data, index) => (
                   <li class="job-preview  d-flex">
                     <div class="content col-md-11 row p-0 m-0">
                       <div className="col-md-6 p-0">
@@ -144,8 +151,19 @@ export const Messages = () => {
                         <h6 class="company">{data.company}</h6>
                       </div>
                       <div className="col-md-6  p-0">
-                        <h6 class="company mt-3">{data.phone}</h6>
-                        <h6 class="company">{data.email}</h6>
+                        <h6 class="company ">
+                          {" "}
+                          <i
+                            class="fa fa-phone-square mx-2"
+                            aria-hidden="true"
+                          ></i>{" "}
+                          {data.phone}
+                        </h6>
+
+                        <h6 class="company">
+                          <i class="fa fa-envelope mx-2" aria-hidden="true"></i>
+                          {data.email}
+                        </h6>
                       </div>
 
                       <p
@@ -159,6 +177,7 @@ export const Messages = () => {
                       <a
                         href="#"
                         class="btn btn-apply float-sm-right float-xs-left"
+                        onClick={(e) => removehol(data.id)}
                       >
                         Remove
                       </a>
@@ -169,41 +188,43 @@ export const Messages = () => {
             </div>
           </div>
         </div>
-        <div className="row m-0   justify-content-center align-items-center">
-          <div
-            className={` btn  text-white px-4  ${
-              currentPage === 1 ? "arrow-disabled" : "buttonnav"
-            }`}
-            onClick={prevPageClick}
-            role="button"
-          >
-            <i class="fas fa-angle-double-left"></i>
-          </div>
-          {arrOfCurrButtons.map((data, index) => (
-            <button
-              key={index}
-              className={` d-sm-flex justify-content-center btn align-items-center d-none  p-2 mx-1 pages
-                    ${currentPage === data ? "active" : ""}`}
-              onClick={() => {
-                SetCurrentPage(data);
-              }}
+        {posts.length >= 4 && (
+          <div className="row m-0   justify-content-center align-items-center">
+            <div
+              className={` btn  text-white px-4  ${
+                currentPage === 1 ? "arrow-disabled" : "buttonnav"
+              }`}
+              onClick={prevPageClick}
+              role="button"
             >
-              {data}
-            </button>
-          ))}
-          <div
-            className={`btn  text-white px-4
+              <i class="fas fa-angle-double-left"></i>
+            </div>
+            {arrOfCurrButtons.map((data, index) => (
+              <button
+                key={index}
+                className={` d-sm-flex justify-content-center btn align-items-center d-none  p-2 mx-1 pages
+                    ${currentPage === data ? "active" : ""}`}
+                onClick={() => {
+                  SetCurrentPage(data);
+                }}
+              >
+                {data}
+              </button>
+            ))}
+            <div
+              className={`btn  text-white px-4
                 ${
                   currentPage === numOfButtons.length
                     ? "arrow-disabled"
                     : "buttonnav"
                 }`}
-            onClick={nextPageClick}
-            role="button"
-          >
-            <i class="fas fa-angle-double-right"></i>
+              onClick={nextPageClick}
+              role="button"
+            >
+              <i class="fas fa-angle-double-right"></i>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );
