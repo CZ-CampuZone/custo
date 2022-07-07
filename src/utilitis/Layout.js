@@ -1,6 +1,7 @@
 import { Card1 } from "../Components/Sections/Card/Card1";
 import Card2 from "../Components/Sections/Card/Card2";
 import Card3 from "../Components/Sections/Card/Card3";
+import { Card4 } from "../Components/Sections/Card/Card4";
 import { Hero1 } from "../Components/Sections/Hero/Hero1";
 import { Hero2 } from "../Components/Sections/Hero/Hero2";
 import Hero3  from "../Components/Sections/Hero/Hero3";
@@ -33,6 +34,8 @@ export const Layout = [
   { c: Card1, id: "Card1" },
   { c: Card2, id: "Card2" },
   { c: Card3, id: "Card3" },
+  { c: Card4, id: "Card4" },
+  
   { c: Gallery1, id: "Gallery1" },
   { c: Gallery2, id: "Gallery2" },
   { c: Gallery3, id: "Gallery3" },

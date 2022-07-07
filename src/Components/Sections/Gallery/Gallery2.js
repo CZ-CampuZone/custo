@@ -11,7 +11,8 @@ import Dress3 from "../../../Assests/images/dress3.jpg";
 import { ReactComponent as DeleteIcon } from "../../../Assests/delete.svg";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Update } from "../../../loader/Update";
-import clsx from "clsx"
+import clsx from "clsx";
+import MailIcon from '@mui/icons-material/Mail';
 
 const useStyles = makeStyles(() =>
   createStyles({

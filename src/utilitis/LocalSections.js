@@ -1,6 +1,7 @@
 import { Card1 } from "../Components/Sections/Card/Card1";
 import Card2 from "../Components/Sections/Card/Card2";
 import Card3 from "../Components/Sections/Card/Card3";
+import { Card4 } from "../Components/Sections/Card/Card4";
 import Hero6 from "../Components/Sections/Hero/Hero6";
 import Hero5 from "../Components/Sections/Hero/Hero5";
 import Hero4 from "../Components/Sections/Hero/Hero4";
@@ -45,6 +46,8 @@ export const LocalSections = [
       { c: Card1, id: "Card1" },
       { c: Card2, id: "Card2" },
       { c: Card3, id: "Card3" },
+      { c: Card4, id: "Card4" },
+
     ],
   },
   {

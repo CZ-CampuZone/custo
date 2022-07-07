@@ -1,0 +1,32 @@
+
+ 
+  /* .head {
+    border-bottom: 2px solid black;
+    border-bottom-color: white;
+    width: 100px;
+  } */
+
+  /* .card {
+    border-radius: 20px;
+  }
+
+ 
+ 
+
+  .b-right {
+    border-right: 1px dashed rgba(0, 0, 0, 0.397);
+  } */
+
+  .zoom {
+    overflow: hidden;
+   
+    height: 200px;
+  }
+
+  .zoom img {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .card:hover img {
+    transform: scale(1.5);
+  }
