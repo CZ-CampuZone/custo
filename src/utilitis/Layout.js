@@ -17,6 +17,7 @@ import { Gallery1 } from "../Components/Sections/Gallery/Gallery1";
 import { Footer1 } from "../Components/Sections/Footer/Footer1";
 import { Form1 } from "../Components/Sections/Contact/Form1";
 import Form3 from "../Components/Sections/Contact/Form3";
+import { Form4 } from "../Components/Sections/Contact/Form4";
 import { Gallery2 } from "../Components/Sections/Gallery/Gallery2";
 import Gallery3 from "../Components/Sections/Gallery/Gallery3";
 import { Form2 } from "../Components/Sections/Contact/Form2";
@@ -44,5 +45,6 @@ export const Layout = [
   { c: Form1, id: "Form1" },
   { c: Form2, id: "Form2" },
   { c: Form3, id: "Form3" },
+  { c: Form4, id: "Form4" },
   { c: Footer1, id: "Footer1" },
 ];

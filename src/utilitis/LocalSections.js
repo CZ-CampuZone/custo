@@ -20,6 +20,7 @@ import Footer2 from "../Components/Sections/Footer/Footer2";
 import { Form1 } from "../Components/Sections/Contact/Form1";
 import { Form2 } from "../Components/Sections/Contact/Form2";
 import Form3 from "../Components/Sections/Contact/Form3";
+import { Form4 } from "../Components/Sections/Contact/Form4";
 
 export const LocalSections = [
   {
@@ -71,6 +72,7 @@ export const LocalSections = [
       { c: Form1, id: "Form1" },
       { c: Form2, id: "Form2" },
       { c: Form3, id: "Form3" },
+      { c: Form4, id: "Form4" },
     ],
   },
   {
