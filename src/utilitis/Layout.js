@@ -21,6 +21,7 @@ import { Form4 } from "../Components/Sections/Contact/Form4";
 import { Gallery2 } from "../Components/Sections/Gallery/Gallery2";
 import Gallery3 from "../Components/Sections/Gallery/Gallery3";
 import { Form2 } from "../Components/Sections/Contact/Form2";
+import { Ticker1 } from "../Components/Sections/Tickers/Ticker1";
 
 export const Layout = [
   { c: Navbar1, id: "Navbar1" },
@@ -47,4 +48,7 @@ export const Layout = [
   { c: Form3, id: "Form3" },
   { c: Form4, id: "Form4" },
   { c: Footer1, id: "Footer1" },
+
+  {c: Ticker1, id: "Ticker1"}
+
 ];

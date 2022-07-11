@@ -21,8 +21,16 @@ import { Form1 } from "../Components/Sections/Contact/Form1";
 import { Form2 } from "../Components/Sections/Contact/Form2";
 import Form3 from "../Components/Sections/Contact/Form3";
 import { Form4 } from "../Components/Sections/Contact/Form4";
+import { Ticker1 } from "../Components/Sections/Tickers/Ticker1";
 
 export const LocalSections = [
+
+  {
+    group: "Ticker",
+    variants:[
+      {c: Ticker1, id: "Ticker1" }
+    ]
+  },
   {
     group: "Navbar",
     variants: [
@@ -82,4 +90,5 @@ export const LocalSections = [
       { c: Footer2, id: "Footer2" },
     ],
   },
+  
 ];

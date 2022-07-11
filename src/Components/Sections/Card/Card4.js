@@ -14,7 +14,7 @@ import { Update } from "../../../loader/Update";
 const useStyles = makeStyles(() => ({
   cardshadow: {
     width: "300px",
-    borderRadius: "20px"
+    borderRadius: "20px",
   },
   editable: {
     width: "100%",
@@ -22,15 +22,15 @@ const useStyles = makeStyles(() => ({
     outline: 0,
     border: "none",
     textAlign: "center",
-    color:"#fff"
+    color: "#fff",
   },
-  subtitle:{
+  subtitle: {
     width: "100%",
     background: "transparent",
     outline: 0,
     border: "none",
     textAlign: "center",
-    color:"#6a6363"
+    color: "#6a6363",
   },
   addCard: {
     borderRadius: "1rem",
@@ -48,7 +48,6 @@ const useStyles = makeStyles(() => ({
     height: 0,
     opacity: 0,
     zIndex: "0",
-    
   },
   inputLabel: {
     position: "absolute",
@@ -65,53 +64,43 @@ const useStyles = makeStyles(() => ({
       fontSize: "1.75rem",
     },
   },
-  cardBtn:{
+  cardBtn: {
     background: "linear-gradient(140deg, #f30c80 30%, #9c03c2)",
     outline: "transparent",
     border: "none",
-    "& focus":{
+    "& focus": {
       outline: "none !important",
-      border: "none"
-
+      border: "none",
     },
-    "& hover":{
+    "& hover": {
       transition: "0.8s",
-    backgroundColor:"rgba(0, 0, 0, 0.616)",
-    }
+      backgroundColor: "rgba(0, 0, 0, 0.616)",
+    },
   },
-  zoom:{
+  zoom: {
     overflow: "hidden",
     height: "200px",
-  
-    },
-
-
-  zoomImg:{
-   
-      transition: "transform 0.3s ease-in-out",
-    "& hover":{
-      transform:"scale(1.5)" 
-  }
-   
-  
-
-},
-bright:{
-  borderRight: "1px dashed rgba(0, 0, 0, 0.397)"
-},
-  cardHover:{
-    "& hover img":{
-  
-        transform:"scale(1.5)" 
-
-    }
-    
   },
-  cardhead:{
+
+  zoomImg: {
+    transition: "transform 0.3s ease-in-out",
+    "& hover": {
+      transform: "scale(1.5)",
+    },
+  },
+  bright: {
+    borderRight: "1px dashed rgba(0, 0, 0, 0.397)",
+  },
+  cardHover: {
+    "& hover img": {
+      transform: "scale(1.5)",
+    },
+  },
+  cardhead: {
     borderBottom: "2px solid black",
     borderBottomColor: "white",
-    width: "100px"
-  }
+    width: "100px",
+  },
 }));
 
 export const Card4 = (props) => {
@@ -217,7 +206,6 @@ export const Card4 = (props) => {
   };
 
   let editable = (
-
     <div className="postion-relative">
       <div class="container">
         {updatestatus === true && <Update />}
@@ -228,18 +216,17 @@ export const Card4 = (props) => {
               class={clsx(classes.cardshadow, "col-sm-12 col-lg-4")}
             >
               <div class="card shadow">
-
                 <div class={clsx(classes.zoom, " position-relative")}>
-                <input
-              type="file"
-              onChange={(e) => onImageChange(e, index)}
-              className={classes.inputFile}
-              id={data.id}
-              name={data.title}
-            />
-            <label className={classes.inputLabel} htmlFor={data.id}>
-              <i className="fa fa-upload"></i>
-            </label>
+                  <input
+                    type="file"
+                    onChange={(e) => onImageChange(e, index)}
+                    className={classes.inputFile}
+                    id={data.id}
+                    name={data.title}
+                  />
+                  <label className={classes.inputLabel} htmlFor={data.id}>
+                    <i className="fa fa-upload"></i>
+                  </label>
                   <img
                     class={clsx("card-img-top")}
                     src={data.image}
@@ -255,17 +242,17 @@ export const Card4 = (props) => {
                     placeholder="title"
                     value={data.title}
                   />
-                  <div class={clsx(classes.cardhead,"head mb-2")}></div>
+                  <div class={clsx(classes.cardhead, "head mb-2")}></div>
                   {/* <p class="card-text">{data.para}</p> */}
                   <textarea
-                        onChange={(e) => onChangeHandler(e, data, index)}
-                        className={classes.editable}
-                        id="para"
-                        placeholder="para"
-                        value={data.para}
-                      />
+                    onChange={(e) => onChangeHandler(e, data, index)}
+                    className={classes.editable}
+                    id="para"
+                    placeholder="para"
+                    value={data.para}
+                  />
                   <div class="row text-center my-2 bg-white rounded p-3">
-                    <div class={clsx(classes.bright,"col ")}>
+                    <div class={clsx(classes.bright, "col ")}>
                       {/* <p className="text-muted">{data.subtitle1}</p> */}
                       <input
                         onChange={(e) => onChangeHandler(e, data, index)}
@@ -286,7 +273,11 @@ export const Card4 = (props) => {
                       />
                     </div>
                   </div>
-                  <a href="#" class={clsx(classes.cardBtn,"btn px-3 mt-3  text-white ")} style={{borderRadius:"30px"}}>
+                  <a
+                    href="#"
+                    class={clsx(classes.cardBtn, "btn px-3 mt-3  text-white ")}
+                    style={{ borderRadius: "30px" }}
+                  >
                     Read more
                   </a>
                 </div>
@@ -310,7 +301,6 @@ export const Card4 = (props) => {
       }, 4000)
     );
   };
-
 
   return (
     <>
@@ -345,10 +335,10 @@ export const Card4 = (props) => {
           <div class="row mt-5">
             {localData.map((data, index) => (
               <div class={clsx(classes.cardshadow, "col-sm-12 col-lg-4")}>
-                <div class={clsx(classes.cardHover,"card shadow")}>
+                <div class={clsx(classes.cardHover, "card shadow")}>
                   <div class={classes.zoom}>
                     <img
-                      class={clsx( classes.zoomImg,"card-img-top")}
+                      class={clsx(classes.zoomImg, "card-img-top")}
                       src={data.image}
                       alt="Card image"
                     />
@@ -358,7 +348,7 @@ export const Card4 = (props) => {
                     <div class="head mb-2"></div>
                     <p class="card-text">{data.para}</p>
                     <div class="row text-center my-2 bg-white rounded p-3">
-                      <div class={clsx(classes.bright,"col ")}>
+                      <div class={clsx(classes.bright, "col ")}>
                         <p className="text-muted">{data.subtitle1}</p>
                       </div>
                       <div class="col">
@@ -366,11 +356,17 @@ export const Card4 = (props) => {
                       </div>
                     </div>
                     <center>
-                    <a href="#" class={clsx(classes.cardBtn,"btn px-3 mt-3  text-white ")} style={{borderRadius:"30px"}}>
-                      Read more
-                    </a>
+                      <a
+                        href="#"
+                        class={clsx(
+                          classes.cardBtn,
+                          "btn px-3 mt-3  text-white "
+                        )}
+                        style={{ borderRadius: "30px" }}
+                      >
+                        Read more
+                      </a>
                     </center>
-                 
                   </div>
                 </div>
               </div>

@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
     fontSize: "15px",
   },
   textdec2:{
-    color:"#4B4453"
+    color:"#9467DE"
   },
   btnclr: {
     color: "#fff",
@@ -30,12 +30,17 @@ const useStyles = makeStyles(() => ({
   image:{
     width:"100px",
     height:"100px"
+
   },
   firstbg:{
     background:"#9467DE",
     borderRadius: "8px",
 
     
+  },
+  image2:{
+    justifyContent:"center",
+    marginTop:"30%"
   }
 
   
@@ -45,13 +50,14 @@ export const Form4 = () => {
   return (
     <>
     <div className={clsx(classes.totalform," container row ")}>
-        <div className={clsx(classes.firstbg,"col d-flex justify-content-center align-items-center ")}>
-            <div className="row"><h1 className="mt-4 text-white">
-                SCHOOL ADMISSION
+        <div className={clsx(classes.firstbg,"col  ")}>
+            <div className="row d-flex justify-content-center align-items-center">
+                <h1 className="mt-4 text-white">
+                OPEN FOR REGISTRATION
             </h1>
-            <h5 className="">Open for registration</h5></div>
+            </div>
             <div className="row">
-            <img src={learn}/>
+            <img className={classes.image2} src={learn}/>
             </div>
            
         </div>
@@ -79,18 +85,19 @@ export const Form4 = () => {
               </div>
             </div>
             <div class="form-row mt-3">
-              <div class="form-group col-md-6">
-                <label className={classes.textdec} for="inputState">
-                  Past Class
+            <div class="col-md-6">
+                <label className={classes.textdec} for="formGroupExampleInput">
+                  Previous school
                 </label>
-                <select id="inputState" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Previous school"
+                />
               </div>
               <div class="form-group col-md-6">
                 <label className={classes.textdec} for="inputState">
-                  Current Class
+                  Class going for
                 </label>
                 <select id="inputState" class="form-control">
                   <option selected>Choose...</option>
